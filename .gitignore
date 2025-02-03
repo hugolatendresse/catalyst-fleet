@@ -1,6 +1,7 @@
 tvm/
 miniconda3/
 miniconda.sh
+tuning_logs/
 .vscode/
 .vscode-server/
 *.swp
