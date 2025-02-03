@@ -17,26 +17,37 @@ import torch
 from torch.export import export
 from torchvision.models.resnet import ResNet18_Weights, resnet18
 
-torch_model = resnet18(weights=ResNet18_Weights.DEFAULT).eval()
+import numpy as np
+import requests
+import torch
+from PIL import Image
+import torch
 
-input_info = [((1, 3, 224, 224), "float32")]
+import numpy as np
+import torch
 
-example_args = (torch.randn(1, 3, 224, 224, dtype=torch.float32),)
+# Model
+torch_model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+
+input_info = [((720, 1280, 3), "float32")]
+# example_args = [torch.randn(720, 1280, 3, dtype=torch.float32),]
+# imgs = np.random.rand(720, 1280, 3, dtype=torch.float32)
+
+im = Image.open(requests.get('https://ultralytics.com/images/zidane.jpg', stream=True).raw)
+im = np.asarray(im)
+imgs = []
+imgs.append(im)
 
 with torch.no_grad():
-    output = torch_model(*example_args)
+    # print("PASSING THIS:")
+    # print(imgs[0].shape)
+    output = torch_model(im)
 
-print(output)
-print(output.shape)
-
-# input_tensors = [
-#     torch.as_tensor(np.random.randn(*shape).astype(dtype))
-#     for shape, dtype in input_info
-# ]
+output.print()
+output.save()
 
 # Use FX tracer to trace the PyTorch model.
 graph_module = fx.symbolic_trace(torch_model)
-
 
 
 fx.symbolic_trace(torch_model).graph.print_tabular()
