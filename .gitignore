@@ -4,4 +4,4 @@ miniconda.sh
 tuning_logs/
 .vscode/
 .vscode-server/
-*.swp
+runs/
