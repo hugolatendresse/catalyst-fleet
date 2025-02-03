@@ -19,21 +19,15 @@ from torchvision.models.resnet import ResNet18_Weights, resnet18
 
 torch_model = resnet18(weights=ResNet18_Weights.DEFAULT).eval()
 
-# Define the module
-class MyModule(torch.nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.linear = torch.nn.Linear(in_features=10, out_features=7, bias=True)
-
-    def forward(self, input):
-        return self.linear(input)
-
-# Instantiate the model and create the input info dict.
-# torch_model = MyModule()
-# input_info = [((128, 10), "float32")]
 input_info = [((1, 3, 224, 224), "float32")]
 
 example_args = (torch.randn(1, 3, 224, 224, dtype=torch.float32),)
+
+with torch.no_grad():
+    output = torch_model(*example_args)
+
+print(output)
+print(output.shape)
 
 # input_tensors = [
 #     torch.as_tensor(np.random.randn(*shape).astype(dtype))
@@ -49,5 +43,9 @@ fx.symbolic_trace(torch_model).graph.print_tabular()
 
 
 irmodule = from_fx(graph_module, input_info)
+# print(irmodule)
 
-print(mod)
+rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
+tvm_input = tvm.nd.array(example_args[0])
+out = rt_lib_target["main"](tvm_input)
+print(out)
