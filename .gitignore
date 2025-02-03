@@ -1,0 +1,6 @@
+tvm/
+miniconda3/
+miniconda.sh
+.vscode/
+.vscode-server/
+*.swp
