@@ -3,7 +3,9 @@
 # os.environ['PYTHONPATH'] = '/ssd1/htalendr/tvm/python:' + os.environ.get('PYTHONPATH', '')
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
+sys.path.append('/ssd1/htalendr/yolov5')
 from tvm import relax
+
 
 import numpy as np
 import torch
@@ -27,7 +29,12 @@ import numpy as np
 import torch
 
 # Model
-torch_model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+import sys
+sys.path.append('/ssd1/htalendr/yolov5')
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+# I did this:
+# git clone https://github.com/ultralytics/yolov5.git
+torch_model = torch.hub.load('/ssd1/htalendr/yolov5', 'yolov5s', pretrained=True, source='local')
 
 input_info = [((720, 1280, 3), "float32")]
 # example_args = [torch.randn(720, 1280, 3, dtype=torch.float32),]
@@ -45,6 +52,13 @@ with torch.no_grad():
 
 output.print()
 output.save()
+
+
+import torch.fx as fx
+from torch.fx import wrap
+
+# Mark torch.from_numpy as a leaf function
+# wrap(torch.from_numpy)
 
 # Use FX tracer to trace the PyTorch model.
 graph_module = fx.symbolic_trace(torch_model)

@@ -10,7 +10,10 @@ import torch
 from PIL import Image
 
 # Model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+import sys
+sys.path.append('/ssd1/htalendr/yolov5')
+# model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
+model = torch.hub.load('/ssd1/htalendr/yolov5', 'yolov5s', pretrained=True, source='local')
 
 # Images
 
