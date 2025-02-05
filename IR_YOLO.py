@@ -21,12 +21,8 @@ from torchvision.models.resnet import ResNet18_Weights, resnet18
 
 import numpy as np
 import requests
-import torch
 from PIL import Image
-import torch
 
-import numpy as np
-import torch
 
 # Model
 import sys
