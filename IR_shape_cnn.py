@@ -3,6 +3,9 @@ sys.path.append('/ssd1/htalendr/tvm/python')
 sys.path.append('/ssd1/htalendr/yolov5')
 from tvm import relax
 
+import torch.fx as fx
+from torch.fx import wrap
+
 
 import numpy as np
 import torch
@@ -10,6 +13,13 @@ from torch import fx
 import tvm
 import tvm.testing
 from tvm.relax.frontend.torch import from_fx
+
+from torch.fx.proxy import Proxy
+import matplotlib.pyplot as plt
+import os
+from random import randint
+
+
 
 import torch
 
@@ -38,8 +48,6 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-print("Libraries imported - ready to use PyTorch", torch.__version__)
-
 
 class PyTorchCNN(nn.Module):
     # Constructor
@@ -67,7 +75,20 @@ class PyTorchCNN(nn.Module):
         # to map them to  the probability for each class
         self.fc = nn.Linear(in_features=32 * 32 * 24, out_features=num_classes)
 
+        self.transformation = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+        ])
+
+
     def forward(self, x):
+        # This forward pass assume a numpy input (not a image or tensor)
+
+        if not isinstance(x, Proxy):  # Skip transformation during FX tracing
+            x = self.transformation(x).float().unsqueeze(0)
+            x = Variable(x)
+
+
         # Use a relu activation function after layer 1 (convolution 1 and pool)
         x = F.relu(self.pool(self.conv1(x)))
       
@@ -87,46 +108,10 @@ class PyTorchCNN(nn.Module):
         # Return log_softmax tensor 
         return F.log_softmax(x, dim=1)
     
-print("CNN model class defined!")
-
 
 # Get the class names
 classes = os.listdir(data_path)
 classes.sort()
-
-
-import matplotlib.pyplot as plt
-import os
-from random import randint
-
-
-# Function to predict the class of an image
-def predict_image(classifier, image):
-    import numpy
-    
-    # Set the classifer model to evaluation mode
-    classifier.eval()
-
-
-    # TODO move those transformations to forward() if TVM can't handle pytorch tensor input    
-    transformation = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-    ])
-
-    # Preprocess the image
-    image_tensor = transformation(image).float()
-
-    # Add an extra batch dimension since pytorch treats all inputs as batches
-    image_tensor = image_tensor.unsqueeze_(0)
-
-    # Turn the input into a Variable
-    input_features = Variable(image_tensor)
-
-    # Predict the class of the image
-    output = classifier(input_features)
-    index = output.data.numpy().argmax()
-    return index
 
 
 # Function to create a random image (of a square, circle, or triangle)
@@ -156,43 +141,32 @@ def create_image (size, shape):
 classnames = os.listdir(data_path)
 classnames.sort()
 shape = classnames[randint(0, len(classnames)-1)]
-img = create_image((128,128), shape)
+img_np = create_image((128,128), shape)
 
 # Display the image
 plt.axis('off')
-plt.imshow(img)
+plt.imshow(img_np)
 
 # Create a new model class and load the saved weights
 model = PyTorchCNN()
 model.load_state_dict(torch.load(model_file))
 
-# Call the predction function
-# TODO predict here to make sure it works
-index = predict_image(model, img)
+# Set the classifer model to evaluation mode
+model.eval()
+
+# Predict the class of the image
+output = model(img_np)
+index = output.data.numpy().argmax()
 print("According to pytorch inference, the image is a", classes[index])
 
+
+### Conversion to IR
 
 torch_model = PyTorchCNN()
 torch_model.load_state_dict(torch.load(model_file))
 
-
 input_info = [((128, 128), "float32")]
 
-# TODO create a numpy img input once models accept numpy
-# TODO test semthing like this once models accept numpy
-# with torch.no_grad():
-#     # print("PASSING THIS:")
-#     # print(imgs[0].shape)
-#     output = torch_model(img)
-# print(type(output))
-# print(output)
-# print(type(output))
-
-import torch.fx as fx
-from torch.fx import wrap
-
-# Mark torch.from_numpy as a leaf function
-# wrap(torch.from_numpy)
 
 # Use FX tracer to trace the PyTorch model.
 graph_module = fx.symbolic_trace(torch_model)
@@ -205,6 +179,6 @@ irmodule = from_fx(graph_module, input_info)
 print(irmodule)
 
 rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
-tvm_input = tvm.nd.array(img)
+tvm_input = tvm.nd.array(img_np)
 out = rt_lib_target["main"](tvm_input)
 print(out)
