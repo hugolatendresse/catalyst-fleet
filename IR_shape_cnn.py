@@ -106,8 +106,9 @@ def predict_image(classifier, image):
     
     # Set the classifer model to evaluation mode
     classifier.eval()
-    
-    # Apply the same transformations as we did for the training images
+
+
+    # TODO move those transformations to forward() if TVM can't handle pytorch tensor input    
     transformation = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
@@ -177,14 +178,15 @@ torch_model.load_state_dict(torch.load(model_file))
 
 input_info = [((128, 128), "float32")]
 
-with torch.no_grad():
-    # print("PASSING THIS:")
-    # print(imgs[0].shape)
-    output = torch_model(img)
-
-print(type(output))
-print(output)
-print(type(output))
+# TODO create a numpy img input once models accept numpy
+# TODO test semthing like this once models accept numpy
+# with torch.no_grad():
+#     # print("PASSING THIS:")
+#     # print(imgs[0].shape)
+#     output = torch_model(img)
+# print(type(output))
+# print(output)
+# print(type(output))
 
 import torch.fx as fx
 from torch.fx import wrap
@@ -200,7 +202,7 @@ fx.symbolic_trace(torch_model).graph.print_tabular()
 
 
 irmodule = from_fx(graph_module, input_info)
-# print(irmodule)
+print(irmodule)
 
 rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
 tvm_input = tvm.nd.array(img)
