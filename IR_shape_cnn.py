@@ -64,7 +64,7 @@ class PyTorchCNN(nn.Module):
         self.pool = nn.MaxPool2d(kernel_size=2)
         self.conv2 = nn.Conv2d(in_channels=12, out_channels=12, kernel_size=3, stride=1, padding=1)
         self.conv3 = nn.Conv2d(in_channels=12, out_channels=24, kernel_size=3, stride=1, padding=1)
-        self.drop = nn.Dropout2d(p=0.2)
+        # self.drop = nn.Dropout2d(p=0.2) # TODO retrain without dropout?
         
         # Fully connected layer
         self.fc = nn.Linear(in_features=32 * 32 * 24, out_features=num_classes)
@@ -79,7 +79,7 @@ class PyTorchCNN(nn.Module):
         # Forward pass through CNN layers
         x = F.relu(self.pool(self.conv1(x)))
         x = F.relu(self.pool(self.conv2(x)))
-        x = F.relu(self.drop(self.conv3(x)))
+        x = F.relu(self.conv3(x)) # used to be: x = F.relu(self.drop(self.conv3(x)))
         x = F.dropout(x, training=self.training)
         
         # Flatten the tensor before passing to the fully connected layer
@@ -163,11 +163,8 @@ graph_module = fx.symbolic_trace(torch_model)
 
 
 fx.symbolic_trace(torch_model).graph.print_tabular()
-
-
 irmodule = from_fx(graph_module, input_info)
 print(irmodule)
-
 rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
 tvm_input = tvm.nd.array(img_np) # TODO should the input be img_np or img_torch or something else?
 out = rt_lib_target["main"](tvm_input)
