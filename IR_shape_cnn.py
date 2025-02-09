@@ -49,65 +49,45 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import torchvision.transforms as transforms
+from torch.autograd import Variable
+
 class PyTorchCNN(nn.Module):
-    # Constructor
     def __init__(self, num_classes=3):
         super(PyTorchCNN, self).__init__()
-        
-        # Our images are RGB, so input channels = 3. We'll apply 12 filters in the first convolutional layer
+
+        # Define convolutional layers
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=12, kernel_size=3, stride=1, padding=1)
-        
-        # We'll apply max pooling with a kernel size of 2
         self.pool = nn.MaxPool2d(kernel_size=2)
-        
-        # A second convolutional layer takes 12 input channels, and generates 12 outputs
         self.conv2 = nn.Conv2d(in_channels=12, out_channels=12, kernel_size=3, stride=1, padding=1)
-        
-        # A third convolutional layer takes 12 inputs and generates 24 outputs
         self.conv3 = nn.Conv2d(in_channels=12, out_channels=24, kernel_size=3, stride=1, padding=1)
-        
-        # A drop layer deletes 20% of the features to help prevent overfitting
         self.drop = nn.Dropout2d(p=0.2)
         
-        # Our 128x128 image tensors will be pooled twice with a kernel size of 2. 128/2/2 is 32.
-        # So our feature tensors are now 32 x 32, and we've generated 24 of them
-        # We need to flatten these and feed them to a fully-connected layer
-        # to map them to  the probability for each class
+        # Fully connected layer
         self.fc = nn.Linear(in_features=32 * 32 * 24, out_features=num_classes)
 
-        self.transformation = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-        ])
-
-
     def forward(self, x):
-        # This forward pass assume a numpy input (not a image or tensor)
+        # # Ensure input is in the correct format (assumes already in NCHW if using PyTorch DataLoader)
+        # if not isinstance(x, torch.Tensor):
+        #     x = self.transformation(x).float() # Converts HWC -> CHW
+        #     x = x.unsqueeze(0)  # Converts CHW -> NCHW
+        #     x = Variable(x)
 
-        if not isinstance(x, Proxy):  # Skip transformation during FX tracing
-            x = self.transformation(x).float().unsqueeze(0)
-            x = Variable(x)
-
-
-        # Use a relu activation function after layer 1 (convolution 1 and pool)
+        # Forward pass through CNN layers
         x = F.relu(self.pool(self.conv1(x)))
-      
-        # Use a relu activation function after layer 2 (convolution 2 and pool)
         x = F.relu(self.pool(self.conv2(x)))
-        
-        # Select some features to drop after the 3rd convolution to prevent overfitting
         x = F.relu(self.drop(self.conv3(x)))
-        
-        # Only drop the features if this is a training pass
         x = F.dropout(x, training=self.training)
         
-        # Flatten
-        x = x.view(-1, 32 * 32 * 24)
-        # Feed to fully-connected layer to predict class
+        # Flatten the tensor before passing to the fully connected layer
+        x = x.view(x.size(0), -1)  # Use x.size(0) to handle batch size dynamically
         x = self.fc(x)
-        # Return log_softmax tensor 
+        
+        # Return log probabilities for classification
         return F.log_softmax(x, dim=1)
-    
 
 # Get the class names
 classes = os.listdir(data_path)
@@ -147,6 +127,16 @@ img_np = create_image((128,128), shape)
 plt.axis('off')
 plt.imshow(img_np)
 
+# Ensure input is in the correct format (NCHW torch tensor)
+# Transformation assumes a single image input (not batched)
+transformation = transforms.Compose([
+    transforms.ToTensor(),  # Converts HWC -> CHW
+    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+])
+img_torch = transformation(img_np).float() # Converts HWC -> CHW
+img_torch = img_torch.unsqueeze(0)  # Converts CHW -> NCHW
+img_torch = Variable(img_torch)
+
 # Create a new model class and load the saved weights
 model = PyTorchCNN()
 model.load_state_dict(torch.load(model_file))
@@ -155,7 +145,7 @@ model.load_state_dict(torch.load(model_file))
 model.eval()
 
 # Predict the class of the image
-output = model(img_np)
+output = model(img_torch)
 index = output.data.numpy().argmax()
 print("According to pytorch inference, the image is a", classes[index])
 
@@ -165,7 +155,7 @@ print("According to pytorch inference, the image is a", classes[index])
 torch_model = PyTorchCNN()
 torch_model.load_state_dict(torch.load(model_file))
 
-input_info = [((128, 128), "float32")]
+input_info = [((1, 3, 128, 128), "float32")]
 
 
 # Use FX tracer to trace the PyTorch model.
@@ -179,6 +169,6 @@ irmodule = from_fx(graph_module, input_info)
 print(irmodule)
 
 rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
-tvm_input = tvm.nd.array(img_np)
+tvm_input = tvm.nd.array(img_np) # TODO should the input be img_np or img_torch or something else?
 out = rt_lib_target["main"](tvm_input)
 print(out)
