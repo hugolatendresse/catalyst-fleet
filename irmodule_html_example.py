@@ -95,7 +95,8 @@ class TVMScriptModule:
 mod_from_script = TVMScriptModule
 mod_from_script.show()
 
-mod = mod_from_script
+mod = mod_from_script # Works!
+mod = mod_from_torch
 exec = relax.build(mod, target="llvm")
 dev = tvm.cpu()
 vm = relax.VirtualMachine(exec, dev)

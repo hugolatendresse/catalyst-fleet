@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
-sys.path.append('/ssd1/htalendr/yolov5')
+# sys.path.append('/ssd1/htalendr/yolov5')
 from tvm import relax
 
 import torch.fx as fx
