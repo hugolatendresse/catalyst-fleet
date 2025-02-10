@@ -1,46 +1,39 @@
+"""
+Model Type: CNN
+Model Definition: PyTorch
+Model Export: fx tracer
+Model Ingestion: from_fx
+Target: LLVM
+Result: FAIL Downcast from relax.expr.Function to tir.PrimFunc failed.
+"""
+
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
 # sys.path.append('/ssd1/htalendr/yolov5')
-from tvm import relax
-
-import torch.fx as fx
-from torch.fx import wrap
-
-
-import numpy as np
-import torch
-from torch import fx
 import tvm
+from tvm import relax
 import tvm.testing
 from tvm.relax.frontend.torch import from_fx
 
-from torch.fx.proxy import Proxy
-import matplotlib.pyplot as plt
 import os
+import torch
 from random import randint
-
-
-
-import torch
-
-from torch.export import export
-from torchvision.models.resnet import ResNet18_Weights, resnet18
-
-import numpy as np
-import requests
-from PIL import Image
-
-data_path = 'shapes_data/'
-model_file = 'shape_cnn/shape_classifier.pt'
-
-# Import PyTorch libraries
-import torch
-import torchvision
+import torch.fx as fx
+from torch.fx import wrap
+from torch import fx # TODO importing fx twice but differently??
 import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
 import torch.nn.functional as F
+
+from torch.fx.proxy import Proxy
+import matplotlib.pyplot as plt
+
+data_path = 'shapes_data/'
+model_file = 'shape_cnn/shape_classifier.pt'
+
+# Import PyTorch libraries
 
 # Other libraries we'll use
 import numpy as np

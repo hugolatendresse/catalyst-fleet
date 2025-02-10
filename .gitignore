@@ -5,3 +5,4 @@ tuning_logs/
 .vscode/
 .vscode-server/
 runs/
+jupyter_config

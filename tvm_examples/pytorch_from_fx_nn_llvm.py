@@ -1,3 +1,11 @@
+"""
+Model Type: simple nn
+Model Definition: PyTorch
+Model Export: fx tracer
+Model Ingestion: from_fx
+Target: LLVM
+Result: SUCCESS
+"""
 
 # import os
 # os.environ['PYTHONPATH'] = '/ssd1/htalendr/tvm/python:' + os.environ.get('PYTHONPATH', '')
@@ -36,7 +44,7 @@ input_tensors = [
 graph_module = fx.symbolic_trace(torch_model)
 
 # Use the dynamo.export() to export the PyTorch model to FX.
-graph_module = dynamo.export(torch_model, *input_tensors)
+# graph_module = dynamo.export(torch_model, *input_tensors).graph_module
 
 # Use the importer to import the PyTorch model to Relax.
 print("Grmodule start\n")
@@ -46,5 +54,14 @@ print(dir(graph_module))
 print("Grmodule end\n")
 mod: tvm.IRModule = from_fx(graph_module, input_info)
 
-# Print out the imported model.
+mod_from_torch, params_from_torch = relax.frontend.detach_params(mod)
 print(mod.script())
+
+exec = relax.build(mod_from_torch, target="llvm")
+dev = tvm.cpu()
+vm = relax.VirtualMachine(exec, dev)
+
+raw_data = np.random.rand(128,10).astype("float32")
+data = tvm.nd.array(raw_data, dev)
+cpu_out = vm["main"](data).numpy()
+print(cpu_out)
