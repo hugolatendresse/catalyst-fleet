@@ -5,7 +5,7 @@ Model Definition: IR Module
 Model Export: -
 Model Ingestion: -
 Target: CUDA
-Result: FAIL: nvcc fatal   : Unsupported gpu architecture 'compute_89'
+Compile and Run Test: SUCCESS
 """
 
 import sys
@@ -36,6 +36,7 @@ i, = sch.get_loops(block=block_C)
 i0, i1 = sch.split(i, [None, 128])
 sch.mod.show()
 
+# The binding below is necessary. Without it, I get "Did you forget to bind?" error.
 sch.bind(i0, "blockIdx.x")
 sch.bind(i1, "threadIdx.x")
 sch.mod.show()
