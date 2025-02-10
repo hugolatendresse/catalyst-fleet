@@ -1,5 +1,5 @@
 """
-Model Type: CNN
+Model Type: CNN with Dropout2D
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
@@ -29,7 +29,7 @@ class PyTorchCNN(nn.Module):
         self.pool = nn.MaxPool2d(kernel_size=2)
         self.conv2 = nn.Conv2d(in_channels=12, out_channels=12, kernel_size=3, stride=1, padding=1)
         self.conv3 = nn.Conv2d(in_channels=12, out_channels=24, kernel_size=3, stride=1, padding=1)
-        self.drop = nn.Dropout2d(p=0.2) # TODO retrain without dropout?
+        self.drop = nn.Dropout2d(p=0.2)
         
         # Fully connected layer
         self.fc = nn.Linear(in_features=32 * 32 * 24, out_features=num_classes)
