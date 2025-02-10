@@ -62,6 +62,8 @@ mod.show()
 
 from tvm import dlight as dl
 
+mod = tvm.relax.transform.LegalizeOps()(mod)
+
 with tvm.target.Target("cuda"):
     gpu_mod = dl.ApplyDefaultSchedule(
         dl.gpu.GEMV(),
@@ -78,8 +80,20 @@ ex = relax.build(gpu_mod, target="cuda")
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
 # Need to allocate data and params on GPU device
-gpu_data = tvm.nd.array(np.random.rand(1, 3, 224, 224).astype("float32"), dev)
+gpu_data = tvm.nd.array(np.random.rand(10, 784).astype("float32"), dev)
 gpu_params = [tvm.nd.array(p, dev) for p in params["main"]]
-gpu_out = vm["main"](gpu_data, *gpu_params).numpy()
+gpu_out = vm["main"](gpu_data, *gpu_params)
+print(gpu_out[0].numpy())
 
-print(gpu_out.shape)
+try:
+    print(gpu_out.numpy())
+except:
+    print("gpu_out.numpy() doesn't work!")
+
+try:
+    print(gpu_out.shape)
+except:
+    print("gpu_out.shape doesn't work!")
+
+print("gpu_out.handle:", gpu_out.handle)
+print("dir(gpu_out):", dir(gpu_out))
