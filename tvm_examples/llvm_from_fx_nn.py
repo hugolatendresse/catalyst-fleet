@@ -4,7 +4,8 @@ Model Definition: PyTorch
 Model Export: fx tracer
 Model Ingestion: from_fx
 Target: LLVM
-Result: SUCCESS
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
 
 import sys
@@ -61,5 +62,9 @@ vm = relax.VirtualMachine(exec, dev)
 
 raw_data = np.random.rand(128,10).astype("float32")
 data = tvm.nd.array(raw_data, dev)
-cpu_out = vm["main"](data).numpy()
-print(cpu_out)
+tvm_out = vm["main"](data).numpy()
+print(tvm_out)
+pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+print(pytorch_out)
+np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 

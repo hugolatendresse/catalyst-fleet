@@ -4,7 +4,8 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: LLVM
-Result: SUCCESS
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
 
 import sys
@@ -59,8 +60,9 @@ class PyTorchCNN(nn.Module):
 example_args = (torch.randn(1, 3, 128, 128, dtype=torch.float32),)
 
 # Convert the model to IRModule
+torch_model = PyTorchCNN().eval()
 with torch.no_grad():
-    exported_program = export(PyTorchCNN().eval(), example_args)
+    exported_program = export(torch_model, example_args)
     mod_from_torch = from_exported_program(
         exported_program, keep_params_as_input=True, unwrap_unit_return_tuple=True
     )
@@ -76,5 +78,9 @@ vm = relax.VirtualMachine(exec, dev)
 
 raw_data = np.random.rand(1, 3, 128, 128).astype("float32")
 data = tvm.nd.array(raw_data, dev)
-cpu_out = vm["main"](data, *params_from_torch["main"]).numpy()
-print(cpu_out)
+tvm_out = vm["main"](data, *params_from_torch["main"]).numpy()
+print(tvm_out)
+pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+print(pytorch_out)
+np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 

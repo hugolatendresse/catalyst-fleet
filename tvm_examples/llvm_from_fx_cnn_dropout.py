@@ -4,12 +4,12 @@ Model Definition: PyTorch
 Model Export: fx tracer
 Model Ingestion: from_fx
 Target: LLVM
-Result: ???
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
 
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
-# sys.path.append('/ssd1/htalendr/yolov5')
 import tvm
 from tvm import relax
 import tvm.testing
@@ -131,23 +131,16 @@ img_torch = img_torch.unsqueeze(0)  # Converts CHW -> NCHW
 img_torch = Variable(img_torch)
 
 # Create a new model class and load the saved weights
-model = PyTorchCNN()
-model.load_state_dict(torch.load(model_file))
-
-# Set the classifer model to evaluation mode
-model.eval()
+torch_model = PyTorchCNN().eval()
+torch_model.load_state_dict(torch.load(model_file))
 
 # Predict the class of the image
-output = model(img_torch)
-index = output.data.numpy().argmax()
-print("According to pytorch inference, the image is a", classes[index])
+# output =torch_model(img_torch)
+# index = output.data.numpy().argmax()
+# print("According to pytorch inference, the image is a", classes[index])
 
 
 ### Conversion to IR
-
-torch_model = PyTorchCNN()
-torch_model.load_state_dict(torch.load(model_file))
-
 input_info = [((1, 3, 128, 128), "float32")]
 
 
@@ -166,5 +159,9 @@ vm = relax.VirtualMachine(exec, dev)
 
 raw_data = np.random.rand(1,3,128,128).astype("float32")
 tvm_input = tvm.nd.array(raw_data, dev) 
-out = vm["main"](tvm_input)
-print(out)
+tvm_out = vm["main"](tvm_input).numpy()
+print(tvm_out)
+pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+print(pytorch_out)
+np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5) # Correct! 
+
