@@ -5,4 +5,6 @@ tuning_logs/
 .vscode/
 .vscode-server/
 runs/
+yolov5/
+yolov5s.pt
 jupyter_config
