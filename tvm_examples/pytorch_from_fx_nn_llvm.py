@@ -7,8 +7,6 @@ Target: LLVM
 Result: SUCCESS
 """
 
-# import os
-# os.environ['PYTHONPATH'] = '/ssd1/htalendr/tvm/python:' + os.environ.get('PYTHONPATH', '')
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
 from tvm import relax
