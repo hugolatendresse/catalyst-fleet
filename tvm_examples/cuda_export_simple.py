@@ -4,7 +4,8 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Result: FAIL. Did you forget to bind? TVM error: Variable `lv` is directly accessed by host memory (it is not contained in a thread environment or in the function arguments.
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
 
 import sys
@@ -80,7 +81,8 @@ ex = relax.build(gpu_mod, target="cuda")
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
 # Need to allocate data and params on GPU device
-gpu_data = tvm.nd.array(np.random.rand(10, 784).astype("float32"), dev)
+raw_data = np.random.rand(10, 784).astype("float32")
+gpu_data = tvm.nd.array(raw_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in params["main"]]
 gpu_out = vm["main"](gpu_data, *gpu_params)
 print(gpu_out[0].numpy())
@@ -97,3 +99,9 @@ except:
 
 print("gpu_out.handle:", gpu_out.handle)
 print("dir(gpu_out):", dir(gpu_out))
+
+
+pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+print(pytorch_out)
+np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 
