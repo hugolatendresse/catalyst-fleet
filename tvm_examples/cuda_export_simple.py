@@ -74,7 +74,7 @@ with tvm.target.Target("cuda"):
         dl.gpu.RMSNorm(),
     )(mod)
 
-ex = relax.build(mod, target="cuda")
+ex = relax.build(gpu_mod, target="cuda")
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
 # Need to allocate data and params on GPU device

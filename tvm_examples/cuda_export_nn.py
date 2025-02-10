@@ -50,8 +50,14 @@ from tvm import dlight as dl
 
 with tvm.target.Target("cuda"):
     gpu_mod = dl.ApplyDefaultSchedule(
-        dl.gpu.Matmul(),
+        dl.gpu.GEMV(),
+        dl.gpu.LowBatchGEMV(),
         dl.gpu.Fallback(),
+        dl.gpu.Matmul(),
+        dl.gpu.Reduction(),
+        dl.gpu.Transpose(),
+        dl.gpu.GeneralReduction(),
+        dl.gpu.RMSNorm(),
     )(mod_from_torch)
 
 exec = relax.build(gpu_mod, target="cuda")
