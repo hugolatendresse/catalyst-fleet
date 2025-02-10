@@ -4,7 +4,7 @@ Model Definition: PyTorch
 Model Export: fx tracer
 Model Ingestion: from_fx
 Target: LLVM
-Result: FAIL Downcast from relax.expr.Function to tir.PrimFunc failed.
+Result: SUCCESS
 """
 
 import sys
@@ -154,11 +154,17 @@ input_info = [((1, 3, 128, 128), "float32")]
 # Use FX tracer to trace the PyTorch model.
 graph_module = fx.symbolic_trace(torch_model)
 
+mod: tvm.IRModule = from_fx(graph_module, input_info)
 
-fx.symbolic_trace(torch_model).graph.print_tabular()
-irmodule = from_fx(graph_module, input_info)
-print(irmodule)
-rt_lib_target = tvm.build(irmodule, target="llvm") # TODO why doesn't this work?
-tvm_input = tvm.nd.array(img_np) # TODO should the input be img_np or img_torch or something else?
-out = rt_lib_target["main"](tvm_input)
+
+mod_from_torch, params_from_torch = relax.frontend.detach_params(mod)
+print(mod.script())
+
+exec = relax.build(mod_from_torch, target="llvm")
+dev = tvm.cpu()
+vm = relax.VirtualMachine(exec, dev)
+
+raw_data = np.random.rand(1,3,128,128).astype("float32")
+tvm_input = tvm.nd.array(raw_data, dev) 
+out = vm["main"](tvm_input)
 print(out)
