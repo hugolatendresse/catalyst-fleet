@@ -4,7 +4,7 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Result: FAIL. TVM error: Variable `lv` is directly accessed by host memory (it is not contained in a thread environment or in the function arguments.
+Result: FAIL. Did you forget to bind? TVM error: Variable `lv` is directly accessed by host memory (it is not contained in a thread environment or in the function arguments.
 """
 
 import sys
@@ -59,6 +59,20 @@ mod.show()
 #     # Only show the main function
 #     mod["main"].show()
 
+
+from tvm import dlight as dl
+
+with tvm.target.Target("cuda"):
+    gpu_mod = dl.ApplyDefaultSchedule(
+        dl.gpu.GEMV(),
+        dl.gpu.LowBatchGEMV(),
+        dl.gpu.Fallback(),
+        dl.gpu.Matmul(),
+        dl.gpu.Reduction(),
+        dl.gpu.Transpose(),
+        dl.gpu.GeneralReduction(),
+        dl.gpu.RMSNorm(),
+    )(mod)
 
 ex = relax.build(mod, target="cuda")
 dev = tvm.device("cuda", 0)
