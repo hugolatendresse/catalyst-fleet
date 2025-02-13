@@ -1,5 +1,5 @@
 """
-Model Type: ResNnet18 
+Model Type: ResNet18
 Model Definition: torchvision import 
 Model Export: fx tracer
 Model Ingestion: from_fx

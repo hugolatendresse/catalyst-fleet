@@ -1,60 +1,72 @@
 """
-This is the example on https://tvm.apache.org/docs/how_to/tutorials/e2e_opt_model.html as-is!
+This is the example on https://tvm.apache.org/docs/how_to/tutorials/e2e_opt_model.html
 Model Type: ResNet
-Model Definition: PyTorch
+Model Definition: torchvision import
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Result: FAIL (error from tvm: AssertionError: Unsupported function type batch_norm.default)
+Compile and Run Test: FAIL (Unsupported function type batch_norm.default)
+Correctness Test: FAIL
 """
-
 import sys
-sys.path.append('/ssd1/htalendr/tvm/python') # Refer to local TVM build
-
-
-import os
+sys.path.append('/ssd1/htalendr/tvm/python')
+from tvm import relax
 import numpy as np
-import torch
-from torch.export import export
-from torchvision.models.resnet import ResNet18_Weights, resnet18
-
-torch_model = resnet18(weights=ResNet18_Weights.DEFAULT).eval()
-
 import tvm
 from tvm import relax
+import torch
+from torch import nn
+from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 
+from torchvision.models.resnet import ResNet18_Weights, resnet18
+torch_model = resnet18(weights=ResNet18_Weights.DEFAULT).eval()
+
+raw_data = np.random.rand(1, 3, 224, 224).astype("float32")
+torch_data = torch.from_numpy(raw_data)
+
 # Give an example argument to torch.export
-example_args = (torch.randn(1, 3, 224, 224, dtype=torch.float32),)
+example_args = (torch_data,)
 
 # Convert the model to IRModule
+# TODO what does , unwrap_unit_return_tuple=True do? should we include?
 with torch.no_grad():
     exported_program = export(torch_model, example_args)
-    mod = from_exported_program(exported_program, keep_params_as_input=True)
+    mod_from_torch = from_exported_program(
+        exported_program, keep_params_as_input=True#, unwrap_unit_return_tuple=True
+    )
 
-mod, params = relax.frontend.detach_params(mod)
-mod.show()
-
-TOTAL_TRIALS = 1  # Change to 20000 for better performance if needed
-target = tvm.target.Target("nvidia/geforce-rtx-4090")  # Change to your target device
-work_dir = "tuning_logs"
-
-# Skip running in CI environment
-IS_IN_CI = os.getenv("CI", "") == "true"
-if not IS_IN_CI:
-    mod = relax.get_pipeline("static_shape_tuning", target=target, total_trials=TOTAL_TRIALS)(mod)
-
-    # Only show the main function
-    mod["main"].show()
+tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
+tvm_mod.show()
 
 
-if not IS_IN_CI:
-    ex = relax.build(mod, target="cuda")
-    dev = tvm.device("cuda", 0)
-    vm = relax.VirtualMachine(ex, dev)
-    # Need to allocate data and params on GPU device
-    gpu_data = tvm.nd.array(np.random.rand(1, 3, 224, 224).astype("float32"), dev)
-    gpu_params = [tvm.nd.array(p, dev) for p in params["main"]]
-    gpu_out = vm["main"](gpu_data, *gpu_params).numpy()
 
-    print(gpu_out.shape)
+
+from tvm import dlight as dl
+
+tvm_mod = tvm.relax.transform.LegalizeOps()(tvm_mod)
+
+with tvm.target.Target("cuda"):
+    tvm_mod = dl.ApplyDefaultSchedule(
+        dl.gpu.GEMV(),
+        dl.gpu.LowBatchGEMV(),
+        dl.gpu.Fallback(),
+        dl.gpu.Matmul(),
+        dl.gpu.Reduction(),
+        dl.gpu.Transpose(),
+        dl.gpu.GeneralReduction(),
+        dl.gpu.RMSNorm(),
+    )(tvm_mod)
+
+
+exec = relax.build(tvm_mod, target="cuda")
+dev = tvm.device("cuda", 0)
+vm = relax.VirtualMachine(exec, dev)
+
+gpu_data = tvm.nd.array(raw_data, dev)
+gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
+gpu_out = vm["main"](gpu_data, *gpu_params)
+
+pytorch_out = torch_model(torch_data).detach().numpy() 
+np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 
