@@ -23,11 +23,14 @@ diffusion = GaussianDiffusion(
 from torch import nn
 assert isinstance(diffusion, nn.Module), "Our methodology expects to ingest an nn.Module"
 
+# TODO train
 training_images = torch.rand(1, 3, 128, 128) # images are normalized from 0 to 1
 loss = diffusion(training_images)
 loss.backward()
 
 # after a lot of training
 
-sampled_images = diffusion.sample(batch_size = 4)
+sampled_images = diffusion.sample() # TODO try passing arguments
 sampled_images.shape # (4, 3, 128, 128)
+print(sampled_images)
+print(type(sampled_images))
