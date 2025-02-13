@@ -10,7 +10,6 @@ Correctness Test: SUCCESS
 
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
-# sys.path.append('/ssd1/htalendr/yolov5')
 import tvm
 from tvm import relax
 import tvm.testing
@@ -28,7 +27,6 @@ import torch.optim as optim
 from torch.autograd import Variable
 import torch.nn.functional as F
 
-from torch.fx.proxy import Proxy
 import matplotlib.pyplot as plt
 
 data_path = 'shapes_data/'
@@ -164,7 +162,6 @@ vm = relax.VirtualMachine(exec, dev)
 raw_data = np.random.rand(1,3,128,128).astype("float32")
 tvm_input = tvm.nd.array(raw_data, dev) 
 tvm_out = vm["main"](tvm_input).numpy()
-print(tvm_out)
 pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
-print(pytorch_out)
-np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5) # Correct! 
+np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5)
+print("Correctness test passed!") 
