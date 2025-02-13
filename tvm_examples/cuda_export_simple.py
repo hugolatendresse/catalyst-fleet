@@ -37,8 +37,11 @@ import tvm
 from tvm import relax
 from tvm.relax.frontend.torch import from_exported_program
 
+raw_data = np.random.rand(10, 784).astype("float32")
+torch_data = torch.from_numpy(raw_data)
+
 # Give an example argument to torch.export
-example_args = (torch.randn(10,784, dtype=torch.float32),)
+example_args = (torch_data,)
 
 # Convert the model to IRModule
 with torch.no_grad():
@@ -80,28 +83,12 @@ with tvm.target.Target("cuda"):
 ex = relax.build(gpu_mod, target="cuda")
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
-# Need to allocate data and params on GPU device
-raw_data = np.random.rand(10, 784).astype("float32")
+
 gpu_data = tvm.nd.array(raw_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in params["main"]]
 gpu_out = vm["main"](gpu_data, *gpu_params)
-print(gpu_out[0].numpy())
 
-try:
-    print(gpu_out.numpy())
-except:
-    print("gpu_out.numpy() doesn't work!")
-
-try:
-    print(gpu_out.shape)
-except:
-    print("gpu_out.shape doesn't work!")
-
-print("gpu_out.handle:", gpu_out.handle)
-print("dir(gpu_out):", dir(gpu_out))
-
-
-pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+pytorch_out = torch_model(torch_data).detach().numpy() 
 print(pytorch_out)
 np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
 print("Correctness test passed!") 

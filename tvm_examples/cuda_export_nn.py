@@ -67,4 +67,8 @@ vm = relax.VirtualMachine(exec, dev)
 data = tvm.nd.array(raw_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in params_from_torch["main"]]
 gpu_out = vm["main"](data, *gpu_params).numpy()
-print(gpu_out)
+
+pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
+print(pytorch_out)
+np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 
