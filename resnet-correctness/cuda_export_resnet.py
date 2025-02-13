@@ -39,9 +39,6 @@ with torch.no_grad():
 tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
 tvm_mod.show()
 
-
-
-
 from tvm import dlight as dl
 
 tvm_mod = tvm.relax.transform.LegalizeOps()(tvm_mod)

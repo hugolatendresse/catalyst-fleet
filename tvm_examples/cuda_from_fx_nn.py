@@ -4,8 +4,8 @@ Model Definition: PyTorch
 Model Export: fx tracer
 Model Ingestion: from_fx
 Target: CUDA
-Compile and Run Test: ???
-Correctness Test: ???
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 
 import sys
