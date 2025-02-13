@@ -5,12 +5,14 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Result: FAIL
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
-
+# TODO remember to run export PATH=/usr/local/cuda-12.4/bin:$PATH
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python') # Refer to local TVM build
-
+sys.path.append('usr/local/cuda-12.4/bin')
+print()
 
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
