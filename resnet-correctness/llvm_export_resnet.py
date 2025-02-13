@@ -4,7 +4,7 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: LLVM
-Compile and Run Test: FAIL
+Compile and Run Test: FAIL (Unsupported function type batch_norm.default)
 Correctness Test: FAIL
 """
 

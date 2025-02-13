@@ -1,11 +1,12 @@
 """
-Model Type: simple NN
-Model Definition: PyTorch
+This is the example on https://tvm.apache.org/docs/how_to/tutorials/e2e_opt_model.html
+Model Type: ResNet
+Model Definition: torchvision import
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: SUCCESS
-Correctness Test: SUCCESS
+Compile and Run Test: FAIL (Unsupported function type batch_norm.default)
+Correctness Test: FAIL
 """
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
@@ -18,23 +19,10 @@ from torch import nn
 from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 
-# Create a dummy model
-class TorchModel(nn.Module):
-    def __init__(self):
-        super(TorchModel, self).__init__()
-        self.fc1 = nn.Linear(784, 256)
-        self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(256, 10)
+from torchvision.models.resnet import ResNet18_Weights, resnet18
+torch_model = resnet18(weights=ResNet18_Weights.DEFAULT).eval()
 
-    def forward(self, x):
-        x = self.fc1(x)
-        x = self.relu1(x)
-        x = self.fc2(x)
-        return x
-
-torch_model = TorchModel().eval()
-
-raw_data = np.random.rand(10, 784).astype("float32")
+raw_data = np.random.rand(1, 3, 224, 224).astype("float32")
 torch_data = torch.from_numpy(raw_data)
 
 # Give an example argument to torch.export
@@ -50,7 +38,6 @@ with torch.no_grad():
 
 tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
 tvm_mod.show()
-
 
 from tvm import dlight as dl
 
