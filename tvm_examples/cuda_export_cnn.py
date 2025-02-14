@@ -4,7 +4,8 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Result: FAIL
+Compile and Run Test: SUCCESS
+Correctness Test: SUCCESS
 """
 
 import sys
@@ -54,36 +55,54 @@ class PyTorchCNN(nn.Module):
         # Return log probabilities for classification
         return F.log_softmax(x, dim=1)
 
+torch_model = PyTorchCNN().eval()
+
+raw_data = np.random.rand(1, 3, 128, 128).astype("float32")
+torch_data = torch.from_numpy(raw_data)
 
 # Give an example argument to torch.export
-example_args = (torch.randn(1, 3, 128, 128, device='cuda', dtype=torch.float32),)
+example_args = (torch_data,)
 
 # Convert the model to IRModule
+# TODO what does , unwrap_unit_return_tuple=True do? should we include?
 with torch.no_grad():
-    exported_program = export(PyTorchCNN().to("cuda").eval(), example_args)
+    exported_program = export(torch_model, example_args)
     mod_from_torch = from_exported_program(
-        exported_program, keep_params_as_input=True, unwrap_unit_return_tuple=True
+        exported_program, keep_params_as_input=True#, unwrap_unit_return_tuple=True
     )
 
-mod_from_torch, params_from_torch = relax.frontend.detach_params(mod_from_torch)
-# Print the IRModule
-mod_from_torch.show()
+tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
+tvm_mod.show()
 
-# exec = relax.build(mod_from_torch, target="llvm")
-# dev = tvm.cuda()
-# vm = relax.VirtualMachine(exec, dev)
+from tvm import dlight as dl
 
-# raw_data = np.random.rand(1, 3, 128, 128).astype("float32") # TODO copy raw data syntax below
-# data = tvm.nd.array(raw_data, dev)
-# cpu_out = vm["main"](data, *params_from_torch["main"]).numpy()
-# print(cpu_out)
+# tvm_mod = tvm.relax.transform.LegalizeOps()(tvm_mod)
 
-ex = relax.build(mod_from_torch, target="cuda")
+# with tvm.target.Target("cuda"):
+#     tvm_mod = dl.ApplyDefaultSchedule(
+#         dl.gpu.GEMV(),
+#         dl.gpu.LowBatchGEMV(),
+#         dl.gpu.Fallback(),
+#         dl.gpu.Matmul(),
+#         dl.gpu.Reduction(),
+#         dl.gpu.Transpose(),
+#         dl.gpu.GeneralReduction(),
+#         dl.gpu.RMSNorm(),
+#     )(tvm_mod)
+
+
+tvm_mod.show()
+
+target = tvm.target.Target.from_device(tvm.cuda())
+
+ex = relax.build(tvm_mod, target=target, pipeline=relax.get_default_pipeline(target))
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
-# Need to allocate data and params on GPU device
-gpu_data = tvm.nd.array(np.random.rand(1, 3, 128, 128).astype("float32"), dev)
-gpu_params = [tvm.nd.array(p, dev) for p in params_from_torch["main"]]
-gpu_out = vm["main"](gpu_data, *gpu_params).numpy()
 
-print(gpu_out.shape)
+gpu_data = tvm.nd.array(raw_data, dev)
+gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
+gpu_out = vm["main"](gpu_data, *gpu_params)
+
+pytorch_out = torch_model(torch_data).detach().numpy() 
+np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
+print("Correctness test passed!") 
