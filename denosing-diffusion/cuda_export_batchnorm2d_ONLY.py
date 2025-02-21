@@ -1,5 +1,5 @@
 """
-Model Type: NN with batchnorm1D
+Model Type: only batchnorm1D
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
@@ -18,25 +18,24 @@ from torch import nn
 from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 
-class TorchModel(nn.Module):
+import torch.nn.functional as F
+import numpy as np
+from hlutils.test_export_and_cuda import test_export_and_cuda
+from hlutils.set_seed_all import set_seed_all
+
+set_seed_all()
+
+# Create a dummy model
+class PyTorchCNN(nn.Module):
     def __init__(self):
-        super(TorchModel, self).__init__() 
-        self.fc1 = nn.Linear(784, 256) 
-        self.bn1 = nn.BatchNorm1d(256)  
-        self.relu1 = nn.ReLU() 
-        self.fc2 = nn.Linear(256, 10) 
+        super(PyTorchCNN, self).__init__()
+        self.bn1 = nn.BatchNorm2d(3)  # BatchNorm after conv1
 
     def forward(self, x):
-        x = self.fc1(x) # 10, 256
-        x = self.bn1(x) # 10, 256 
-        x = self.relu1(x) # 10, 256
-        x = self.fc2(x) # 10, 10
-        return x
-    
-torch_model = TorchModel().eval()
+        return self.bn1(x)
 
-raw_data = np.random.rand(10, 784).astype("float32")
+torch_model = PyTorchCNN().eval()
 
-from hlutils.test_export_and_cuda import test_export_and_cuda
+raw_data = np.random.rand(1, 3, 128, 128).astype("float32")
 
 test_export_and_cuda(raw_data, torch_model)
