@@ -37,8 +37,9 @@ from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 import torch.nn.functional as F
 import numpy as np
+from hlutils.set_seed_all import set_seed_all
 
-
+set_seed_all()
 
 # Create a dummy model
 class PyTorchCNN(nn.Module):
@@ -56,7 +57,7 @@ class PyTorchCNN(nn.Module):
     def forward(self, x):
         # Conv1 -> BatchNorm -> Pool -> ReLU
         x = self.conv1(x)
-        # x = self.bn1(x)
+        x = self.bn1(x)
         x = self.pool(x)
         x = F.relu(x)
         
