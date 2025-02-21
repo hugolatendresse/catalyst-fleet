@@ -17,19 +17,16 @@ from hlutils.set_seed_all import set_seed_all
 
 set_seed_all()
 
-# Create a dummy model with LayerNorm
 class PyTorchLayerNorm(nn.Module):
     def __init__(self):
         super(PyTorchLayerNorm, self).__init__()
-        # For an input of shape [batch, 2, 2, 2],
-        # we normalize over the last three dimensions.
-        self.ln = nn.LayerNorm([2, 2, 2])
+        self.ln = nn.LayerNorm([28, 28])
 
     def forward(self, x):
         return self.ln(x)
 
 torch_model = PyTorchLayerNorm().eval()
 
-raw_data = np.random.rand(1, 2, 2, 2).astype("float32")
+raw_data = np.random.rand(10, 3, 28, 28).astype("float32")
 
 test_export_and_cuda(raw_data, torch_model)
