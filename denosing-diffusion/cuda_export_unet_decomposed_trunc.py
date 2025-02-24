@@ -285,8 +285,9 @@ class LinearAttention(Module):
         q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
         mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
         k, v = map(partial(torch.cat, dim = -1), ((mk, k), (mv, v)))
-        return k
+
         # q = q.softmax(dim = -2)
+        return q
         # k = k.softmax(dim = -1)
         # q = q * self.scale
         # context = torch.einsum('b h d n, b h e n -> b h d e', k, v)
