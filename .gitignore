@@ -1,4 +1,4 @@
-tvm/
+# tvm/
 miniconda3/
 miniconda.sh
 tuning_logs/
@@ -8,3 +8,7 @@ runs/
 yolov5/
 yolov5s.pt
 jupyter_config
+**/__pycache__/
+**/*.pyc
+
+hl_utils/hl_utils.egg-info
