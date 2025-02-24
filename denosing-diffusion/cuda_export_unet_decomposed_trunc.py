@@ -275,20 +275,24 @@ class LinearAttention(Module):
         )
 
     def forward(self, x):
+
+        # TODO try to see where the issue happens here! 
+
         b, c, h, w = x.shape
         x = self.norm(x)
-        qkv = self.to_qkv(x)
-        qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
-        q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
-        mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
-        k, v = map(partial(torch.cat, dim = -1), ((mk, k), (mv, v)))
-        q = q.softmax(dim = -2)
-        k = k.softmax(dim = -1)
-        q = q * self.scale
-        context = torch.einsum('b h d n, b h e n -> b h d e', k, v)
-        out = torch.einsum('b h d e, b h d n -> b h e n', context, q)
-        out = rearrange(out, 'b h c (x y) -> b (h c) x y', h = self.heads, x = h, y = w)
-        return self.to_out(out)
+        return x
+        # qkv = self.to_qkv(x)
+        # qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
+        # q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
+        # mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
+        # k, v = map(partial(torch.cat, dim = -1), ((mk, k), (mv, v)))
+        # q = q.softmax(dim = -2)
+        # k = k.softmax(dim = -1)
+        # q = q * self.scale
+        # context = torch.einsum('b h d n, b h e n -> b h d e', k, v)
+        # out = torch.einsum('b h d e, b h d n -> b h e n', context, q)
+        # out = rearrange(out, 'b h c (x y) -> b (h c) x y', h = self.heads, x = h, y = w)
+        # return self.to_out(out)
 
 class Attention(Module):
     def __init__(
@@ -455,11 +459,12 @@ class Unet(Module):
             x = block1(x, t)
             h.append(x)
             x = block2(x, t)
-            return x
+            attn_x = attn(x)
+            return attn_x
+
             # x = attn(x) + x
-            # return x
-                # h.append(x)
-                # x = downsample(x)
+            # h.append(x)
+            # x = downsample(x)
 
         # x = self.mid_block1(x, t)
         # x = self.mid_attn(x) + x
