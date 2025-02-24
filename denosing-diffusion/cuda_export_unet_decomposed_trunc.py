@@ -26,9 +26,9 @@ import torch
 def my_chunk(t, chunks, dim = 0):
     split_size_or_sections = math.ceil(t.size(dim) // chunks)
     out = torch.split(t, split_size_or_sections, dim)
-    print("size of out", len(out))
-    print("chunks", chunks)
-    print("split_size_or_sections", split_size_or_sections)
+    # print("size of out", len(out))
+    # print("chunks", chunks)
+    # print("split_size_or_sections", split_size_or_sections)
     return out
 
 # TODO try below, from torch/_refs/__init__.py
@@ -404,7 +404,10 @@ class Unet(Module):
         for ind, ((dim_in, dim_out), layer_full_attn, layer_attn_heads, layer_attn_dim_head) in enumerate(zip(in_out, full_attn, attn_heads, attn_dim_head)):
             is_last = ind >= (num_resolutions - 1)
 
-            attn_klass = FullAttention if layer_full_attn else LinearAttention
+            # print("layer_full_attn is", layer_full_attn)
+            # TODO restore below
+            # attn_klass = FullAttention if layer_full_attn else LinearAttention
+            attn_klass = LinearAttention
 
             self.downs.append(ModuleList([
                 resnet_block(dim_in, dim_in),
@@ -452,11 +455,12 @@ class Unet(Module):
             x = block1(x, t)
             h.append(x)
             x = block2(x, t)
-            x = attn(x) + x
-            h.append(x)
-            x = downsample(x)
+            return x
+            # x = attn(x) + x
+            # return x
+                # h.append(x)
+                # x = downsample(x)
 
-        return x
         # x = self.mid_block1(x, t)
         # x = self.mid_attn(x) + x
         # x = self.mid_block2(x, t)
@@ -1165,8 +1169,8 @@ torch_data = torch.from_numpy(raw_data)
 batch_size = 1
 num_timesteps = 10
 time_data = torch.randint(0, num_timesteps, (batch_size,), dtype=torch.float32)
-print(time_data)
-print(time_data.dtype)
+# print(time_data)
+# print(time_data.dtype)
 
 # Give an example argument to torch.export
 
@@ -1198,6 +1202,7 @@ gpu_time_data = tvm.nd.array(time_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
 gpu_out = vm["main"](gpu_data, gpu_time_data, *gpu_params)
 
+print("done running main, now running torch model")
 pytorch_out = torch_model(torch_data, time_data).detach().numpy() 
 np.testing.assert_allclose(gpu_out[0].numpy(), pytorch_out, rtol=1e-5, atol=1e-5) 
 print("Correctness test passed!") 
