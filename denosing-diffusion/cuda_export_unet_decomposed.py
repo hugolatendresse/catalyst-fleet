@@ -1,3 +1,5 @@
+
+
 """
 Model Type: simple unet
 Model Definition: PyTorch
@@ -21,6 +23,32 @@ from tvm.relax.frontend.torch import from_exported_program
 import torch
 
 
+def my_chunk(t, chunks, dim = 0):
+    split_size_or_sections = math.ceil(t.size(dim) // chunks)
+    out = torch.split(t, split_size_or_sections, dim)
+    print("size of out", len(out))
+    print("chunks", chunks)
+    print("split_size_or_sections", split_size_or_sections)
+    return out
+
+# TODO try below, from torch/_refs/__init__.py
+# def chunk(a: TensorLikeType, chunks: int, dim: int = 0) -> tuple[TensorLikeType, ...]:
+#     if chunks <= 0:
+#         msg = f"Expected at least one chunk, but got {chunks}!"
+#         raise ValueError(msg)
+
+#     dim = utils.canonicalize_dim(a.ndim, dim)
+#     length = a.shape[dim]
+#     chunk_size = math.ceil(length / chunks)
+#     full_chunks = math.floor(length / chunk_size)
+#     tail_chunk_size = length % chunk_size
+
+#     result = [narrow(a, dim, i * chunk_size, chunk_size) for i in range(full_chunks)]
+
+#     if tail_chunk_size != 0:
+#         result.append(narrow(a, dim, full_chunks * chunk_size, tail_chunk_size))
+
+#     return tuple(result)
 
 
 
@@ -213,7 +241,9 @@ class ResnetBlock(Module):
         if exists(self.mlp) and exists(time_emb):
             time_emb = self.mlp(time_emb)
             time_emb = rearrange(time_emb, 'b c -> b c 1 1')
-            scale_shift = time_emb.chunk(2, dim = 1)
+
+            scale_shift = my_chunk(time_emb, 2, dim = 1) # TODO restore below
+            # scale_shift = time_emb.chunk(2, dim = 1)
 
         h = self.block1(x, scale_shift = scale_shift)
 
@@ -249,7 +279,18 @@ class LinearAttention(Module):
 
         x = self.norm(x)
 
-        qkv = self.to_qkv(x).chunk(3, dim = 1)
+
+
+        
+
+        qkv = self.to_qkv(x)
+        
+        
+        qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
+        # qkv = qkv.chunk(3, dim = 1)
+        
+        
+        
         q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
 
         mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
@@ -291,7 +332,11 @@ class Attention(Module):
 
         x = self.norm(x)
 
-        qkv = self.to_qkv(x).chunk(3, dim = 1)
+        qkv = self.to_qkv(x)
+        qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
+        # qkv = self.to_qkv(x).chunk(3, dim = 1)
+       
+       
         q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h (x y) c', h = self.heads), qkv)
 
         mk, mv = map(lambda t: repeat(t, 'h n d -> b h n d', b = b), self.mem_kv)
@@ -434,17 +479,16 @@ class Unet(Module):
         t = self.time_mlp(time)
 
         h = []
-        return x # TODO REMOVE!!!!
-    
-        # for block1, block2, attn, downsample in self.downs:
-        #     x = block1(x, t)
-        #     h.append(x)
+        # Passes correctness up to here    
+        for block1, block2, attn, downsample in self.downs:
+            x = block1(x, t)
+            h.append(x)
 
-        #     x = block2(x, t)
-        #     x = attn(x) + x
-        #     h.append(x)
+            x = block2(x, t)
+            x = attn(x) + x
+            h.append(x)
 
-        #     x = downsample(x)
+            x = downsample(x)
 
         # x = self.mid_block1(x, t)
         # x = self.mid_attn(x) + x
@@ -1174,8 +1218,8 @@ with torch.no_grad():
 tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
 # tvm_mod.show()
 # tvm_params has one key, "main"
-print("type tvm_params['main']:", type(tvm_params["main"]))
-print("type(tvm_params['main'][0]):", type(tvm_params["main"][0]))
+# print("type tvm_params['main']:", type(tvm_params["main"]))
+# print("type(tvm_params['main'][0]):", type(tvm_params["main"][0]))
 # print("tvm_params keys:", list(tvm_params.keys()))
 
 target = tvm.target.Target.from_device(tvm.cuda())
