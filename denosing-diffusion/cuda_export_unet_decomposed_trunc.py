@@ -275,8 +275,9 @@ class LinearAttention(Module):
         )
 
     def forward(self, x):
+        
+        print("x.shape", x.shape)
 
-        # TODO try to see where the issue happens here! 
 
         b, c, h, w = x.shape
         x = self.norm(x)
@@ -287,13 +288,13 @@ class LinearAttention(Module):
         k, v = map(partial(torch.cat, dim = -1), ((mk, k), (mv, v)))
 
         # q = q.softmax(dim = -2)
-        return q
         # k = k.softmax(dim = -1)
-        # q = q * self.scale
-        # context = torch.einsum('b h d n, b h e n -> b h d e', k, v)
-        # out = torch.einsum('b h d e, b h d n -> b h e n', context, q)
-        # out = rearrange(out, 'b h c (x y) -> b (h c) x y', h = self.heads, x = h, y = w)
-        # return self.to_out(out)
+        q = q * self.scale
+        context = torch.einsum('b h d n, b h e n -> b h d e', k, v)
+        out = torch.einsum('b h d e, b h d n -> b h e n', context, q)
+        out = rearrange(out, 'b h c (x y) -> b (h c) x y', h = self.heads, x = h, y = w)
+        return self.to_out(out)
+        return q
 
 class Attention(Module):
     def __init__(
@@ -411,8 +412,8 @@ class Unet(Module):
 
             # print("layer_full_attn is", layer_full_attn)
             # TODO restore below
-            # attn_klass = FullAttention if layer_full_attn else LinearAttention
-            attn_klass = LinearAttention
+            attn_klass = FullAttention if layer_full_attn else LinearAttention
+            # attn_klass = LinearAttention
 
             self.downs.append(ModuleList([
                 resnet_block(dim_in, dim_in),
@@ -460,12 +461,13 @@ class Unet(Module):
             x = block1(x, t)
             h.append(x)
             x = block2(x, t)
-            attn_x = attn(x)
-            return attn_x
+            # attn_x = attn(x)
+            # return attn_x
 
-            # x = attn(x) + x
-            # h.append(x)
-            # x = downsample(x)
+            x = attn(x) + x
+            h.append(x)
+            x = downsample(x)
+            return x
 
         # x = self.mid_block1(x, t)
         # x = self.mid_attn(x) + x
@@ -1168,7 +1170,7 @@ model = Unet(
 
 torch_model = model.eval()
 
-raw_data = np.random.rand(1,3,128, 128).astype("float32")
+raw_data = np.random.rand(1,3,16,16).astype("float32")
 
 torch_data = torch.from_numpy(raw_data)
 
