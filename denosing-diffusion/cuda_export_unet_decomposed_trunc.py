@@ -456,18 +456,19 @@ class Unet(Module):
             h.append(x)
             x = downsample(x)
 
-        x = self.mid_block1(x, t)
-        x = self.mid_attn(x) + x
-        x = self.mid_block2(x, t)
-
-        for block1, block2, attn, upsample in self.ups:
-            x = torch.cat((x, h.pop()), dim = 1)
-            x = block1(x, t)
-            x = torch.cat((x, h.pop()), dim = 1)
-            x = block2(x, t)
-            x = attn(x) + x
-            x = upsample(x)
         return x
+        # x = self.mid_block1(x, t)
+        # x = self.mid_attn(x) + x
+        # x = self.mid_block2(x, t)
+
+        # for block1, block2, attn, upsample in self.ups:
+        #     x = torch.cat((x, h.pop()), dim = 1)
+        #     x = block1(x, t)
+        #     x = torch.cat((x, h.pop()), dim = 1)
+        #     x = block2(x, t)
+        #     x = attn(x) + x
+        #     x = upsample(x)
+        # return x
         # x = torch.cat((x, r), dim = 1)
 
         # x = self.final_res_block(x, t)
