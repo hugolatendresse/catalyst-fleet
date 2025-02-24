@@ -281,10 +281,10 @@ class LinearAttention(Module):
         b, c, h, w = x.shape
         x = self.norm(x)
         qkv = self.to_qkv(x)
-        return x
-        # qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
-        # q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
-        # mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
+        qkv = my_chunk(qkv, 3, dim = 1) # TODO restore below
+        q, k, v = map(lambda t: rearrange(t, 'b (h c) x y -> b h c (x y)', h = self.heads), qkv)
+        mk, mv = map(lambda t: repeat(t, 'h c n -> b h c n', b = b), self.mem_kv)
+        return mk
         # k, v = map(partial(torch.cat, dim = -1), ((mk, k), (mv, v)))
         # q = q.softmax(dim = -2)
         # k = k.softmax(dim = -1)
