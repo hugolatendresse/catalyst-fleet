@@ -29,7 +29,7 @@ def test_export_and_cuda(raw_data, torch_model, show=False):
 
     target = tvm.target.Target.from_device(tvm.cuda())
 
-    ex = relax.build(tvm_mod, target=target, pipeline=relax.get_default_pipeline(target))
+    ex = relax.build(tvm_mod, target=target, relax_pipeline=relax.get_default_pipeline(target))
     dev = tvm.device("cuda", 0)
     vm = relax.VirtualMachine(ex, dev)
 
