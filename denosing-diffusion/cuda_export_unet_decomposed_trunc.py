@@ -275,9 +275,7 @@ class LinearAttention(Module):
         )
 
     def forward(self, x):
-        
-        print("x.shape", x.shape)
-
+        # print("x.shape", x.shape)
 
         b, c, h, w = x.shape
         x = self.norm(x)
@@ -436,7 +434,7 @@ class Unet(Module):
                 resnet_block(dim_out + dim_in, dim_out),
                 resnet_block(dim_out + dim_in, dim_out),
                 attn_klass(dim_out, dim_head = layer_attn_dim_head, heads = layer_attn_heads),
-                Upsample(dim_out, dim_in) if not is_last else  nn.Conv2d(dim_out, dim_in, 3, padding = 1)
+                Upsample(dim_out, dim_in) 
             ]))
 
         default_out_dim = channels * (1 if not learned_variance else 2)
@@ -482,6 +480,8 @@ class Unet(Module):
         x = block2(x, t)
         x = attn(x) + x
         # until now, correctness passes
+        print("x.shape:", x.shape)
+        print("upsample type", type(upsample))
         x = upsample(x) # make the shapes different!
         return x
 
