@@ -19,7 +19,7 @@ from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 from torch import nn
 
-raw_data = np.random.rand(3, 4, 7, 11).astype("float32")
+raw_data = np.random.rand(3, 5, 7, 11).astype("float32")
 
 class ChunkModel(nn.Module):
     def __init__(self, chunks, dim):
@@ -33,6 +33,14 @@ class ChunkModel(nn.Module):
 torch_model = ChunkModel(chunks=2, dim=1).eval()
 
 torch_data = torch.from_numpy(raw_data)
+
+torch_output = torch_model(torch_data)
+desired_0 = torch_output[0].detach().numpy()
+desired_1 = torch_output[1].detach().numpy()
+
+print("torch_output has length", len(torch_output))
+for i,x in enumerate(torch_output):
+    print("torch_output[{}] has shape".format(i), x.shape)
 
 # Give an example argument to torch.export
 example_args = (torch_data,)
@@ -57,9 +65,6 @@ gpu_data = tvm.nd.array(raw_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
 gpu_out = vm["main"](gpu_data, *gpu_params)
 
-torch_output = torch_model(torch_data)
-desired_0 = torch_output[0].detach().numpy()
-desired_1 = torch_output[1].detach().numpy()
 actual_0 = gpu_out[0].numpy()
 actual_1 = gpu_out[1].numpy()
 np.testing.assert_allclose(actual=actual_0, desired=desired_0, rtol=1e-5, atol=1e-5) 
