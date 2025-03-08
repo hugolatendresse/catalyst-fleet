@@ -466,8 +466,7 @@ class Unet(Module):
         return 2 ** (len(self.downs) - 1)
 
     def forward(self, x, time, x_self_cond = None):
-        # TODO HL commented out this assertion
-        # assert all([divisible_by(d, self.downsample_factor) for d in x.shape[-2:]]), f'your input dimensions {x.shape[-2:]} need to be divisible by {self.downsample_factor}, given the unet'
+        assert all([divisible_by(d, self.downsample_factor) for d in x.shape[-2:]]), f'your input dimensions {x.shape[-2:]} need to be divisible by {self.downsample_factor}, given the unet'
 
         if self.self_condition:
             x_self_cond = default(x_self_cond, lambda: torch.zeros_like(x))
