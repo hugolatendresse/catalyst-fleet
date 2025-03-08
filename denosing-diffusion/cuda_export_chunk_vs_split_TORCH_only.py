@@ -45,20 +45,20 @@ class SplitModel(nn.Module):
     def forward(self, x):
         return torch.split(x, split_size_or_sections=self.split_size, dim=self.dim)
 
-torch_model_chunk = ChunkModel(chunks=2, dim=1).eval()
+torch_model_chunk = ChunkModel(chunks=chunks, dim=dim).eval()
 split_size = math.ceil(raw_data.shape[dim] / chunks)
-torch_model_split = SplitModel(split_size=split_size, dim=1).eval()
+torch_model_split = SplitModel(split_size=split_size, dim=dim).eval()
 
 torch_data = torch.from_numpy(raw_data)
 
 torch_output_chunk = torch_model_chunk(torch_data)
 torch_output_split = torch_model_split(torch_data)
 print("chunk torch_output has length", len(torch_output_chunk))
-assert len(torch_output_chunk) == len(torch_output_split), "different lengths!!"
-desired_chunk_0 = torch_output_chunk[0].detach().numpy()
-desired_chunk_1 = torch_output_chunk[1].detach().numpy()
-desired_split_0 = torch_output_split[0].detach().numpy()
-desired_split_1 = torch_output_split[1].detach().numpy()
+assert len(torch_output_chunk) == len(torch_output_split), f"different lengths!!. chunk: {len(torch_output_chunk)}, split: {len(torch_output_split)}"
+# desired_chunk_0 = torch_output_chunk[0].detach().numpy()
+# desired_chunk_1 = torch_output_chunk[1].detach().numpy()
+# desired_split_0 = torch_output_split[0].detach().numpy()
+# desired_split_1 = torch_output_split[1].detach().numpy()
 
 for i in range(len(torch_output_chunk)):
     assert torch_output_chunk[i].shape == torch_output_split[i].shape, "different shapes!!"
