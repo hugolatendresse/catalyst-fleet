@@ -275,8 +275,6 @@ class LinearAttention(Module):
         )
 
     def forward(self, x):
-        # print("x.shape", x.shape)
-
         b, c, h, w = x.shape
         x = self.norm(x)
         qkv = self.to_qkv(x)
@@ -479,10 +477,7 @@ class Unet(Module):
         x = torch.cat((x, h.pop()), dim = 1)
         x = block2(x, t)
         x = attn(x) + x
-        # until now, correctness passes
-        print("x.shape:", x.shape)
-        print("upsample type", type(upsample))
-        x = upsample(x) # make the shapes different!
+        x = upsample(x) 
         return x
 
         # x = torch.cat((x, r), dim = 1)
