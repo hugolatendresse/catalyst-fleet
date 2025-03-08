@@ -482,7 +482,7 @@ class Unet(Module):
         x = block2(x, t)
         x = attn(x) + x
         # until now, correctness passes
-        x = upsample(x)
+        x = upsample(x) # make the shapes different!
         return x
 
         # x = torch.cat((x, r), dim = 1)
