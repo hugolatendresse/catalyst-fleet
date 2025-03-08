@@ -478,12 +478,12 @@ class Unet(Module):
         block1, block2, attn, upsample = self.ups[0]
         x = torch.cat((x, h.pop()), dim = 1)
         x = block1(x, t)
-        # Until now, basically fine (micro difference)
         x = torch.cat((x, h.pop()), dim = 1)
+        x = block2(x, t)
+        x = attn(x) + x
+        # until now, correctness passes
+        x = upsample(x)
         return x
-        # x = block2(x, t)
-        # x = attn(x) + x
-        # x = upsample(x)
 
         # x = torch.cat((x, r), dim = 1)
         # x = self.final_res_block(x, t)
