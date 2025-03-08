@@ -1,5 +1,5 @@
 """
-Model Type: chunk op only
+Model Type: split op only
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
@@ -29,16 +29,18 @@ dim = 1
 
 raw_data = np.random.rand(batch, channels, height, width).astype("float32")
 
-class ChunkModel(nn.Module):
-    def __init__(self, chunks, dim):
+class SplitModel(nn.Module):
+    def __init__(self, split_size, dim):
         super().__init__()
-        self.chunks = chunks
+        self.split_size = split_size
         self.dim = dim
 
     def forward(self, x):
-        return x.chunk(self.chunks, dim=self.dim)
+        return torch.split(x, split_size_or_sections=self.split_size, dim=self.dim)
 
-torch_model = ChunkModel(chunks=chunks, dim=dim).eval()
+import math
+split_size = math.ceil(raw_data.shape[dim] / chunks)
+torch_model = SplitModel(split_size=split_size, dim=dim).eval()
 
 torch_data = torch.from_numpy(raw_data)
 
