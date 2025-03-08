@@ -17,15 +17,7 @@ from hlutils.set_seed_all import set_seed_all
 
 set_seed_all()
 
-class PyTorchGroupNorm(nn.Module):
-    def __init__(self):
-        super(PyTorchGroupNorm, self).__init__()
-        self.gn = nn.GroupNorm(num_groups=2, num_channels=6)
-
-    def forward(self, x):
-        return self.gn(x)
-
-torch_model = PyTorchGroupNorm().eval()
+torch_model = nn.GroupNorm(num_groups=2, num_channels=6).eval()
 
 raw_data = np.random.rand(10, 6, 28, 28).astype("float32")
 

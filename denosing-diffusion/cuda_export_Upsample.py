@@ -12,11 +12,13 @@ import sys
 sys.path.append('/ssd1/htalendr/tvm/python') # Refer to local TVM build
 import numpy as np
 from torch.nn import Upsample
+from hlutils.set_seed_all import set_seed_all
+set_seed_all()
 
-torch_model = Upsample(scale_factor = 2, mode = 'nearest')
+torch_model = Upsample(size=None,scale_factor = 2, mode = 'nearest',align_corners=None, recompute_scale_factor=None)
+# TODO try with including/excluding the different parameters set to None
 
-raw_data = np.random.rand(1, 32, 2, 2).astype("float32")
+raw_data = np.random.rand(1, 2, 2, 2).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
-
 test_export_and_cuda(raw_data, torch_model) 
