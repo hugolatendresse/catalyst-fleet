@@ -15,7 +15,7 @@ from torch.nn import Upsample
 from hlutils.set_seed_all import set_seed_all
 set_seed_all()
 
-torch_model = Upsample(size=None,scale_factor = 2, mode = 'nearest',align_corners=None, recompute_scale_factor=None)
+torch_model = Upsample(scale_factor = 2, mode = 'nearest')
 # TODO try with including/excluding the different parameters set to None
 
 raw_data = np.random.rand(1, 2, 2, 2).astype("float32")

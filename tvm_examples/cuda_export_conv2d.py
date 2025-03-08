@@ -25,20 +25,35 @@ height, width = 28, 28
 
 x = torch.randn(batch_size, in_channels, height, width)
 
+# Typical order
+# conv_layer = nn.Conv2d(
+#     in_channels=in_channels,       
+#     out_channels=16,               
+#     kernel_size=3,                 
+#     stride=2,                      
+#     padding=1,                     
+#     dilation=2,                    
+#     groups=1,                      
+#     bias=True,                     
+#     padding_mode='zeros',          
+#     device=torch.device('cpu'),    
+#     dtype=torch.float32            
+# )
+
+# Arguments in random order
 conv_layer = nn.Conv2d(
     in_channels=in_channels,       
-    out_channels=16,               
+    padding=1,                     
     kernel_size=3,                 
     stride=2,                      
-    padding=1,                     
     dilation=2,                    
     groups=1,                      
+    out_channels=16,               
     bias=True,                     
     padding_mode='zeros',          
     device=torch.device('cpu'),    
     dtype=torch.float32            
 )
-
 
 torch_model = conv_layer.eval()
 
