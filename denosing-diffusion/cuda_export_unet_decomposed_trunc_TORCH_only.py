@@ -147,7 +147,7 @@ def unnormalize_to_zero_to_one(t):
 def Upsample(dim, dim_out = None):
     return nn.Sequential(
         nn.Upsample(scale_factor = 2, mode = 'nearest'),
-        # nn.Conv2d(dim, default(dim_out, dim), 3, padding = 1)
+        nn.Conv2d(dim, default(dim_out, dim), 3, padding = 1)
     )
 
 def Downsample(dim, dim_out = None):
@@ -275,7 +275,9 @@ class LinearAttention(Module):
         )
 
     def forward(self, x):
-        # print("x.shape", x.shape)
+        
+        print("x.shape", x.shape)
+
 
         b, c, h, w = x.shape
         x = self.norm(x)
@@ -434,8 +436,7 @@ class Unet(Module):
                 resnet_block(dim_out + dim_in, dim_out),
                 resnet_block(dim_out + dim_in, dim_out),
                 attn_klass(dim_out, dim_head = layer_attn_dim_head, heads = layer_attn_heads),
-                nn.Upsample(scale_factor = 2, mode = 'nearest')
-                # Upsample(dim_out, dim_in) 
+                Upsample(dim_out, dim_in) if not is_last else  nn.Conv2d(dim_out, dim_in, 3, padding = 1)
             ]))
 
         default_out_dim = channels * (1 if not learned_variance else 2)
@@ -471,24 +472,18 @@ class Unet(Module):
         x = self.mid_attn(x) + x
         x = self.mid_block2(x, t)
 
+        for block1, block2, attn, upsample in self.ups:
+            x = torch.cat((x, h.pop()), dim = 1)
+            x = block1(x, t)
+            x = torch.cat((x, h.pop()), dim = 1)
+            x = block2(x, t)
+            x = attn(x) + x
+            x = upsample(x)
 
-        # concat error is somewhere in block below 
-        # for block1, block2, attn, upsample in self.ups:
-        block1, block2, attn, upsample = self.ups[0]
-        x = torch.cat((x, h.pop()), dim = 1)
-        x = block1(x, t)
-        x = torch.cat((x, h.pop()), dim = 1)
-        x = block2(x, t)
-        x = attn(x) + x
-        # until now, correctness passes
-        print("x.shape:", x.shape)
-        print("upsample type", type(upsample))
-        x = upsample(x) # make the shapes different!
-        return x
+        x = torch.cat((x, r), dim = 1)
 
-        # x = torch.cat((x, r), dim = 1)
-        # x = self.final_res_block(x, t)
-        # return self.final_conv(x)
+        x = self.final_res_block(x, t)
+        return self.final_conv(x)
 
 # gaussian diffusion trainer class
 
@@ -1205,7 +1200,7 @@ tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
 
 target = tvm.target.Target.from_device(tvm.cuda())
 
-ex = relax.build(tvm_mod, target=target, relax_pipeline=relax.get_default_pipeline(target))
+ex = relax.build(tvm_mod, target=target, pipeline=relax.get_default_pipeline(target))
 dev = tvm.device("cuda", 0)
 vm = relax.VirtualMachine(ex, dev)
 
