@@ -19,7 +19,15 @@ from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 from torch import nn
 
-raw_data = np.random.rand(3, 5, 7, 11).astype("float32")
+batch = 3
+channels = 4 # TODO try 139
+height = 7
+width = 11
+
+chunks = 2 # TODO try 42
+dim = 1
+
+raw_data = np.random.rand(batch, channels, height, width).astype("float32")
 
 class ChunkModel(nn.Module):
     def __init__(self, chunks, dim):
@@ -30,13 +38,12 @@ class ChunkModel(nn.Module):
     def forward(self, x):
         return x.chunk(self.chunks, dim=self.dim)
 
-torch_model = ChunkModel(chunks=2, dim=1).eval()
+
+torch_model = ChunkModel(chunks=chunks, dim=dim).eval()
 
 torch_data = torch.from_numpy(raw_data)
 
 torch_output = torch_model(torch_data)
-desired_0 = torch_output[0].detach().numpy()
-desired_1 = torch_output[1].detach().numpy()
 
 print("torch_output has length", len(torch_output))
 for i,x in enumerate(torch_output):
@@ -65,9 +72,12 @@ gpu_data = tvm.nd.array(raw_data, dev)
 gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
 gpu_out = vm["main"](gpu_data, *gpu_params)
 
-actual_0 = gpu_out[0].numpy()
-actual_1 = gpu_out[1].numpy()
-np.testing.assert_allclose(actual=actual_0, desired=desired_0, rtol=1e-5, atol=1e-5) 
-np.testing.assert_allclose(actual=actual_1, desired=desired_1, rtol=1e-5, atol=1e-5) 
-print("Correctness test passed!") 
 
+print("chunk torch_output has length", len(torch_output))
+assert len(torch_output) == len(gpu_out), f"different lengths!!. torch: {len(torch_output)}, gpu_out: {len(gpu_out)}"
+
+for i in range(len(torch_output)):
+    assert torch_output[i].shape == gpu_out[i].numpy().shape, "different shapes!!"
+    np.testing.assert_allclose(actual=torch_output[i].detach().numpy(), desired=gpu_out[i].numpy(), rtol=1e-5, atol=1e-5)
+    print("matches!")
+print("Correctness test passed!") 
