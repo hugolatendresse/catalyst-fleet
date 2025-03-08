@@ -15,10 +15,16 @@ from torch.nn import Upsample
 from hlutils.set_seed_all import set_seed_all
 set_seed_all()
 
-torch_model = Upsample(size=None,scale_factor = 2, mode = 'nearest',align_corners=None, recompute_scale_factor=None)
+
+batch_size = 2  
+channels = 3
+height, width = 32, 32
+
+
+torch_model = Upsample(size=None, scale_factor = 7, mode = 'nearest',align_corners=None, recompute_scale_factor=True)
 # TODO try with including/excluding the different parameters set to None
 
-raw_data = np.random.rand(1, 2, 2, 2).astype("float32")
+raw_data = np.random.rand(batch_size, channels, height, width).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 test_export_and_cuda(raw_data, torch_model) 

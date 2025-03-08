@@ -21,7 +21,6 @@ height, width = 8, 8
 
 torch_model = Upsample(
     size=(64, 64),               
-    scale_factor=None,           # Not used when size is specified
     mode='nearest',             
     recompute_scale_factor=None)
 
