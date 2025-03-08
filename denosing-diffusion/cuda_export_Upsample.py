@@ -10,14 +10,12 @@ Correctness Test: FAIL
 
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python') # Refer to local TVM build
-from torch import nn
 import numpy as np
-
 from torch.nn import Upsample
 
 torch_model = Upsample(scale_factor = 2, mode = 'nearest')
 
-raw_data = np.random.rand(1, 512, 2, 2).astype("float32")
+raw_data = np.random.rand(1, 32, 2, 2).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 
