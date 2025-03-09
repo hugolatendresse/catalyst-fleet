@@ -20,8 +20,6 @@ from torch import nn
 from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 
-import torch
-
 
 def my_chunk(t, chunks, dim = 0):
     split_size_or_sections = math.ceil(t.size(dim) // chunks)
