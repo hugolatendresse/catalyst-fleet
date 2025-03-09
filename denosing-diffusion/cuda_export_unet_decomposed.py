@@ -240,9 +240,9 @@ class ResnetBlock(Module):
             time_emb = self.mlp(time_emb)
             time_emb = rearrange(time_emb, 'b c -> b c 1 1')
 
-            # scale_shift = my_chunk(time_emb, 2, dim = 1) # TODO IN PROGRESS restore below
+            scale_shift = my_chunk(time_emb, 2, dim = 1) # TODO IN PROGRESS restore below
             print("time_emb has shape", time_emb.shape)
-            scale_shift = time_emb.chunk(2, dim = 1)
+            # scale_shift = time_emb.chunk(2, dim = 1)
             print("scale_shift has shape", scale_shift[0].shape)
 
         h = self.block1(x, scale_shift = scale_shift)
