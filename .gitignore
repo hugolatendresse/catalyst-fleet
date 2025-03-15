@@ -10,3 +10,4 @@ yolov5s.pt
 jupyter_config
 **.egg-info/
 **__pycache__/
+UNGITTED/

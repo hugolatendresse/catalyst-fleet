@@ -4,7 +4,7 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: FAIL (can't handle batchnorm.default)
+Compile and Run Test: PASS
 Correctness Test: FAIL
 """
 import sys
@@ -16,19 +16,7 @@ from hlutils.set_seed_all import set_seed_all
 
 set_seed_all()
 
-# What is batch norm? 
-# What is layer norm? Acros
-
-# Create a dummy model
-class PyTorchCNN(nn.Module):
-    def __init__(self):
-        super(PyTorchCNN, self).__init__()
-        self.bn1 = nn.BatchNorm2d(2)  # BatchNorm after conv1
-
-    def forward(self, x):
-        return self.bn1(x)
-
-torch_model = PyTorchCNN().eval()
+torch_model = nn.BatchNorm2d(2).eval()
 
 raw_data = np.random.rand(1,2,2, 2).astype("float32")
 
