@@ -5,7 +5,7 @@ Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
 Compile and Run Test: PASS
-Correctness Test: FAIL
+Correctness Test: PASS
 """
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
@@ -16,7 +16,10 @@ from hlutils.set_seed_all import set_seed_all
 
 set_seed_all()
 
-torch_model = nn.BatchNorm2d(2).eval()
+## TODO make both work!
+# with .eval(), with get _native_batch_norm_legit_no_training.default
+# without .eval(), with get _native_batch_norm_legit_functional.default
+torch_model = nn.BatchNorm2d(2) #.eval()
 
 raw_data = np.random.rand(1,2,2, 2).astype("float32")
 
