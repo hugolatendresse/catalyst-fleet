@@ -11,7 +11,19 @@ ds = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="v
 sample = ds[0]["audio"]
 input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features
 
-predicted_ids = model.generate(input_features, assistant_model=assistant_model)
+# print("model is a", type(model))
+# predicted_ids = model.generate(input_features, assistant_model=assistant_model)
+
+class GenerateWrapper(torch.nn.Module):
+    def __init__(self, model, assistant_model):
+        super().__init__()
+        self.model = model
+        self.assistant_model = assistant_model
+
+    def forward(self, input_features):
+        return self.model.generate(input_features, assistant_model=self.assistant_model)
+
+predicted_ids = GenerateWrapper(model, assistant_model)(input_features)
 
 # decode token ids to text
 transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]
