@@ -23,7 +23,16 @@ class GenerateWrapper(torch.nn.Module):
     def forward(self, input_features):
         return self.model.generate(input_features, assistant_model=self.assistant_model)
 
-predicted_ids = GenerateWrapper(model, assistant_model)(input_features)
+# TODO pretty sure the eval() below does nothing since I don't think it affects the model attribute? OR DOES IT? need to check
+torch_module = GenerateWrapper(model, assistant_model).eval()
+
+predicted_ids = torch_module(input_features)
+
+print("shape of predicted_ids", predicted_ids.shape)
+print("type of predicted_ids", type(predicted_ids))
+print("type of predicted_ids[0]", type(predicted_ids[0]))
+print("predicted_ids[0]", predicted_ids[0])
+print("predicted_ids[1]", predicted_ids[1])
 
 # decode token ids to text
 transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]
