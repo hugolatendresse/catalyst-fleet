@@ -1,3 +1,9 @@
 [submodule "tvm"]
 	path = tvm
 	url = https://github.com/hugolatendresse/tvm
+[submodule "transformers"]
+	path = transformers
+	url = git@github.com:hugolatendresse/transformers.git
+[submodule "HFtransformers"]
+	path = HFtransformers
+	url = git@github.com:hugolatendresse/transformers.git

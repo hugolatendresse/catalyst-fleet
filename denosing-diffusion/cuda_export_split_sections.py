@@ -19,17 +19,18 @@ from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
 from torch import nn
 
-batch = 3
-channels = 5 # TODO try 139
-height = 7
-width = 11
 
-chunks = 2 # TODO try 42
-dim = 1
+# batch = 1
+# Works with channel = 4 but not with channel = 5
+channels = 7 # TODO try 139
+# width = 1
 
-raw_data = np.random.rand(batch, channels, height, width).astype("float32")
+# chunks = 3 # TODO try 42
+dim = 0
 
-class SplitModel(nn.Module):
+raw_data = np.random.rand(channels).astype("float32")
+
+class SplitModelSplitSize(nn.Module):
     def __init__(self, split_size, dim):
         super().__init__()
         self.split_size = split_size
@@ -38,13 +39,15 @@ class SplitModel(nn.Module):
     def forward(self, x):
         return torch.split(x, split_size_or_sections=self.split_size, dim=self.dim)
 
-import math
-split_size = math.ceil(raw_data.shape[dim] / chunks)
-torch_model = SplitModel(split_size=split_size, dim=dim).eval()
+# import math
+# split_size = math.ceil(raw_data.shape[dim] / chunks)
+# print("split size is", split_size)
+torch_model = SplitModelSplitSize(split_size=[3,3,1], dim=dim).eval()
 
 torch_data = torch.from_numpy(raw_data)
 
 torch_output = torch_model(torch_data)
+print("torch_output", torch_output)
 
 print("torch_output has length", len(torch_output))
 for i,x in enumerate(torch_output):
