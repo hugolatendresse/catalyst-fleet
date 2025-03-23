@@ -4,6 +4,7 @@ from datasets import load_dataset
 
 processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
 model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
+encoder = model.get_encoder()
 
 assistant_model = WhisperForCausalLM.from_pretrained("distil-whisper/distil-large-v2")
 
@@ -78,14 +79,6 @@ torch_data = torch.from_numpy(raw_data)
 # Give an example argument to torch.export
 example_args = (torch_data,)
 
-# Convert the model to IRModule
-with torch.no_grad():
-    exported_program = export(torch_model, example_args)
-#     mod_from_torch = from_exported_program(
-#         exported_program, keep_params_as_input=True#, unwrap_unit_return_tuple=True
-#     )
-
-
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
 from tvm import relax
@@ -94,6 +87,16 @@ import tvm
 from tvm import relax
 import torch
 from tvm.relax.frontend.torch import from_exported_program
+
+
+# Convert the model to IRModule
+with torch.no_grad():
+    exported_program = export(torch_model, example_args)
+    mod_from_torch = from_exported_program(
+        exported_program, keep_params_as_input=True#, unwrap_unit_return_tuple=True
+    )
+
+
 # from hlutils.test_export_and_cuda import test_export_and_cuda
 
 # tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
