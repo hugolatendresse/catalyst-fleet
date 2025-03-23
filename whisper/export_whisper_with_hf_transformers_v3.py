@@ -50,8 +50,8 @@ class GenerateWrapper(torch.nn.Module):
         # return logits
 
 
-torch_model = GenerateWrapper(model, assistant_model).eval()
-
+# torch_model = GenerateWrapper(model, assistant_model).eval()
+torch_model = model_encoder
 
 
 from torch.export import export
@@ -76,5 +76,5 @@ from tvm.relax.frontend.torch import from_exported_program
 
 
 
-pytorch_out = torch_model(torch_data).detach().numpy()
+pytorch_out = torch_model(torch_data)[0].detach().numpy()
 print(pytorch_out)
