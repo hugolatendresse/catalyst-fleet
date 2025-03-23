@@ -14,14 +14,53 @@ input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"
 # print("model is a", type(model))
 # predicted_ids = model.generate(input_features, assistant_model=assistant_model)
 
+# class GenerateWrapper(torch.nn.Module):
+#     def __init__(self, model, assistant_model):
+#         super().__init__()
+#         self.model = model
+#         self.assistant_model = assistant_model
+
+#     def forward(self, input_features):
+#         return self.model.generate(input_features, assistant_model=self.assistant_model)
+    
+# class GenerateWrapper(torch.nn.Module):
+#     def __init__(self, model, assistant_model):
+#         super().__init__()
+#         self.model = model
+#         self.assistant_model = assistant_model
+        
+#     def forward(self, input_features):
+#         # Instead of calling generate, implement the core computation
+#         # that you need for inference
+#         encoder_outputs = self.model.get_encoder()(input_features)
+#         # You might need to modify this part based on what you actually need
+#         decoder_output = self.model.get_decoder()(
+#             input_ids=torch.zeros((input_features.shape[0], 1), dtype=torch.long),
+#             encoder_hidden_states=encoder_outputs[0]
+#         )
+#         logits = self.model.lm_head(decoder_output[0])
+#         return logits
+
+
 class GenerateWrapper(torch.nn.Module):
     def __init__(self, model, assistant_model):
         super().__init__()
         self.model = model
         self.assistant_model = assistant_model
-
+        
     def forward(self, input_features):
-        return self.model.generate(input_features, assistant_model=self.assistant_model)
+        # Instead of calling generate, implement the core computation
+        # that you need for inference
+        encoder_outputs = self.model.get_encoder()(input_features)
+        return encoder_outputs[0]
+        # # You might need to modify this part based on what you actually need
+        # decoder_output = self.model.get_decoder()(
+        #     input_ids=torch.zeros((input_features.shape[0], 1), dtype=torch.long),
+        #     encoder_hidden_states=encoder_outputs[0]
+        # )
+        # logits = self.model.lm_head(decoder_output[0])
+        # return logits
+
 
 # TODO pretty sure the eval() below does nothing since I don't think it affects the model attribute? OR DOES IT? need to check
 torch_model = GenerateWrapper(model, assistant_model).eval()
