@@ -1233,6 +1233,34 @@ class WhisperDecoder(WhisperPreTrainedModel):
                 Indices depicting the position of the input sequence tokens in the sequence. It is used to update the
                 cache in the correct position and to infer the complete sequence length.
         """
+        # input_ids=None,
+        # attention_mask=None,
+        # encoder_hidden_states=None,
+        # head_mask=None,
+        # cross_attn_head_mask=None,
+        # past_key_values=None,
+        # inputs_embeds=None,
+        # position_ids=None,
+        # use_cache=None,
+        # output_attentions=None,
+        # output_hidden_states=None,
+        # return_dict=None,
+        # cache_position=None,
+
+        print("input_ids", input_ids) # tensor([[0]])
+        print("attention_mask", attention_mask) # None
+        print("encoder_hidden_states", encoder_hidden_states) # defined tensor!
+        print("head_mask", head_mask) # None
+        print("cross_attn_head_mask", cross_attn_head_mask) # None
+        print("past_key_values", past_key_values) # None
+        print("inputs_embeds", inputs_embeds) # None
+        print("position_ids", position_ids) # None
+        print("use_cache", use_cache) # None
+        print("output_attentions", output_attentions) # None
+        print("output_hidden_states", output_hidden_states) # None
+        print("return_dict", return_dict) # None
+        print("cache_position", cache_position) # None
+
         output_attentions = output_attentions if output_attentions is not None else self.config.output_attentions
         output_hidden_states = (
             output_hidden_states if output_hidden_states is not None else self.config.output_hidden_states
@@ -1246,6 +1274,7 @@ class WhisperDecoder(WhisperPreTrainedModel):
         elif input_ids is not None:
             input_shape = input_ids.size()
             input_ids = input_ids.view(-1, input_shape[-1])
+            print("got an input_shape of ", input_shape) #  torch.Size([1, 1])
         elif inputs_embeds is not None:
             input_shape = inputs_embeds.size()[:-1]
         else:
