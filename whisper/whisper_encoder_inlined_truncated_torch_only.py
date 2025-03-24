@@ -407,45 +407,49 @@ class WhisperEncoder(WhisperPreTrainedModel):
                 len(self.layers)
             ), f"The head_mask should be specified for {len(self.layers)} layers, but it is for {head_mask.size()[0]}."
 
-        to_drop = False
+        for idx, encoder_layer in enumerate(self.layers):
+            # if output_hidden_states:
+            #     encoder_states = encoder_states + (hidden_states,)
+            # # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
+            to_drop = False
+            # if self.training:
+            #     dropout_probability = torch.rand([])
+            #     if dropout_probability < self.layerdrop:  # skip the layer
+            #         to_drop = True
 
-        return input_features
+            # if to_drop:
+            #     layer_outputs = (None, None)
+            # else:
+            # if self.gradient_checkpointing and self.training:
+            #     layer_outputs = self._gradient_checkpointing_func(
+            #         encoder_layer.__call__,
+            #         hidden_states,
+            #         None,
+            #         (head_mask[idx] if head_mask is not None else None),
+            #         output_attentions,
+            #     )
+            # else:
+            layer_outputs = encoder_layer(
+                hidden_states,
+                None,
+                layer_head_mask=(head_mask[idx] if head_mask is not None else None),
+                output_attentions=output_attentions,
+            )
 
+            hidden_states = layer_outputs[0]
 
-        #     if to_drop:
-        #         layer_outputs = (None, None)
-        #     else:
-        #         if self.gradient_checkpointing and self.training:
-        #             layer_outputs = self._gradient_checkpointing_func(
-        #                 encoder_layer.__call__,
-        #                 hidden_states,
-        #                 None,
-        #                 (head_mask[idx] if head_mask is not None else None),
-        #                 output_attentions,
-        #             )
-        #         else:
-        #             layer_outputs = encoder_layer(
-        #                 hidden_states,
-        #                 None,
-        #                 layer_head_mask=(head_mask[idx] if head_mask is not None else None),
-        #                 output_attentions=output_attentions,
-        #             )
+            # if output_attentions:
+            #     all_attentions = all_attentions + (layer_outputs[1],)
 
-        #         hidden_states = layer_outputs[0]
-
-        #     if output_attentions:
-        #         all_attentions = all_attentions + (layer_outputs[1],)
-
-        # hidden_states = self.layer_norm(hidden_states)
+        hidden_states = self.layer_norm(hidden_states)
         # if output_hidden_states:
-        #     encoder_states = encoder_states + (hidden_states,)
+            # encoder_states = encoder_states + (hidden_states,)
 
         # if not return_dict:
-        #     return tuple(v for v in [hidden_states, encoder_states, all_attentions] if v is not None)
+        return tuple(v for v in [hidden_states, encoder_states, all_attentions] if v is not None)
         # return BaseModelOutput(
         #     last_hidden_state=hidden_states, hidden_states=encoder_states, attentions=all_attentions
         # )
-
 
 # Define model to ingest
 torch_model = WhisperEncoder(WhisperConfig())
