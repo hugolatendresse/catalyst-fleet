@@ -13,7 +13,7 @@ ds = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="v
 sample = ds[0]["audio"]
 input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features
 
-class WhisperEncoderDecoderDecoder(torch.nn.Module):
+class WhisperEncoderDecoder(torch.nn.Module):
     def __init__(self, model, assistant_model):
         super().__init__()
         self.model = model
@@ -29,7 +29,7 @@ class WhisperEncoderDecoderDecoder(torch.nn.Module):
         )
         return decoder_output[0]
 
-torch_model = WhisperEncoderDecoderDecoder(model, assistant_model).eval()
+torch_model = WhisperEncoderDecoder(model, assistant_model).eval()
 
 raw_data = input_features.cpu().numpy()
 
