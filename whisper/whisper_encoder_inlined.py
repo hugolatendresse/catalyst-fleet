@@ -6,6 +6,8 @@ Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: ?
 Compile and Run Test: ?
 Correctness Test: ?
+
+TODO need to modify TVM until this can be ingested
 """
 
 import sys
