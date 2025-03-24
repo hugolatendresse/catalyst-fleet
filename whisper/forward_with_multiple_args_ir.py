@@ -47,6 +47,8 @@ with torch.no_grad():
 
 tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
 
+tvm_mod.show()
+
 target = tvm.target.Target.from_device(tvm.cuda())
 
 ex = relax.build(tvm_mod, target=target, relax_pipeline=relax.get_default_pipeline(target))
