@@ -2195,20 +2195,23 @@ class WhisperForAudioClassification(WhisperPreTrainedModel):
 
 
 class WhisperEncoderDecoder(torch.nn.Module):
-    def __init__(self):
+    def __init__(self, input_ids):
         super().__init__()
         self.encoder = WhisperEncoder(WhisperConfig())
         self.decoder = WhisperDecoder(WhisperConfig())
+        self.input_ids = input_ids
         
     def forward(self, input_features):
         encoder_outputs = self.encoder(input_features)
         decoder_output = self.decoder(
-            input_ids=torch.zeros((input_features.shape[0], 1), dtype=torch.long), # TODO don't use zeros
+            input_ids=self.input_ids, 
             encoder_hidden_states=encoder_outputs[0]
         )
         return decoder_output[0]
 
-torch_model = WhisperEncoderDecoder().eval()
+input_ids = torch.zeros((input_features.shape[0], 1), dtype=torch.long)
+
+torch_model = WhisperEncoderDecoder(input_ids).eval()
 
 raw_data = input_features.cpu().numpy()
 
