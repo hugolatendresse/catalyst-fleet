@@ -37,9 +37,16 @@ def test_export_and_cuda(raw_data, torch_model, show=False):
     gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
     gpu_out = vm["main"](gpu_data, *gpu_params)
 
-    pytorch_out = torch_model(torch_data).detach().numpy()
-    actual = gpu_out[0].numpy()
-    desired = pytorch_out
-    np.testing.assert_allclose(actual=actual, desired=desired, rtol=1e-5, atol=1e-5) 
-    print("Correctness test passed!") 
+    pytorch_out = torch_model(torch_data)
 
+    if isinstance(pytorch_out, tuple):
+        for i in range(len(pytorch_out)):
+            actual = gpu_out[i].numpy()
+            desired = pytorch_out[i].detach().numpy()
+            np.testing.assert_allclose(actual=actual, desired=desired, rtol=1e-5, atol=1e-5)
+    else:
+        actual = gpu_out[0].numpy()
+        desired = pytorch_out.detach().numpy()
+        np.testing.assert_allclose(actual=actual, desired=desired, rtol=1e-5, atol=1e-5)
+
+    print("Correctness test passed!") 

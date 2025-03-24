@@ -462,25 +462,23 @@ sample = ds[0]["audio"]
 input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features
 raw_data = input_features.cpu().numpy()
 
-torch_data = torch.from_numpy(raw_data)
+from hlutils.test_export_and_cuda import test_export_and_cuda
+test_export_and_cuda(raw_data, torch_model, show=False)
 
-# Give an example argument to torch.export
-example_args = (torch_data,)
+# with torch.no_grad():
+#     exported_program = export(torch_model, example_args)
+#     mod_from_torch = from_exported_program(
+#         exported_program, keep_params_as_input=True
+#     )
 
-with torch.no_grad():
-    exported_program = export(torch_model, example_args)
-    mod_from_torch = from_exported_program(
-        exported_program, keep_params_as_input=True
-    )
-
-pytorch_out = torch_model(torch_data)[0].detach().numpy()
-print(pytorch_out)
+# # pytorch_out = torch_model(torch_data)[0].detach().numpy()
+# # print(pytorch_out)
 
 
-# TODO check for correctness
+# # TODO check for correctness
 # tvm_mod, tvm_params = relax.frontend.detach_params(mod_from_torch)
-# if show:
-#     tvm_mod.show()
+# # if show:
+#     # tvm_mod.show()
 
 # target = tvm.target.Target.from_device(tvm.cuda())
 
@@ -492,9 +490,10 @@ print(pytorch_out)
 # gpu_params = [tvm.nd.array(p, dev) for p in tvm_params["main"]]
 # gpu_out = vm["main"](gpu_data, *gpu_params)
 
-# pytorch_out = torch_model(torch_data).detach().numpy()
-# actual = gpu_out[0].numpy()
+# pytorch_out = torch_model(torch_data)[0].detach().numpy()
+# actual = gpu_out[0][0].numpy()
 # desired = pytorch_out
 # np.testing.assert_allclose(actual=actual, desired=desired, rtol=1e-5, atol=1e-5) 
 # print("Correctness test passed!") 
+
 
