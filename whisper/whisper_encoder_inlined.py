@@ -374,6 +374,17 @@ class WhisperEncoder(WhisperPreTrainedModel):
                 Whether or not to return a [`~utils.ModelOutput`] instead of a plain tuple.
         """
 
+        print("type of attention_mask", type(attention_mask))
+        print("attention_mask", attention_mask)
+        print("type of head_mask", type(head_mask))
+        print("head_mask", head_mask)
+        print("type of output_attentions", type(output_attentions))
+        print("output_attentions", output_attentions)
+        print("type of output_hidden_states", type(output_hidden_states))
+        print("output_hidden_states", output_hidden_states)
+        print("type of return_dict", type(return_dict))
+        print("return_dict", return_dict)
+
         expected_seq_length = self.config.max_source_positions * self.conv1.stride[0] * self.conv2.stride[0]
         if input_features.shape[-1] != expected_seq_length:
             raise ValueError(
