@@ -1262,29 +1262,28 @@ class WhisperDecoder(WhisperPreTrainedModel):
 
         return_legacy_cache = False
         return_self_attention_cache = False
-        if use_cache or past_key_values is not None:
-            if isinstance(past_key_values, Cache) and not isinstance(past_key_values, EncoderDecoderCache):
-                return_self_attention_cache = True
-                past_key_values = EncoderDecoderCache(past_key_values, DynamicCache())
-            elif not isinstance(past_key_values, EncoderDecoderCache):
-                return_legacy_cache = True
-                logger.warning_once(
-                    "Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.43.0. "
-                    "You should pass an instance of `EncoderDecoderCache` instead, e.g. "
-                    "`past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`."
-                )
-                past_key_values = EncoderDecoderCache.from_legacy_cache(past_key_values)
+        # if use_cache or past_key_values is not None:
+        #     if isinstance(past_key_values, Cache) and not isinstance(past_key_values, EncoderDecoderCache):
+        #         return_self_attention_cache = True
+        #         past_key_values = EncoderDecoderCache(past_key_values, DynamicCache())
+        #     elif not isinstance(past_key_values, EncoderDecoderCache):
+        #         return_legacy_cache = True
+        #         logger.warning_once(
+        #             "Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.43.0. "
+        #             "You should pass an instance of `EncoderDecoderCache` instead, e.g. "
+        #             "`past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`."
+        #         )
+        #         past_key_values = EncoderDecoderCache.from_legacy_cache(past_key_values)
 
         past_key_values_length = 0
-        if cache_position is not None:
-            past_key_values_length = cache_position[0]
-        elif past_key_values is not None:
-            past_key_values_length = past_key_values.get_seq_length()
+        # if cache_position is not None:
+        #     past_key_values_length = cache_position[0]
+        # elif past_key_values is not None:
+        #     past_key_values_length = past_key_values.get_seq_length()
 
-        if cache_position is None:
-            cache_position = torch.arange(
-                past_key_values_length, past_key_values_length + input_shape[1], device=inputs_embeds.device
-            )
+        cache_position = torch.arange(
+            past_key_values_length, past_key_values_length + input_shape[1], device=inputs_embeds.device
+        )
 
         if position_ids is None:
             position_ids = cache_position.unsqueeze(0).repeat(input_shape[0], 1)
@@ -1310,12 +1309,6 @@ class WhisperDecoder(WhisperPreTrainedModel):
             output_attentions,
         )
 
-        if self.gradient_checkpointing and self.training:
-            if use_cache:
-                logger.warning_once(
-                    "`use_cache = True` is incompatible with gradient checkpointing. Setting `use_cache = False`..."
-                )
-                use_cache = False
         # decoder layers
         all_hidden_states = () if output_hidden_states else None
         all_self_attns = () if output_attentions else None
