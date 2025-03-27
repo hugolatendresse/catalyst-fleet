@@ -26,11 +26,8 @@ class IndexModel(nn.Module):
 
 
     def forward(self, x):
-        val1 = x[1,4]
-        val2 = x[3,2]
-        val3 = x[5,6]
-        z = torch.stack([val1, val2, val3])
-        return z
+        new_vec = x[1,4]
+        return new_vec.sum()
         
 
 torch_model = IndexModel().eval()
