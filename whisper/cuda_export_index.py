@@ -29,7 +29,7 @@ class IndexModel(nn.Module):
         
 torch_model = IndexModel().eval()
 
-raw_data = np.random.rand(448, 384).astype("float32")
+raw_data = np.random.rand(2,3).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 
