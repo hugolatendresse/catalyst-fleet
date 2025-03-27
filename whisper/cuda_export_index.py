@@ -24,12 +24,10 @@ class IndexModel(nn.Module):
     def __init__(self):
         super().__init__()
 
-
     def forward(self, x):
-        new_vec = x[1,4]
-        return new_vec.sum()
+        z = x[0,2]
+        return z
         
-
 torch_model = IndexModel().eval()
 
 raw_data = np.random.rand(10,10,10).astype("float32")

@@ -241,8 +241,16 @@ class WhisperPositionalEmbedding(nn.Embedding):
 
     def forward(self, input_ids, past_key_values_length=0, position_ids=None):
         if position_ids is None:
+            print("OPTION 1")
+            print("self.weight.shape", self.weight.shape)
+            print("past_key_values_length", past_key_values_length)
+            print("input_ids.shape", input_ids.shape)
             return self.weight[past_key_values_length : past_key_values_length + input_ids.shape[1]]
         else:
+            print("OPTION 2")
+            print("self.weight.shape", self.weight.shape)
+            print("position_ids.shape", position_ids.shape)
+            print("position_ids", position_ids)
             return self.weight[position_ids]
 
 

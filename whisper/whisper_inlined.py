@@ -1285,8 +1285,11 @@ class WhisperDecoder(WhisperPreTrainedModel):
             past_key_values_length, past_key_values_length + input_shape[1], device=inputs_embeds.device
         )
 
+
         if position_ids is None:
             position_ids = cache_position.unsqueeze(0).repeat(input_shape[0], 1)
+
+
 
         # embed positions
         if input_ids is not None:
@@ -1297,6 +1300,8 @@ class WhisperDecoder(WhisperPreTrainedModel):
             positions = self.embed_positions(
                 inputs_embeds, past_key_values_length=past_key_values_length, position_ids=position_ids
             )
+
+        return position_ids
 
         hidden_states = inputs_embeds + positions.to(inputs_embeds.device)
         hidden_states = nn.functional.dropout(hidden_states, p=self.dropout, training=self.training)
