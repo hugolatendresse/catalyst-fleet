@@ -164,4 +164,4 @@ print(tvm_out)
 pytorch_out = torch_model(torch.from_numpy(raw_data)).detach().numpy() 
 print(pytorch_out)
 np.testing.assert_allclose(tvm_out, pytorch_out, rtol=1e-5, atol=1e-5) # Correct! 
-
+print("Correctness passed!")

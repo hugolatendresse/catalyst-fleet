@@ -1,15 +1,16 @@
 """
-Model Type: CNN
+Model Type: NN with batchnorm1D
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: SUCCESS
-Correctness Test: SUCCESS
+Compile and Run Test: PASS
+Correctness Test: FAIL 
 """
-
 import sys
-sys.path.append('/ssd1/htalendr/tvm/python') # Refer to local TVM build
+sys.path.append('/ssd1/htalendr/tvm/python')
+from tvm import relax
+import numpy as np
 import tvm
 from tvm import relax
 import torch
@@ -20,6 +21,7 @@ import torch.nn.functional as F
 import numpy as np
 
 
+
 # Create a dummy model
 class PyTorchCNN(nn.Module):
     def __init__(self, num_classes=3):
@@ -27,32 +29,44 @@ class PyTorchCNN(nn.Module):
 
         # Define convolutional layers
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=12, kernel_size=3, stride=1, padding=1)
+        self.bn1 = nn.BatchNorm2d(12)  # BatchNorm after conv1
+        
         self.pool = nn.MaxPool2d(kernel_size=2)
+        
         self.conv2 = nn.Conv2d(in_channels=12, out_channels=12, kernel_size=3, stride=1, padding=1)
+        self.bn2 = nn.BatchNorm2d(12)  # BatchNorm after conv2
+        
         self.conv3 = nn.Conv2d(in_channels=12, out_channels=24, kernel_size=3, stride=1, padding=1)
-        # self.drop = nn.Dropout2d(p=0.2) # TODO retrain without dropout?
+        self.bn3 = nn.BatchNorm2d(24)  # BatchNorm after conv3
         
         # Fully connected layer
         self.fc = nn.Linear(in_features=32 * 32 * 24, out_features=num_classes)
 
     def forward(self, x):
-        # # Ensure input is in the correct format (assumes already in NCHW if using PyTorch DataLoader)
-        # if not isinstance(x, torch.Tensor):
-        #     x = self.transformation(x).float() # Converts HWC -> CHW
-        #     x = x.unsqueeze(0)  # Converts CHW -> NCHW
-        #     x = Variable(x)
-
-        # Forward pass through CNN layers
-        x = F.relu(self.pool(self.conv1(x)))
-        x = F.relu(self.pool(self.conv2(x)))
-        x = F.relu(self.conv3(x)) # used to be: x = F.relu(self.drop(self.conv3(x)))
+        # Conv1 -> BatchNorm -> Pool -> ReLU
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.pool(x)
+        x = F.relu(x)
+        
+        # Conv2 -> BatchNorm -> Pool -> ReLU
+        x = self.conv2(x)
+        x = self.bn2(x)
+        x = self.pool(x)
+        x = F.relu(x)
+        
+        # Conv3 -> BatchNorm -> ReLU
+        x = self.conv3(x)
+        x = self.bn3(x)
+        x = F.relu(x)
+        
+        # Dropout (if needed)
         x = F.dropout(x, training=self.training)
         
-        # Flatten the tensor before passing to the fully connected layer
-        x = x.view(x.size(0), -1)  # Use x.size(0) to handle batch size dynamically
+        # Flatten before the fully connected layer
+        x = x.view(x.size(0), -1)
         x = self.fc(x)
         
-        # Return log probabilities for classification
         return F.log_softmax(x, dim=1)
 
 torch_model = PyTorchCNN().eval()

@@ -1,15 +1,12 @@
 """
-File: cuda_export_nn.py
-Model Type: simple NN
+Model Type: index.Tensor
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: SUCCESS
-Correctness Test: SUCCESS
+Compile and Run Test: ??
+Correctness Test: ??
 """
-import sys
-sys.path.append('/ssd1/htalendr/tvm/python')
 from tvm import relax
 import numpy as np
 import tvm
@@ -18,24 +15,21 @@ import torch
 from torch import nn
 from torch.export import export
 from tvm.relax.frontend.torch import from_exported_program
+import torch.nn.functional as F
+import numpy as np
 
 # Create a dummy model
-class TorchModel(nn.Module):
+class IndexModel(nn.Module):
     def __init__(self):
-        super(TorchModel, self).__init__()
-        self.fc1 = nn.Linear(784, 256)
-        self.relu1 = nn.ReLU()
-        self.fc2 = nn.Linear(256, 10)
+        super().__init__()
+        self.position_ids = torch.tensor([0])
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = self.relu1(x)
-        x = self.fc2(x)
-        return x
+        return x[self.position_ids]
+        
+torch_model = IndexModel().eval()
 
-torch_model = TorchModel().eval()
-
-raw_data = np.random.rand(10, 784).astype("float32")
+raw_data = np.random.rand(3,3).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 
