@@ -139,6 +139,7 @@ inputs = (
     [[1,4]],  # correct output has dimensions torch.Size([2, 5, 5])
     [[0]],  # correct output has dimensions torch.Size([1, 5, 5])
     [[[1,2,4]]],  # correct output has dimensions torch.Size([1, 3, 5, 5])
+    # TODO need to test with slicing too! Like index = torch.Tensor([0:2, 1:3])
 )
 
 for some_list in inputs:
