@@ -1,11 +1,11 @@
 """
-Model Type: 
+Model Type: index.Tensor
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: ??
-Correctness Test: ??
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -70,7 +70,7 @@ def _is_multiple_indices(index_arg):
             return True
     return False
 
-def transform(t, index_arg):
+def transform_tensor_index(t, index_arg):
     """
     Replicate t[index_arg] using only:
       - basic (scalar) indexing into 't'
@@ -167,12 +167,38 @@ def transform(t, index_arg):
         return result
 
 
+
+
+t = torch.randn(5, 5, 5)
+
+inputs = (
+    [[[0,2],[1,3]]],  # correct output has dimensions torch.Size([2, 2, 5, 5])
+    [[0,2],[1,3]],  # correct output has dimensions torch.Size([2, 5]) 
+    [[1,4]],  # correct output has dimensions torch.Size([2, 5, 5])
+    [[0]],  # correct output has dimensions torch.Size([1, 5, 5])
+    [[[1,2,4]]],  # correct output has dimensions torch.Size([1, 3, 5, 5])
+    # TODO need to test with slicing too! Like index = torch.Tensor([0:2, 1:3])
+)
+
+for some_list in inputs:
+    print("\nUsing the following index:", some_list)
+
+    torch_output = t[some_list]
+    print(f"torch_output with that index: {torch_output.shape}")
+
+    new_result = transform_tensor_index(t, some_list)
+    print(f"your output: {new_result.shape}")
+    assert torch.equal(torch_output, new_result), f"FAILED!\npytorch: \n{torch_output}, \nus: \n{new_result}"
+    print("PASSED!")
+
+    
+
 class TensorIndexingModel(nn.Module):
     def __init__(self):
         super().__init__()
 
     def forward(self, x):
-        return transform(x, [[[0,2],[1,3]]])
+        return transform_tensor_index(x, [[[0,2],[1,3]]])
         
 torch_model = TensorIndexingModel().eval()
 
