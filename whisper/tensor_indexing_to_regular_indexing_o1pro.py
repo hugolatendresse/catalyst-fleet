@@ -1,170 +1,163 @@
 
 import torch
-import itertools
-
-
+import torch
 import torch
 
-def _is_list_of_same_length_sublists(pyobj):
+def _parse_index_spec(index_spec):
     """
-    Returns True if pyobj is a list, length > 1, and
-    every element is itself a list/tuple of the same length.
-    Example: [[0,2],[1,3]] => True
-             [[1,5]] => False (length=1)
-             [[[0,2],[1,3]]] => False (top-level length=1)
+    Convert the user-supplied `index_spec` into a *tuple* of advanced indices,
+    matching how PyTorch interprets t[x], t[x,y], etc.
+    
+    Examples from your question:
+      - [[[0,2],[1,3]]] => a single advanced index (shape (2,2))
+      - [[0,2],[1,3]]   => two advanced indices
     """
-    if not isinstance(pyobj, list):
-        return False
-    if len(pyobj) <= 1:
-        return False
-    
-    # Check that each element is a list (or tuple) of the same length
-    first_len = None
-    for elem in pyobj:
-        if not isinstance(elem, (list, tuple)):
-            return False
-        length = len(elem)
-        if first_len is None:
-            first_len = length
-        elif length != first_len:
-            return False
-    return True
+    if isinstance(index_spec, tuple):
+        # Already a tuple => assume multiple indices
+        return index_spec
 
+    if isinstance(index_spec, list):
+        if len(index_spec) > 1:
+            # Heuristic: if we see e.g. [[0,2],[1,3]], interpret that
+            # as two advanced indices, not one nested shape
+            # (which is how PyTorch does t[[0,2],[1,3]]).
+            # But if you had [[[0,2],[1,3]]], that's shape (1,2,2),
+            # which is a single advanced index. 
+            # So we just say: if top-level length>1 and each top-level entry
+            # is "indexy", treat them as separate.
+            # Otherwise treat it as a single advanced index.
+            top_level_items_are_all_int_or_list = all(
+                isinstance(x, (int, list, tuple)) for x in index_spec
+            )
+            if top_level_items_are_all_int_or_list:
+                # interpret as multiple indices
+                return tuple(index_spec)
+            else:
+                # interpret as a single advanced index
+                return (index_spec,)
+        else:
+            # length==1 => definitely a single advanced index
+            return (index_spec,)
 
-def _as_long_tensor(pyobj):
-    """Convert a nested list of ints to a torch.LongTensor."""
-    return torch.tensor(pyobj, dtype=torch.long)
+    # If it's an integer, or anything else, treat as single advanced index:
+    return (index_spec,)
 
-
-def _compute_linear_indices(shape_t, list_of_indices):
+def _get_broadcast_shape(list_of_tensors):
     """
-    shape_t: tuple of t's dims, e.g. (D0, D1, D2, ...)
-    list_of_indices: [idx0, idx1, ...] each is a LongTensor, broadcastable to same shape.
-                     We assume we are indexing dims [0, 1, ..., len(list_of_indices)-1].
-    
-    Returns:
-      lin_indices (LongTensor) of shape == broadcasted shape of all idx's.
-      leftover_shape (tuple) for the dims that are not advanced-indexed.
-      Also returns the broadcasted shape of the indices.
+    Compute the broadcasted shape among all tensors in list_of_tensors.
+    We can do this by a dummy add that forces broadcast, capturing the final shape.
     """
-    import math
-    
-    # shape_t[:k] are the dims we advanced-index, where k = len(list_of_indices)
-    # leftover dims = shape_t[k:]
-    # We must broadcast all idx_i to a common shape B.
-    
-    k = len(list_of_indices)
-    leftover_shape = shape_t[k:]
-    
-    # First convert each index to a LongTensor.
-    idx_tensors = []
-    for i in range(k):
-        idx_tensors.append(list_of_indices[i].long())
-
-    # Broadcast them all to the same shape:
-    # easiest is to do something like 
-    #   bcasted = torch.broadcast_tensors(*idx_tensors)
-    # which returns a list of Tensors each with same shape
-    bcasted = torch.broadcast_tensors(*idx_tensors)
-    
-    # Now compute the linear index = idx0 * (D1*D2*...) + idx1*(D2*...) + ...
-    # step by step
-    dims_product = [1]*(k+1) 
-    # dims_product[i] will store product of shape_t[i+1..k-1] (the dims between i and k)
-    # Actually more precisely, for index i we multiply by product of shape_t[i+1..k-1], ignoring leftover dims for the moment.
-    # e.g. if shape_t = (D0, D1, D2, D3, ...), indexing first 2 dims => k=2:
-    #   linear_index = idx0*(D1*D2*D3...) + idx1*(D2*D3...) if we were indexing dims 0,1 fully to the end.
-    # But PyTorch advanced indexing stops at dimension k for leftover. So the factor for i is product(D_{i+1}..D_{k-1}) * product_of_all leftover dims? 
-    # Actually the standard formula for multi-dim indexing on the first k dims is:
-    #   linear_idx = idx0 * (D1*D2*...*D_{n-1}) + idx1 * (D2*...*D_{n-1}) + ...
-    # i.e. we flatten as if the shape is (D0, D1, ..., D_{n-1}) in row-major order.
-    # So let's compute the full row-major strides for shape_t:
-    
-    strides = [1] * len(shape_t)
-    # strides for row-major (Python) is reversed typically, let's do direct:
-    # strides[-1] = 1
-    for s in range(len(shape_t)-2, -1, -1):
-        strides[s] = strides[s+1] * shape_t[s+1]
-
-    # Now for dimension i in [0..k-1], the multiplier is strides[i].
-    broadcast_shape = bcasted[0].shape  # all bcasted have the same shape
-    linear_idx = torch.zeros(broadcast_shape, dtype=torch.long)
-    for i in range(k):
-        linear_idx += bcasted[i] * strides[i]
-    
-    return linear_idx, leftover_shape, broadcast_shape
+    shape = None
+    for t in list_of_tensors:
+        if shape is None:
+            shape = t.shape
+        else:
+            # This forces a broadcast
+            dummy = torch.zeros(shape, dtype=torch.long, device=t.device)
+            out = dummy + t  # If shapes are incompatible, raises an error
+            shape = out.shape
+    return shape
 
 
-def transform(t, some_list_of_lists):
+def transform(t: torch.Tensor, index_spec):
     """
-    Replicates t[some_list_of_lists] using only gather (plus .view, .expand, etc.).
-    Handles both the 'multiple advanced index' case and the 'single advanced index' case.
-    """
-    # 1) Decide if we have multiple advanced indices or just one.
-    if _is_list_of_same_length_sublists(some_list_of_lists):
-        # => PyTorch interprets it as multiple advanced indices,
-        # each indexing a different dimension in order.
-        # e.g. [[0,2], [1,3]] => two advanced indices: dimension0 gets [0,2], dimension1 gets [1,3].
-        
-        # Convert each sub-list to a tensor:
-        list_of_idxs = []
-        for elem in some_list_of_lists:
-            list_of_idxs.append(_as_long_tensor(elem))
-        k = len(list_of_idxs)  # number of advanced dims
-        # We will do the "flatten the entire tensor" approach (for correctness with diagonal picks),
-        # compute linear indices, gather, reshape.
-        
-        shape_t = t.shape
-        # compute linear index:
-        lin_idx, leftover_shape, bshape = _compute_linear_indices(shape_t, list_of_idxs)
-        
-        # Flatten t fully to 1D:
-        t_flat = t.view(-1)  # shape (D0*D1*...*D_{n-1},)
-        
-        # Now gather from t_flat along dim=0 with lin_idx
-        # but we must flatten lin_idx as well:
-        lin_idx_flat = lin_idx.view(-1)
-        
-        gathered_flat = torch.gather(t_flat, 0, lin_idx_flat)
-        # shape => (lin_idx_flat.numel(),)
-        
-        # Finally reshape to bshape + leftover_shape
-        # leftover_shape is a tuple, we want them all at the end:
-        final_shape = bshape + leftover_shape
-        out = gathered_flat.view(*final_shape)
-        return out
+    Replicate what `t[index_spec]` does, using only:
+     - regular slicing/view
+     - broadcasting (expand)
+     - torch.gather
+    No reliance on built-in advanced indexing or index_select.
     
-    else:
-        # => Single advanced index scenario, which PyTorch applies to dimension 0 by default.
-        # e.g. some_list_of_lists = [[0,2],[1,3]] if it had an extra bracket around it
-        # or some_list_of_lists = [0,2,4]
-        # We'll do the dimension=0 gather trick.
-        
-        idx_t = _as_long_tensor(some_list_of_lists)  # entire nested list as one index
-        # NOTE: If you want to "ignore" a leading dimension=1 as the user’s example #1 might do,
-        # you can do a quick squeeze if the top-level is length=1.  Something like:
-        # if isinstance(some_list_of_lists, list) and len(some_list_of_lists) == 1:
-        #     # Attempt to remove that outer dimension
-        #     idx_t = idx_t.squeeze(0)
-        
-        old_shape = t.shape
-        D0 = old_shape[0]
-        
-        # flatten t to (D0, -1)
-        t_flat = t.view(D0, -1)
-        
-        # flatten idx
-        idx_flat = idx_t.view(-1)
-        
-        # gather
-        expanded_index = idx_flat.unsqueeze(1).expand(idx_flat.shape[0], t_flat.shape[1])
-        gathered_flat = torch.gather(t_flat, 0, expanded_index)
-        
-        # reshape back
-        out = gathered_flat.view(*idx_t.shape, *old_shape[1:])
-        return out
+    Works for nested advanced indices such as [[[0,2],[1,3]]].
+    """
+    # 1) Convert user index into a tuple of advanced indices
+    parsed = _parse_index_spec(index_spec)   # tuple of length m
+    m = len(parsed)                          # number of advanced indices
+    n = t.dim()                              # dimensionality of t
 
+    # 2) Convert each advanced index into a LongTensor
+    adv_indices = []
+    for idx in parsed:
+        idx_t = torch.as_tensor(idx, dtype=torch.long, device=t.device)
+        adv_indices.append(idx_t)
 
+    # 3) Broadcast the advanced indices among themselves
+    broadcast_shape = _get_broadcast_shape(adv_indices)  # shape B
+
+    # leftover dimensions = dims that are not advanced
+    leftover_dims = t.shape[m:]       # sizes for dims m..n-1
+    out_shape = broadcast_shape + leftover_dims  # final shape
+
+    # 4) Build coordinates for each dimension
+    coords_for_dim = [None] * n
+
+    # For the advanced dims (d < m), each adv_indices[d] is shape = broadcast_shape.
+    # But we want them to tile across leftover_dims as well, so we expand to out_shape.
+    # To do that, we must first .view() to (broadcast_shape + [1]*(# leftover dims)),
+    # then .expand(out_shape).
+
+    for d in range(m):
+        idx_d = adv_indices[d]
+
+        # idx_d is shape broadcast_shape, e.g. (1,2,2) in your example
+        # We want it to become shape out_shape, e.g. (1,2,2,5,5).
+
+        # Step A: view => shape B + (1,...,1) for leftover_dims
+        view_shape = list(broadcast_shape) + [1] * (n - m)
+        idx_d_viewed = idx_d.view(view_shape)  # insert trailing 1-dims
+
+        # Step B: expand to out_shape
+        idx_d_expanded = idx_d_viewed.expand(out_shape)
+
+        coords_for_dim[d] = idx_d_expanded
+
+    # For leftover dims (d >= m), we want the coordinate to range 0..(size-1).
+    # Then we also replicate across the broadcast_shape *and* all leftover dims
+    # except the one for dimension d.  We can do a systematic "view + expand" trick.
+    for d in range(m, n):
+        size_d = t.shape[d]  # leftover dim size
+        # out_shape = broadcast_shape + leftover_dims
+        # The position of this leftover dim 'd' within leftover_dims is (d - m).
+        leftover_axis = (d - m)
+        # That axis in the final out_shape is len(broadcast_shape) + leftover_axis
+
+        # We'll build range_d: shape (size_d,)
+        range_d = torch.arange(size_d, dtype=torch.long, device=t.device)
+
+        # We'll then insert enough unsqueezes so that dimension
+        # (len(broadcast_shape) + leftover_axis) is the one that goes 0..size_d-1
+        num_out_dims = len(out_shape)
+        vary_dim = len(broadcast_shape) + leftover_axis
+
+        view_shape = [1] * num_out_dims
+        view_shape[vary_dim] = size_d  # we want to vary along that dimension
+
+        range_d_view = range_d.view(view_shape)   # shape [..., size_d, ...]
+        range_d_expanded = range_d_view.expand(out_shape)
+
+        coords_for_dim[d] = range_d_expanded
+
+    # 5) Convert multi-dim coords to a single “flat” index
+    #    for t.view(-1)
+    # linear_index = sum_{k=0..n-1} coords_for_dim[k] * product_of_sizes(k+1..n-1)
+    # We'll precompute those "multipliers" from right to left.
+    shape_t = t.shape
+    multipliers = [1]*n
+    running = 1
+    for d in reversed(range(n)):
+        multipliers[d] = running
+        running *= shape_t[d]
+
+    linear_index = torch.zeros(out_shape, dtype=torch.long, device=t.device)
+    for d in range(n):
+        linear_index += coords_for_dim[d] * multipliers[d]
+
+    # 6) gather from t.flat
+    t_flat = t.view(-1)
+    linear_index_flat = linear_index.view(-1)
+    gathered_flat = torch.gather(t_flat, 0, linear_index_flat)
+    result = gathered_flat.view(out_shape)
+
+    return result
 
 
 t = torch.randn(5, 5, 5)
