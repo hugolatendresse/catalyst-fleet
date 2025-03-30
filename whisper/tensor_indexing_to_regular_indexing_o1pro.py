@@ -133,9 +133,9 @@ t = torch.randn(5, 5, 5)
 inputs = (
     [[[0,2],[1,3]]],  # correct output has dimensions torch.Size([2, 2, 5, 5])
     [[0,2],[1,3]],  # correct output has dimensions torch.Size([2, 5]) 
-    [[1,4]],  # correct output has dimensions 
-    [[0]],  # correct output has dimensions 
-    [[[1,2,4]]],  # correct output has dimensions 
+    [[1,4]],  # correct output has dimensions torch.Size([2, 5, 5])
+    [[0]],  # correct output has dimensions torch.Size([1, 5, 5])
+    [[[1,2,4]]],  # correct output has dimensions torch.Size([1, 3, 5, 5])
 )
 
 for some_list in inputs:
