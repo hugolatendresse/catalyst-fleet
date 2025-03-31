@@ -7,30 +7,10 @@ Target: CUDA
 Compile and Run Test: PASS
 Correctness Test: PASS
 """
-from tvm import relax
 import numpy as np
-import tvm
-from tvm import relax
 import torch
 from torch import nn
-from torch.export import export
-from tvm.relax.frontend.torch import from_exported_program
-import torch.nn.functional as F
 import numpy as np
-
-
-import torch
-import operator
-from functools import reduce
-
-
-import torch
-from functools import reduce
-import operator
-
-import torch
-import operator
-from functools import reduce
 
 def _prod(shape):
     """Compute the product of all dimensions in 'shape'."""
@@ -73,18 +53,18 @@ def _is_multiple_indices(index_arg):
 def transform_tensor_index(t, index_arg):
     """
     Replicate t[index_arg] using only:
-      - basic (scalar) indexing into 't'
-      - torch.index_select
-      - concatenation/stack
-      - broadcasting
-    …with NO advanced indexing on 't'.
+    - basic indexing on t
+    - torch.index_select
+    - concatenation/stack
+    - broadcasting
+    … and no advanced indexing.
 
-    For multiple advanced indices: broadcast them, loop in scalar fashion.
+    Approach for multiple advanced indices: broadcast and loop
 
-    For a single advanced index: 
-      1) Convert the nested Python list to a LongTensor.
-      2) Remove exactly one leading dimension of size=1, if present. (Matches PyTorch's shape rule.)
-      3) Flatten -> fix negative indices -> index_select -> reshape.
+    Approach for single advanced index: 
+    1. Convert the nested Python list to a LongTensor.
+    2. Remove exactly one leading dimension of size=1, if present. (Matches PyTorch's shape rule.)
+    3. Flatten -> fix negative indices -> index_select -> reshape.
     """
 
     # -----------------------------------------------------------
