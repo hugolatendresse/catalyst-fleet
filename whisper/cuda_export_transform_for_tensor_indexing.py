@@ -80,7 +80,6 @@ def transform_tensor_index(data, indices):
 
         # 1) Broadcast them to a common shape B
         shapes = [x.shape for x in idx_list]
-
         B = _broadcast_shapes(shapes) 
         
         # 2) Expand each index to that shape

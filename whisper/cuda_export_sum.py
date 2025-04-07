@@ -1,5 +1,5 @@
 """
-Model Type: stack.default
+Model Type: sum.default
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
@@ -20,20 +20,12 @@ import numpy as np
 
 
 # Create a dummy model
-class IndexModel(nn.Module):
-    def __init__(self):
-        super().__init__()
-
-
+class SumModel(nn.Module):
     def forward(self, x):
-        val1 = x[1,4]
-        val2 = x[3,2]
-        val3 = x[5,6]
-        z = torch.stack([val1, val2, val3])
-        return z
+        new_vec = x[1,4]
+        return new_vec.sum()
         
-
-torch_model = IndexModel().eval()
+torch_model = SumModel().eval()
 
 raw_data = np.random.rand(10,10,10).astype("float32")
 
