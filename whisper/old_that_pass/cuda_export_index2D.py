@@ -1,11 +1,11 @@
 """
-Model Type: 
+Model Type: index.Tensor
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: ??
-Correctness Test: ??
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -18,16 +18,35 @@ from tvm.relax.frontend.torch import from_exported_program
 import torch.nn.functional as F
 import numpy as np
 
-class BroadcastTensorsModel(nn.Module):
+"""
+Trying to achieve:
+self.weight[position_ids]
+
+With:
+self.weight.shape = torch.Size([448, 384])
+position_ids.shape  = torch.Size([1, 1])
+position_ids = tensor([[0]])
+
+In general, torch does this:
+>>> import torch
+>>> x = torch.Tensor([[10,11],[12,13]])
+>>> x[torch.tensor([[0]])]
+tensor([[[10., 11.]]])
+>>> x[[[0]]]
+tensor([[10., 11.]])
+
+"""
+
+# Create a dummy model
+class IndexModel(nn.Module):
     def __init__(self):
         super().__init__()
+        self.position_ids = torch.tensor([[0]])
 
     def forward(self, x):
-        y = torch.tensor([1, 2, 3])         # Shape: [3]
-        return  y.expand_as(x)
-
-
-torch_model = BroadcastTensorsModel().eval()
+        return x[self.position_ids]
+        
+torch_model = IndexModel().eval()
 
 raw_data = np.random.rand(2,3).astype("float32")
 
