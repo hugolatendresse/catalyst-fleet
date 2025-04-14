@@ -150,7 +150,7 @@ def transform_tensor_index(data, indices):
 
 
 
-data = torch.randn(5, 5, 5)
+data = torch.randn(5, 5, 5,5)
 
 inputs = (
     [[[0,2],[1,3]]],  # correct output has dimensions torch.Size([2, 2, 5, 5])
@@ -158,7 +158,9 @@ inputs = (
     [[1,4]],  # correct output has dimensions torch.Size([2, 5, 5])
     [[0]],  # correct output has dimensions torch.Size([1, 5, 5]) // covered
     [[[1,2,4]]],  # correct output has dimensions torch.Size([1, 3, 5, 5])
-    
+    [[0,1],[0,1]],
+    [[0,1,2,3], [1,2,3,4], [2,3,4,0]],
+    [[[0,1],[2,3]],[[2,3],[3,4]],[[2,4],[1,2]],[[0,4],[0,3]]]
     # TODO need to test with slicing too! Like index = torch.Tensor([0:2, 1:3])
 )
 
