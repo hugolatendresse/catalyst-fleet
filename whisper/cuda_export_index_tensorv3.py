@@ -24,9 +24,7 @@ class IndexTensorModel(nn.Module):
         super().__init__()
 
     def forward(self, x):
-        # TODO return x[[[[0,1],[2,3]],[[4,5],[6,7]],[[2,4],[1,5]],[[3,4],[6,8]]]]
-        # arg = torch.tensor(np.array([[1,2],[3,4]]), dtype=torch.int32)
-        return x[x] # both args[0] and indices are expr.Var
+        return x[[[0,1],[0,1]]] # both args[0] and indices are expr.Var
     
 torch_model = IndexTensorModel().eval()
 
