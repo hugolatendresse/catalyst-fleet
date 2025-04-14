@@ -1304,15 +1304,17 @@ class WhisperDecoder(WhisperPreTrainedModel):
         # return position_ids
 
         hidden_states = inputs_embeds + positions.to(inputs_embeds.device)
+
         hidden_states = nn.functional.dropout(hidden_states, p=self.dropout, training=self.training)
 
-        causal_mask = self._update_causal_mask(
-            attention_mask,
-            inputs_embeds,
-            cache_position,
-            past_key_values.self_attention_cache if past_key_values is not None else None,
-            output_attentions,
-        )
+
+        # causal_mask = self._update_causal_mask( # TODO could we need this for inference?
+        #     attention_mask,
+        #     inputs_embeds,
+        #     cache_position,
+        #     past_key_values.self_attention_cache if past_key_values is not None else None,
+        #     output_attentions,
+        # )
 
         # decoder layers
         all_hidden_states = () if output_hidden_states else None
@@ -1326,6 +1328,8 @@ class WhisperDecoder(WhisperPreTrainedModel):
                     f"The `{mask_name}` should be specified for {len(self.layers)} layers, but it is for"
                     f" {head_mask.size()[0]}."
                 )
+
+
         for idx, decoder_layer in enumerate(self.layers):
             # add LayerDrop (see https://arxiv.org/abs/1909.11556 for description)
             if output_hidden_states:
@@ -1336,23 +1340,24 @@ class WhisperDecoder(WhisperPreTrainedModel):
                     continue
 
             if self.gradient_checkpointing and self.training:
-                layer_outputs = self._gradient_checkpointing_func(
-                    decoder_layer.__call__,
-                    hidden_states,
-                    causal_mask,
-                    encoder_hidden_states,
-                    None,  # encoder attention mask
-                    head_mask[idx] if head_mask is not None else None,
-                    cross_attn_head_mask[idx] if cross_attn_head_mask is not None else None,
-                    None,  # past_key_value
-                    output_attentions,
-                    use_cache,
-                    cache_position,
-                )
+                pass # inference only
+                # layer_outputs = self._gradient_checkpointing_func(
+                #     decoder_layer.__call__,
+                #     hidden_states,
+                #     causal_mask,
+                #     encoder_hidden_states,
+                #     None,  # encoder attention mask
+                #     head_mask[idx] if head_mask is not None else None,
+                #     cross_attn_head_mask[idx] if cross_attn_head_mask is not None else None,
+                #     None,  # past_key_value
+                #     output_attentions,
+                #     use_cache,
+                #     cache_position,
+                # )
             else:
                 layer_outputs = decoder_layer(
                     hidden_states,
-                    attention_mask=causal_mask,
+                    attention_mask=None, # TODO make original work -> attention_mask=causal_mask 
                     encoder_hidden_states=encoder_hidden_states,
                     layer_head_mask=(head_mask[idx] if head_mask is not None else None),
                     cross_attn_layer_head_mask=(
@@ -1387,6 +1392,7 @@ class WhisperDecoder(WhisperPreTrainedModel):
                 for v in [hidden_states, next_cache, all_hidden_states, all_self_attns, all_cross_attentions]
                 if v is not None
             )
+        # return hidden_states # TODO revert
         return BaseModelOutputWithPastAndCrossAttentions(
             last_hidden_state=hidden_states,
             past_key_values=next_cache,
@@ -1404,15 +1410,15 @@ class WhisperDecoder(WhisperPreTrainedModel):
         past_key_values: Cache,
         output_attentions: bool,
     ):
-        if self.config._attn_implementation == "flash_attention_2":
-            if attention_mask is not None and (attention_mask == 0.0).any():
-                return attention_mask
-            return None
-        if self.config._attn_implementation == "flex_attention":
-            if isinstance(attention_mask, torch.Tensor):
-                attention_mask = make_flex_block_causal_mask(attention_mask)
-            if isinstance(attention_mask, BlockMask):
-                return attention_mask
+        # if self.config._attn_implementation == "flash_attention_2":
+        #     if attention_mask is not None and (attention_mask == 0.0).any():
+        #         return attention_mask
+        #     return None
+        # if self.config._attn_implementation == "flex_attention":
+        #     if isinstance(attention_mask, torch.Tensor):
+        #         attention_mask = make_flex_block_causal_mask(attention_mask)
+        #     if isinstance(attention_mask, BlockMask):
+        #         return attention_mask
 
         # For SDPA, when possible, we will rely on its `is_causal` argument instead of its `attn_mask` argument, in
         # order to dispatch on Flash Attention 2. This feature is not compatible with static cache, as SDPA will fail
