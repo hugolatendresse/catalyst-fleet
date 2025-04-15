@@ -1,0 +1,2171 @@
+/ssd1/htalendr/miniconda3/envs/env1/lib/python3.12/site-packages/torch/export/_unlift.py:75: UserWarning: Attempted to insert a get_attr Node with no underlying reference in the owning GraphModule! Call GraphModule.add_submodule to add the necessary submodule, GraphModule.add_parameter to add the necessary Parameter, or nn.Module.register_buffer to add the necessary buffer
+  getattr_node = gm.graph.get_attr(lifted_node)
+/ssd1/htalendr/miniconda3/envs/env1/lib/python3.12/site-packages/torch/fx/graph.py:1801: UserWarning: Node input_ids target input_ids input_ids of  does not reference an nn.Module, nn.Parameter, or buffer, which is what 'get_attr' Nodes typically target
+  warnings.warn(
+found function conv1d.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 5
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, list) of length 1
+isinstance(node, list) of length 1
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function conv1d.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 5
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, list) of length 1
+isinstance(node, list) of length 1
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function permute.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 2
+found function embedding.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function arange.start !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function unsqueeze.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function repeat.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 2
+found function index.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 1
+isinstance(node, fx.Node)
+node: fx.Node passed to index_tensor:
+len of args 2
+type of args[0] <class 'tvm.relax.expr.Var'>
+args[0] p_decoder_embed_positions_weight
+type of args[1] <class 'list'>
+args[1] [lv158]
+type of indices <class 'tvm.relax.expr.DataflowVar'>
+found function to.dtype_layout !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default [16:44:52] /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:1250: # from tvm.script import ir as I
+# from tvm.script import tir as T
+# from tvm.script import relax as R
+
+@I.ir_module
+class Module:
+    @T.prim_func(private=True)
+    def add(var_lv: T.handle, lv1: T.Buffer((T.int64(1), T.int64(384), T.int64(1)), "float32"), var_lv_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv = T.match_buffer(var_lv, (T.int64(1), T.int64(384), T.int64(3000)))
+        lv = T.match_buffer(var_lv_1, (T.int64(1), T.int64(384), T.int64(3000)), data=lv.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add1(var_lv4: T.handle, lv5: T.Buffer((T.int64(1), T.int64(384), T.int64(1)), "float32"), var_lv4_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv4 = T.match_buffer(var_lv4, (T.int64(1), T.int64(384), T.int64(1500)))
+        lv4 = T.match_buffer(var_lv4_1, (T.int64(1), T.int64(384), T.int64(1500)), data=lv4.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add2(var_lv8: T.handle, p_encoder_embed_positions_weight: T.Buffer((T.int64(1500), T.int64(384)), "float32"), var_lv8_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv8 = T.match_buffer(var_lv8, (T.int64(1), T.int64(1500), T.int64(384)))
+        lv8 = T.match_buffer(var_lv8_1, (T.int64(1), T.int64(1500), T.int64(384)), data=lv8.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add3(var_lv12: T.handle, p_encoder_layers_0_self_attn_q_proj_bias: T.Buffer((T.int64(384),), "float32"), var_lv12_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv12 = T.match_buffer(var_lv12, (T.int64(1), T.int64(1500), T.int64(384)))
+        lv12 = T.match_buffer(var_lv12_1, (T.int64(1), T.int64(1500), T.int64(384)), data=lv12.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add4(var_lv9: T.handle, lv34: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32"), var_lv9_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv9 = T.match_buffer(var_lv9, (T.int64(1), T.int64(1500), T.int64(384)))
+        lv9 = T.match_buffer(var_lv9_1, (T.int64(1), T.int64(1500), T.int64(384)), data=lv9.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add5(var_lv38: T.handle, p_encoder_layers_0_fc1_bias: T.Buffer((T.int64(1536),), "float32"), var_lv38_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv38 = T.match_buffer(var_lv38, (T.int64(1), T.int64(1500), T.int64(1536)))
+        lv38 = T.match_buffer(var_lv38_1, (T.int64(1), T.int64(1500), T.int64(1536)), data=lv38.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add6(var_lv155: T.handle, lv160: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), var_lv155_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv155 = T.match_buffer(var_lv155, (T.int64(1), T.int64(1), T.int64(384)))
+        lv155 = T.match_buffer(var_lv155_1, (T.int64(1), T.int64(1), T.int64(384)), data=lv155.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add7(var_lv164: T.handle, p_decoder_layers_0_self_attn_q_proj_bias: T.Buffer((T.int64(384),), "float32"), var_lv164_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv164 = T.match_buffer(var_lv164, (T.int64(1), T.int64(1), T.int64(384)))
+        lv164 = T.match_buffer(var_lv164_1, (T.int64(1), T.int64(1), T.int64(384)), data=lv164.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def add8(var_lv216: T.handle, p_decoder_layers_0_fc1_bias: T.Buffer((T.int64(1536),), "float32"), var_lv216_1: T.handle):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        lv216 = T.match_buffer(var_lv216, (T.int64(1), T.int64(1), T.int64(1536)))
+        lv216 = T.match_buffer(var_lv216_1, (T.int64(1), T.int64(1), T.int64(1536)), data=lv216.data)
+        T.evaluate(0)
+
+    @T.prim_func(private=True)
+    def attention(lv25: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), lv26: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), lv27: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        T_transpose_1 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_transpose_2 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape_1 = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_batch_matmul_NT = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(1500)))
+        T_divide = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(1500)))
+        T_softmax_maxelem = T.alloc_buffer((T.int64(6), T.int64(1500)))
+        T_softmax_exp = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(1500)))
+        T_softmax_expsum = T.alloc_buffer((T.int64(6), T.int64(1500)))
+        T_softmax_norm = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(1500)))
+        T_transpose_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape_2 = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_batch_matmul_NN = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv25[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3] = lv25[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_1[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = T_transpose_1[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose_1"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv26[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3] = lv26[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape_1"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_2[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_1[v_ax0, v_ax1, v_ax2])
+                T_reshape_1[v_ax0, v_ax1, v_ax2] = T_transpose_2[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1500), T.int64(1500), T.int64(64)):
+            with T.block("T_batch_matmul_NT"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_reshape[v_b, v_i, v_k], T_reshape_1[v_b, v_j, v_k])
+                T.writes(T_batch_matmul_NT[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_1]})
+                with T.init():
+                    T_batch_matmul_NT[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NT[v_b, v_i, v_j] = T_batch_matmul_NT[v_b, v_i, v_j] + T_reshape[v_b, v_i, v_k] * T_reshape_1[v_b, v_j, v_k]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(1500)):
+            with T.block("T_divide"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_batch_matmul_NT[v_ax0, v_ax1, v_ax2])
+                T.writes(T_divide[v_ax0, v_ax1, v_ax2])
+                T_divide[v_ax0, v_ax1, v_ax2] = T_batch_matmul_NT[v_ax0, v_ax1, v_ax2] / T.sqrt(T.float32(64.0))
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1500), T.int64(1500)):
+            with T.block("T_softmax_maxelem"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_divide[v_i0, v_i1, v_k])
+                T.writes(T_softmax_maxelem[v_i0, v_i1])
+                with T.init():
+                    T_softmax_maxelem[v_i0, v_i1] = T.float32(-340282346638528859811704183484516925440.0)
+                T_softmax_maxelem[v_i0, v_i1] = T.max(T_softmax_maxelem[v_i0, v_i1], T_divide[v_i0, v_i1, v_k])
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1500), T.int64(1500)):
+            with T.block("T_softmax_exp"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_divide[v_i0, v_i1, v_i2], T_softmax_maxelem[v_i0, v_i1])
+                T.writes(T_softmax_exp[v_i0, v_i1, v_i2])
+                T_softmax_exp[v_i0, v_i1, v_i2] = T.exp(T_divide[v_i0, v_i1, v_i2] - T_softmax_maxelem[v_i0, v_i1])
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1500), T.int64(1500)):
+            with T.block("T_softmax_expsum"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_k])
+                T.writes(T_softmax_expsum[v_i0, v_i1])
+                with T.init():
+                    T_softmax_expsum[v_i0, v_i1] = T.float32(0.0)
+                T_softmax_expsum[v_i0, v_i1] = T_softmax_expsum[v_i0, v_i1] + T_softmax_exp[v_i0, v_i1, v_k]
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1500), T.int64(1500)):
+            with T.block("T_softmax_norm"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_i2], T_softmax_expsum[v_i0, v_i1])
+                T.writes(T_softmax_norm[v_i0, v_i1, v_i2])
+                T.block_attr({"axis": 2})
+                T_softmax_norm[v_i0, v_i1, v_i2] = T_softmax_exp[v_i0, v_i1, v_i2] / T_softmax_expsum[v_i0, v_i1]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose_2"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv27[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3] = lv27[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape_2"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_3[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_2[v_ax0, v_ax1, v_ax2])
+                T_reshape_2[v_ax0, v_ax1, v_ax2] = T_transpose_3[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1500), T.int64(64), T.int64(1500)):
+            with T.block("T_batch_matmul_NN"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_softmax_norm[v_b, v_i, v_k], T_reshape_2[v_b, v_k, v_j])
+                T.writes(T_batch_matmul_NN[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_2]})
+                with T.init():
+                    T_batch_matmul_NN[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NN[v_b, v_i, v_j] = T_batch_matmul_NN[v_b, v_i, v_j] + T_softmax_norm[v_b, v_i, v_k] * T_reshape_2[v_b, v_k, v_j]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_batch_matmul_NN[((v_ax3 // T.int64(64) + v_ax2) // T.int64(1500) + v_ax1) % T.int64(6), (v_ax3 // T.int64(64) + v_ax2) % T.int64(1500), v_ax3 % T.int64(64)])
+                T.writes(T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3] = T_batch_matmul_NN[((v_ax3 // T.int64(64) + v_ax2) // T.int64(1500) + v_ax1) % T.int64(6), (v_ax3 // T.int64(64) + v_ax2) % T.int64(1500), v_ax3 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1500), T.int64(6), T.int64(64)):
+            with T.block("T_transpose_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def attention1(lv177: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), lv178: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), lv179: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        T_transpose_1 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_transpose_2 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape_1 = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_batch_matmul_NT = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1)))
+        T_divide = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1)))
+        T_softmax_maxelem = T.alloc_buffer((T.int64(6), T.int64(1)))
+        T_softmax_exp = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1)))
+        T_softmax_expsum = T.alloc_buffer((T.int64(6), T.int64(1)))
+        T_softmax_norm = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1)))
+        T_transpose_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape_2 = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_batch_matmul_NN = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv177[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3] = lv177[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_1[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = T_transpose_1[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_transpose_1"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv178[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3] = lv178[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape_1"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_2[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_1[v_ax0, v_ax1, v_ax2])
+                T_reshape_1[v_ax0, v_ax1, v_ax2] = T_transpose_2[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1), T.int64(1), T.int64(64)):
+            with T.block("T_batch_matmul_NT"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_reshape[v_b, v_i, v_k], T_reshape_1[v_b, v_j, v_k])
+                T.writes(T_batch_matmul_NT[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_1]})
+                with T.init():
+                    T_batch_matmul_NT[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NT[v_b, v_i, v_j] = T_batch_matmul_NT[v_b, v_i, v_j] + T_reshape[v_b, v_i, v_k] * T_reshape_1[v_b, v_j, v_k]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(1)):
+            with T.block("T_divide"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_batch_matmul_NT[v_ax0, v_ax1, v_ax2])
+                T.writes(T_divide[v_ax0, v_ax1, v_ax2])
+                T_divide[v_ax0, v_ax1, v_ax2] = T_batch_matmul_NT[v_ax0, v_ax1, v_ax2] / T.sqrt(T.float32(64.0))
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1), T.int64(1)):
+            with T.block("T_softmax_maxelem"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_divide[v_i0, v_i1, v_k])
+                T.writes(T_softmax_maxelem[v_i0, v_i1])
+                with T.init():
+                    T_softmax_maxelem[v_i0, v_i1] = T.float32(-340282346638528859811704183484516925440.0)
+                T_softmax_maxelem[v_i0, v_i1] = T.max(T_softmax_maxelem[v_i0, v_i1], T_divide[v_i0, v_i1, v_k])
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1), T.int64(1)):
+            with T.block("T_softmax_exp"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_divide[v_i0, v_i1, v_i2], T_softmax_maxelem[v_i0, v_i1])
+                T.writes(T_softmax_exp[v_i0, v_i1, v_i2])
+                T_softmax_exp[v_i0, v_i1, v_i2] = T.exp(T_divide[v_i0, v_i1, v_i2] - T_softmax_maxelem[v_i0, v_i1])
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1), T.int64(1)):
+            with T.block("T_softmax_expsum"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_k])
+                T.writes(T_softmax_expsum[v_i0, v_i1])
+                with T.init():
+                    T_softmax_expsum[v_i0, v_i1] = T.float32(0.0)
+                T_softmax_expsum[v_i0, v_i1] = T_softmax_expsum[v_i0, v_i1] + T_softmax_exp[v_i0, v_i1, v_k]
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1), T.int64(1)):
+            with T.block("T_softmax_norm"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_i2], T_softmax_expsum[v_i0, v_i1])
+                T.writes(T_softmax_norm[v_i0, v_i1, v_i2])
+                T.block_attr({"axis": 2})
+                T_softmax_norm[v_i0, v_i1, v_i2] = T_softmax_exp[v_i0, v_i1, v_i2] / T_softmax_expsum[v_i0, v_i1]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_transpose_2"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv179[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3] = lv179[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape_2"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_3[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_2[v_ax0, v_ax1, v_ax2])
+                T_reshape_2[v_ax0, v_ax1, v_ax2] = T_transpose_3[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1), T.int64(64), T.int64(1)):
+            with T.block("T_batch_matmul_NN"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_softmax_norm[v_b, v_i, v_k], T_reshape_2[v_b, v_k, v_j])
+                T.writes(T_batch_matmul_NN[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_2]})
+                with T.init():
+                    T_batch_matmul_NN[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NN[v_b, v_i, v_j] = T_batch_matmul_NN[v_b, v_i, v_j] + T_softmax_norm[v_b, v_i, v_k] * T_reshape_2[v_b, v_k, v_j]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_batch_matmul_NN[(v_ax3 // T.int64(64) + v_ax1 + v_ax2) % T.int64(6), T.int64(0), v_ax3 % T.int64(64)])
+                T.writes(T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3] = T_batch_matmul_NN[(v_ax3 // T.int64(64) + v_ax1 + v_ax2) % T.int64(6), T.int64(0), v_ax3 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1), T.int64(6), T.int64(64)):
+            with T.block("T_transpose_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def attention2(lv203: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), lv204: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), lv205: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        T_transpose_1 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_transpose_2 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape_1 = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_batch_matmul_NT = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1500)))
+        T_divide = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1500)))
+        T_softmax_maxelem = T.alloc_buffer((T.int64(6), T.int64(1)))
+        T_softmax_exp = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1500)))
+        T_softmax_expsum = T.alloc_buffer((T.int64(6), T.int64(1)))
+        T_softmax_norm = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(1500)))
+        T_transpose_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)))
+        T_reshape_2 = T.alloc_buffer((T.int64(6), T.int64(1500), T.int64(64)))
+        T_batch_matmul_NN = T.alloc_buffer((T.int64(6), T.int64(1), T.int64(64)))
+        T_reshape_3 = T.alloc_buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)))
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv203[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_1[v_ax0, v_ax1, v_ax2, v_ax3] = lv203[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_1[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = T_transpose_1[T.int64(0), (v_ax2 // T.int64(64) + v_ax0 + v_ax1) % T.int64(6), T.int64(0), v_ax2 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose_1"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv204[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_2[v_ax0, v_ax1, v_ax2, v_ax3] = lv204[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape_1"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_2[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_1[v_ax0, v_ax1, v_ax2])
+                T_reshape_1[v_ax0, v_ax1, v_ax2] = T_transpose_2[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1), T.int64(1500), T.int64(64)):
+            with T.block("T_batch_matmul_NT"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_reshape[v_b, v_i, v_k], T_reshape_1[v_b, v_j, v_k])
+                T.writes(T_batch_matmul_NT[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_1]})
+                with T.init():
+                    T_batch_matmul_NT[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NT[v_b, v_i, v_j] = T_batch_matmul_NT[v_b, v_i, v_j] + T_reshape[v_b, v_i, v_k] * T_reshape_1[v_b, v_j, v_k]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1), T.int64(1500)):
+            with T.block("T_divide"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_batch_matmul_NT[v_ax0, v_ax1, v_ax2])
+                T.writes(T_divide[v_ax0, v_ax1, v_ax2])
+                T_divide[v_ax0, v_ax1, v_ax2] = T_batch_matmul_NT[v_ax0, v_ax1, v_ax2] / T.sqrt(T.float32(64.0))
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1), T.int64(1500)):
+            with T.block("T_softmax_maxelem"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_divide[v_i0, v_i1, v_k])
+                T.writes(T_softmax_maxelem[v_i0, v_i1])
+                with T.init():
+                    T_softmax_maxelem[v_i0, v_i1] = T.float32(-340282346638528859811704183484516925440.0)
+                T_softmax_maxelem[v_i0, v_i1] = T.max(T_softmax_maxelem[v_i0, v_i1], T_divide[v_i0, v_i1, v_k])
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1), T.int64(1500)):
+            with T.block("T_softmax_exp"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_divide[v_i0, v_i1, v_i2], T_softmax_maxelem[v_i0, v_i1])
+                T.writes(T_softmax_exp[v_i0, v_i1, v_i2])
+                T_softmax_exp[v_i0, v_i1, v_i2] = T.exp(T_divide[v_i0, v_i1, v_i2] - T_softmax_maxelem[v_i0, v_i1])
+        for i0, i1, k in T.grid(T.int64(6), T.int64(1), T.int64(1500)):
+            with T.block("T_softmax_expsum"):
+                v_i0, v_i1, v_k = T.axis.remap("SSR", [i0, i1, k])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_k])
+                T.writes(T_softmax_expsum[v_i0, v_i1])
+                with T.init():
+                    T_softmax_expsum[v_i0, v_i1] = T.float32(0.0)
+                T_softmax_expsum[v_i0, v_i1] = T_softmax_expsum[v_i0, v_i1] + T_softmax_exp[v_i0, v_i1, v_k]
+        for i0, i1, i2 in T.grid(T.int64(6), T.int64(1), T.int64(1500)):
+            with T.block("T_softmax_norm"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(T_softmax_exp[v_i0, v_i1, v_i2], T_softmax_expsum[v_i0, v_i1])
+                T.writes(T_softmax_norm[v_i0, v_i1, v_i2])
+                T.block_attr({"axis": 2})
+                T_softmax_norm[v_i0, v_i1, v_i2] = T_softmax_exp[v_i0, v_i1, v_i2] / T_softmax_expsum[v_i0, v_i1]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose_2"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv205[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose_3[v_ax0, v_ax1, v_ax2, v_ax3] = lv205[v_ax0, v_ax2, v_ax1, v_ax3]
+        for ax0, ax1, ax2 in T.grid(T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_reshape_2"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(T_transpose_3[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)])
+                T.writes(T_reshape_2[v_ax0, v_ax1, v_ax2])
+                T_reshape_2[v_ax0, v_ax1, v_ax2] = T_transpose_3[T.int64(0), ((v_ax2 // T.int64(64) + v_ax1) // T.int64(1500) + v_ax0) % T.int64(6), (v_ax2 // T.int64(64) + v_ax1) % T.int64(1500), v_ax2 % T.int64(64)]
+        for b, i, j, k in T.grid(T.int64(6), T.int64(1), T.int64(64), T.int64(1500)):
+            with T.block("T_batch_matmul_NN"):
+                v_b, v_i, v_j, v_k = T.axis.remap("SSSR", [b, i, j, k])
+                T.reads(T_softmax_norm[v_b, v_i, v_k], T_reshape_2[v_b, v_k, v_j])
+                T.writes(T_batch_matmul_NN[v_b, v_i, v_j])
+                T.block_attr({"layout_free_placeholders": [T_reshape_2]})
+                with T.init():
+                    T_batch_matmul_NN[v_b, v_i, v_j] = T.float32(0.0)
+                T_batch_matmul_NN[v_b, v_i, v_j] = T_batch_matmul_NN[v_b, v_i, v_j] + T_softmax_norm[v_b, v_i, v_k] * T_reshape_2[v_b, v_k, v_j]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_reshape_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_batch_matmul_NN[(v_ax3 // T.int64(64) + v_ax1 + v_ax2) % T.int64(6), T.int64(0), v_ax3 % T.int64(64)])
+                T.writes(T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_reshape_3[v_ax0, v_ax1, v_ax2, v_ax3] = T_batch_matmul_NN[(v_ax3 // T.int64(64) + v_ax1 + v_ax2) % T.int64(6), T.int64(0), v_ax3 % T.int64(64)]
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1), T.int64(6), T.int64(64)):
+            with T.block("T_transpose_3"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = T_reshape_3[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def cast1(lv159: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), compute: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("compute"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(lv159[v_i0, v_i1, v_i2])
+                T.writes(compute[v_i0, v_i1, v_i2])
+                compute[v_i0, v_i1, v_i2] = lv159[v_i0, v_i1, v_i2]
+
+    @T.prim_func(private=True)
+    def conv1d(input_features: T.Buffer((T.int64(1), T.int64(80), T.int64(3000)), "float32"), p_encoder_conv1_weight: T.Buffer((T.int64(384), T.int64(80), T.int64(3)), "float32"), conv1d_ncw: T.Buffer((T.int64(1), T.int64(384), T.int64(3000)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        pad_temp = T.alloc_buffer((T.int64(1), T.int64(80), T.int64(3002)))
+        for i0, i1, i2 in T.grid(T.int64(1), T.int64(80), T.int64(3002)):
+            with T.block("pad_temp"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(input_features[v_i0, v_i1, v_i2 - T.int64(1)])
+                T.writes(pad_temp[v_i0, v_i1, v_i2])
+                pad_temp[v_i0, v_i1, v_i2] = T.if_then_else(T.int64(1) <= v_i2 and v_i2 < T.int64(3001), input_features[v_i0, v_i1, v_i2 - T.int64(1)], T.float32(0.0))
+        for nn, ff, yy, rc, ry in T.grid(T.int64(1), T.int64(384), T.int64(3000), T.int64(80), T.int64(3)):
+            with T.block("conv1d_ncw"):
+                v_nn, v_ff, v_yy, v_rc, v_ry = T.axis.remap("SSSRR", [nn, ff, yy, rc, ry])
+                T.reads(pad_temp[v_nn, v_rc, v_yy + v_ry], p_encoder_conv1_weight[v_ff, v_rc, v_ry])
+                T.writes(conv1d_ncw[v_nn, v_ff, v_yy])
+                with T.init():
+                    conv1d_ncw[v_nn, v_ff, v_yy] = T.float32(0.0)
+                conv1d_ncw[v_nn, v_ff, v_yy] = conv1d_ncw[v_nn, v_ff, v_yy] + pad_temp[v_nn, v_rc, v_yy + v_ry] * p_encoder_conv1_weight[v_ff, v_rc, v_ry]
+
+    @T.prim_func(private=True)
+    def conv1d1(lv3: T.Buffer((T.int64(1), T.int64(384), T.int64(3000)), "float32"), p_encoder_conv2_weight: T.Buffer((T.int64(384), T.int64(384), T.int64(3)), "float32"), conv1d_ncw: T.Buffer((T.int64(1), T.int64(384), T.int64(1500)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        pad_temp = T.alloc_buffer((T.int64(1), T.int64(384), T.int64(3002)))
+        for i0, i1, i2 in T.grid(T.int64(1), T.int64(384), T.int64(3002)):
+            with T.block("pad_temp"):
+                v_i0, v_i1, v_i2 = T.axis.remap("SSS", [i0, i1, i2])
+                T.reads(lv3[v_i0, v_i1, v_i2 - T.int64(1)])
+                T.writes(pad_temp[v_i0, v_i1, v_i2])
+                pad_temp[v_i0, v_i1, v_i2] = T.if_then_else(T.int64(1) <= v_i2 and v_i2 < T.int64(3001), lv3[v_i0, v_i1, v_i2 - T.int64(1)], T.float32(0.0))
+        for nn, ff, yy, rc, ry in T.grid(T.int64(1), T.int64(384), T.int64(1500), T.int64(384), T.int64(3)):
+            with T.block("conv1d_ncw"):
+                v_nn, v_ff, v_yy, v_rc, v_ry = T.axis.remap("SSSRR", [nn, ff, yy, rc, ry])
+                T.reads(pad_temp[v_nn, v_rc, v_yy * T.int64(2) + v_ry], p_encoder_conv2_weight[v_ff, v_rc, v_ry])
+                T.writes(conv1d_ncw[v_nn, v_ff, v_yy])
+                with T.init():
+                    conv1d_ncw[v_nn, v_ff, v_yy] = T.float32(0.0)
+                conv1d_ncw[v_nn, v_ff, v_yy] = conv1d_ncw[v_nn, v_ff, v_yy] + pad_temp[v_nn, v_rc, v_yy * T.int64(2) + v_ry] * p_encoder_conv2_weight[v_ff, v_rc, v_ry]
+
+    @T.prim_func(private=True)
+    def gelu(lv2: T.Buffer((T.int64(1), T.int64(384), T.int64(3000)), "float32"), T_multiply: T.Buffer((T.int64(1), T.int64(384), T.int64(3000)), "float32")):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(384), T.int64(3000)):
+            with T.block("T_multiply"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv2[v_ax0, v_ax1, v_ax2])
+                T.writes(T_multiply[v_ax0, v_ax1, v_ax2])
+                T_multiply[v_ax0, v_ax1, v_ax2] = lv2[v_ax0, v_ax1, v_ax2] * T.float32(0.5)
+
+    @T.prim_func(private=True)
+    def gelu1(lv6: T.Buffer((T.int64(1), T.int64(384), T.int64(1500)), "float32"), T_multiply: T.Buffer((T.int64(1), T.int64(384), T.int64(1500)), "float32")):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(384), T.int64(1500)):
+            with T.block("T_multiply"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv6[v_ax0, v_ax1, v_ax2])
+                T.writes(T_multiply[v_ax0, v_ax1, v_ax2])
+                T_multiply[v_ax0, v_ax1, v_ax2] = lv6[v_ax0, v_ax1, v_ax2] * T.float32(0.5)
+
+    @T.prim_func(private=True)
+    def gelu2(lv39: T.Buffer((T.int64(1), T.int64(1500), T.int64(1536)), "float32"), T_multiply: T.Buffer((T.int64(1), T.int64(1500), T.int64(1536)), "float32")):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1500), T.int64(1536)):
+            with T.block("T_multiply"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv39[v_ax0, v_ax1, v_ax2])
+                T.writes(T_multiply[v_ax0, v_ax1, v_ax2])
+                T_multiply[v_ax0, v_ax1, v_ax2] = lv39[v_ax0, v_ax1, v_ax2] * T.float32(0.5)
+
+    @T.prim_func(private=True)
+    def gelu3(lv217: T.Buffer((T.int64(1), T.int64(1), T.int64(1536)), "float32"), T_multiply: T.Buffer((T.int64(1), T.int64(1), T.int64(1536)), "float32")):
+        T.func_attr({"op_pattern": 0, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1), T.int64(1536)):
+            with T.block("T_multiply"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv217[v_ax0, v_ax1, v_ax2])
+                T.writes(T_multiply[v_ax0, v_ax1, v_ax2])
+                T_multiply[v_ax0, v_ax1, v_ax2] = lv217[v_ax0, v_ax1, v_ax2] * T.float32(0.5)
+
+    @T.prim_func(private=True)
+    def index_tensor(p_decoder_embed_positions_weight: T.Buffer((T.int64(448), T.int64(384)), "float32"), lv158: T.Buffer((T.int64(1), T.int64(1)), "int64"), T_take: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 8, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("T_take"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(p_decoder_embed_positions_weight[T.min(T.max(T.int64(0), lv158[v_ax0, v_ax1]), T.int64(447)), v_ax2], lv158[v_ax0, v_ax1])
+                T.writes(T_take[v_ax0, v_ax1, v_ax2])
+                T_take[v_ax0, v_ax1, v_ax2] = p_decoder_embed_positions_weight[T.min(T.max(T.int64(0), lv158[v_ax0, v_ax1]), T.int64(447)), v_ax2]
+
+    @T.prim_func(private=True)
+    def layer_norm(lv9: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32"), p_encoder_layers_0_self_attn_layer_norm_weight: T.Buffer((T.int64(384),), "float32"), p_encoder_layers_0_self_attn_layer_norm_bias: T.Buffer((T.int64(384),), "float32"), T_layer_norm: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        lv9_red_temp_v0 = T.alloc_buffer((T.int64(1), T.int64(1500)))
+        lv9_red_temp_v1 = T.alloc_buffer((T.int64(1), T.int64(1500)))
+        for ax0, ax1, k2 in T.grid(T.int64(1), T.int64(1500), T.int64(384)):
+            with T.block("lv9_red_temp"):
+                v_ax0, v_ax1, v_k2 = T.axis.remap("SSR", [ax0, ax1, k2])
+                T.reads(lv9[v_ax0, v_ax1, v_k2])
+                T.writes(lv9_red_temp_v0[v_ax0, v_ax1], lv9_red_temp_v1[v_ax0, v_ax1])
+                with T.init():
+                    lv9_red_temp_v0[v_ax0, v_ax1] = T.float32(0.0)
+                    lv9_red_temp_v1[v_ax0, v_ax1] = T.float32(0.0)
+                v_lv9_red_temp_v0: T.float32 = lv9_red_temp_v0[v_ax0, v_ax1] + lv9[v_ax0, v_ax1, v_k2]
+                v_lv9_red_temp_v1: T.float32 = lv9_red_temp_v1[v_ax0, v_ax1] + lv9[v_ax0, v_ax1, v_k2] * lv9[v_ax0, v_ax1, v_k2]
+                lv9_red_temp_v0[v_ax0, v_ax1] = v_lv9_red_temp_v0
+                lv9_red_temp_v1[v_ax0, v_ax1] = v_lv9_red_temp_v1
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1500), T.int64(384)):
+            with T.block("T_layer_norm"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv9[v_ax0, v_ax1, v_ax2], lv9_red_temp_v0[v_ax0, v_ax1], lv9_red_temp_v1[v_ax0, v_ax1], p_encoder_layers_0_self_attn_layer_norm_weight[v_ax2], p_encoder_layers_0_self_attn_layer_norm_bias[v_ax2])
+                T.writes(T_layer_norm[v_ax0, v_ax1, v_ax2])
+                T_layer_norm[v_ax0, v_ax1, v_ax2] = (lv9[v_ax0, v_ax1, v_ax2] - lv9_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665)) * T.rsqrt(lv9_red_temp_v1[v_ax0, v_ax1] * T.float32(0.0026041666666666665) - lv9_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665) * (lv9_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665)) + T.float32(1.0000000000000001e-05)) * p_encoder_layers_0_self_attn_layer_norm_weight[v_ax2] + p_encoder_layers_0_self_attn_layer_norm_bias[v_ax2]
+
+    @T.prim_func(private=True)
+    def layer_norm1(lv161: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), p_decoder_layers_0_self_attn_layer_norm_weight: T.Buffer((T.int64(384),), "float32"), p_decoder_layers_0_self_attn_layer_norm_bias: T.Buffer((T.int64(384),), "float32"), T_layer_norm: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        lv161_red_temp_v0 = T.alloc_buffer((T.int64(1), T.int64(1)))
+        lv161_red_temp_v1 = T.alloc_buffer((T.int64(1), T.int64(1)))
+        for ax0, ax1, k2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("lv161_red_temp"):
+                v_ax0, v_ax1, v_k2 = T.axis.remap("SSR", [ax0, ax1, k2])
+                T.reads(lv161[v_ax0, v_ax1, v_k2])
+                T.writes(lv161_red_temp_v0[v_ax0, v_ax1], lv161_red_temp_v1[v_ax0, v_ax1])
+                with T.init():
+                    lv161_red_temp_v0[v_ax0, v_ax1] = T.float32(0.0)
+                    lv161_red_temp_v1[v_ax0, v_ax1] = T.float32(0.0)
+                v_lv161_red_temp_v0: T.float32 = lv161_red_temp_v0[v_ax0, v_ax1] + lv161[v_ax0, v_ax1, v_k2]
+                v_lv161_red_temp_v1: T.float32 = lv161_red_temp_v1[v_ax0, v_ax1] + lv161[v_ax0, v_ax1, v_k2] * lv161[v_ax0, v_ax1, v_k2]
+                lv161_red_temp_v0[v_ax0, v_ax1] = v_lv161_red_temp_v0
+                lv161_red_temp_v1[v_ax0, v_ax1] = v_lv161_red_temp_v1
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("T_layer_norm"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv161[v_ax0, v_ax1, v_ax2], lv161_red_temp_v0[v_ax0, v_ax1], lv161_red_temp_v1[v_ax0, v_ax1], p_decoder_layers_0_self_attn_layer_norm_weight[v_ax2], p_decoder_layers_0_self_attn_layer_norm_bias[v_ax2])
+                T.writes(T_layer_norm[v_ax0, v_ax1, v_ax2])
+                T_layer_norm[v_ax0, v_ax1, v_ax2] = (lv161[v_ax0, v_ax1, v_ax2] - lv161_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665)) * T.rsqrt(lv161_red_temp_v1[v_ax0, v_ax1] * T.float32(0.0026041666666666665) - lv161_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665) * (lv161_red_temp_v0[v_ax0, v_ax1] * T.float32(0.0026041666666666665)) + T.float32(1.0000000000000001e-05)) * p_decoder_layers_0_self_attn_layer_norm_weight[v_ax2] + p_decoder_layers_0_self_attn_layer_norm_bias[v_ax2]
+
+    @T.prim_func(private=True)
+    def matmul(lv10: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32"), lv11: T.Buffer((T.int64(384), T.int64(384)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1500), T.int64(384), T.int64(384)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv10[v_i0, v_i1, v_k], lv11[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv10[v_i0, v_i1, v_k] * lv11[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def matmul1(lv36: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32"), lv37: T.Buffer((T.int64(384), T.int64(1536)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1500), T.int64(1536)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1500), T.int64(1536), T.int64(384)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv36[v_i0, v_i1, v_k], lv37[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv36[v_i0, v_i1, v_k] * lv37[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def matmul2(lv40: T.Buffer((T.int64(1), T.int64(1500), T.int64(1536)), "float32"), lv41: T.Buffer((T.int64(1536), T.int64(384)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1500), T.int64(384), T.int64(1536)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv40[v_i0, v_i1, v_k], lv41[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv40[v_i0, v_i1, v_k] * lv41[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def matmul3(lv162: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), lv163: T.Buffer((T.int64(384), T.int64(384)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1), T.int64(384), T.int64(384)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv162[v_i0, v_i1, v_k], lv163[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv162[v_i0, v_i1, v_k] * lv163[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def matmul4(lv214: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), lv215: T.Buffer((T.int64(384), T.int64(1536)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1), T.int64(1536)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1), T.int64(1536), T.int64(384)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv214[v_i0, v_i1, v_k], lv215[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv214[v_i0, v_i1, v_k] * lv215[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def matmul5(lv218: T.Buffer((T.int64(1), T.int64(1), T.int64(1536)), "float32"), lv219: T.Buffer((T.int64(1536), T.int64(384)), "float32"), matmul: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 4, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for i0, i1, i2, k in T.grid(T.int64(1), T.int64(1), T.int64(384), T.int64(1536)):
+            with T.block("matmul"):
+                v_i0, v_i1, v_i2, v_k = T.axis.remap("SSSR", [i0, i1, i2, k])
+                T.reads(lv218[v_i0, v_i1, v_k], lv219[v_k, v_i2])
+                T.writes(matmul[v_i0, v_i1, v_i2])
+                with T.init():
+                    matmul[v_i0, v_i1, v_i2] = T.float32(0.0)
+                matmul[v_i0, v_i1, v_i2] = matmul[v_i0, v_i1, v_i2] + lv218[v_i0, v_i1, v_k] * lv219[v_k, v_i2]
+
+    @T.prim_func(private=True)
+    def reshape(p_encoder_conv1_bias: T.Buffer((T.int64(384),), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(384), T.int64(1)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(384), T.int64(1)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(p_encoder_conv1_bias[(v_ax1 + v_ax2) % T.int64(384)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = p_encoder_conv1_bias[(v_ax1 + v_ax2) % T.int64(384)]
+
+    @T.prim_func(private=True)
+    def reshape1(lv13: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1500), T.int64(6), T.int64(64)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv13[T.int64(0), ((v_ax2 * T.int64(64) + v_ax3) // T.int64(384) + v_ax1) % T.int64(1500), (v_ax2 * T.int64(64) + v_ax3) % T.int64(384)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_reshape[v_ax0, v_ax1, v_ax2, v_ax3] = lv13[T.int64(0), ((v_ax2 * T.int64(64) + v_ax3) // T.int64(384) + v_ax1) % T.int64(1500), (v_ax2 * T.int64(64) + v_ax3) % T.int64(384)]
+
+    @T.prim_func(private=True)
+    def reshape2(lv30: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1500), T.int64(384)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv30[T.int64(0), (v_ax2 // T.int64(384) + v_ax1) % T.int64(1500), v_ax2 % T.int64(384) // T.int64(64), v_ax2 % T.int64(64)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = lv30[T.int64(0), (v_ax2 // T.int64(384) + v_ax1) % T.int64(1500), v_ax2 % T.int64(384) // T.int64(64), v_ax2 % T.int64(64)]
+
+    @T.prim_func(private=True)
+    def reshape5(lv154: T.Buffer((T.int64(1), T.int64(384)), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv154[T.int64(0), v_ax2 % T.int64(384)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = lv154[T.int64(0), v_ax2 % T.int64(384)]
+
+    @T.prim_func(private=True)
+    def reshape6(lv165: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1), T.int64(6), T.int64(64)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv165[T.int64(0), T.int64(0), (v_ax2 * T.int64(64) + v_ax3) % T.int64(384)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_reshape[v_ax0, v_ax1, v_ax2, v_ax3] = lv165[T.int64(0), T.int64(0), (v_ax2 * T.int64(64) + v_ax3) % T.int64(384)]
+
+    @T.prim_func(private=True)
+    def reshape7(lv182: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), T_reshape: T.Buffer((T.int64(1), T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1), T.int64(384)):
+            with T.block("T_reshape"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv182[T.int64(0), T.int64(0), v_ax2 % T.int64(384) // T.int64(64), v_ax2 % T.int64(64)])
+                T.writes(T_reshape[v_ax0, v_ax1, v_ax2])
+                T_reshape[v_ax0, v_ax1, v_ax2] = lv182[T.int64(0), T.int64(0), v_ax2 % T.int64(384) // T.int64(64), v_ax2 % T.int64(64)]
+
+    @T.prim_func(private=True)
+    def take(p_decoder_embed_tokens_weight: T.Buffer((T.int64(51865), T.int64(384)), "float32"), lv153: T.Buffer((T.int64(1),), "int32"), T_take: T.Buffer((T.int64(1), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 8, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1 in T.grid(T.int64(1), T.int64(384)):
+            with T.block("T_take"):
+                v_ax0, v_ax1 = T.axis.remap("SS", [ax0, ax1])
+                T.reads(p_decoder_embed_tokens_weight[lv153[v_ax0], v_ax1], lv153[v_ax0])
+                T.writes(T_take[v_ax0, v_ax1])
+                T_take[v_ax0, v_ax1] = p_decoder_embed_tokens_weight[lv153[v_ax0], v_ax1]
+
+    @T.prim_func(private=True)
+    def transpose(lv7: T.Buffer((T.int64(1), T.int64(384), T.int64(1500)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1500), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2 in T.grid(T.int64(1), T.int64(1500), T.int64(384)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2 = T.axis.remap("SSS", [ax0, ax1, ax2])
+                T.reads(lv7[v_ax0, v_ax2, v_ax1])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2])
+                T_transpose[v_ax0, v_ax1, v_ax2] = lv7[v_ax0, v_ax2, v_ax1]
+
+    @T.prim_func(private=True)
+    def transpose1(p_encoder_layers_0_self_attn_q_proj_weight: T.Buffer((T.int64(384), T.int64(384)), "float32"), T_transpose: T.Buffer((T.int64(384), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1 in T.grid(T.int64(384), T.int64(384)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1 = T.axis.remap("SS", [ax0, ax1])
+                T.reads(p_encoder_layers_0_self_attn_q_proj_weight[v_ax1, v_ax0])
+                T.writes(T_transpose[v_ax0, v_ax1])
+                T_transpose[v_ax0, v_ax1] = p_encoder_layers_0_self_attn_q_proj_weight[v_ax1, v_ax0]
+
+    @T.prim_func(private=True)
+    def transpose2(lv14: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1500), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv14[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = lv14[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def transpose3(lv15: T.Buffer((T.int64(1), T.int64(6), T.int64(1500), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1500), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1500), T.int64(6), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv15[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = lv15[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def transpose4(p_encoder_layers_0_fc1_weight: T.Buffer((T.int64(1536), T.int64(384)), "float32"), T_transpose: T.Buffer((T.int64(384), T.int64(1536)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1 in T.grid(T.int64(384), T.int64(1536)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1 = T.axis.remap("SS", [ax0, ax1])
+                T.reads(p_encoder_layers_0_fc1_weight[v_ax1, v_ax0])
+                T.writes(T_transpose[v_ax0, v_ax1])
+                T_transpose[v_ax0, v_ax1] = p_encoder_layers_0_fc1_weight[v_ax1, v_ax0]
+
+    @T.prim_func(private=True)
+    def transpose5(p_encoder_layers_0_fc2_weight: T.Buffer((T.int64(384), T.int64(1536)), "float32"), T_transpose: T.Buffer((T.int64(1536), T.int64(384)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1 in T.grid(T.int64(1536), T.int64(384)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1 = T.axis.remap("SS", [ax0, ax1])
+                T.reads(p_encoder_layers_0_fc2_weight[v_ax1, v_ax0])
+                T.writes(T_transpose[v_ax0, v_ax1])
+                T_transpose[v_ax0, v_ax1] = p_encoder_layers_0_fc2_weight[v_ax1, v_ax0]
+
+    @T.prim_func(private=True)
+    def transpose6(lv166: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(6), T.int64(1), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv166[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = lv166[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @T.prim_func(private=True)
+    def transpose7(lv167: T.Buffer((T.int64(1), T.int64(6), T.int64(1), T.int64(64)), "float32"), T_transpose: T.Buffer((T.int64(1), T.int64(1), T.int64(6), T.int64(64)), "float32")):
+        T.func_attr({"op_pattern": 2, "tir.noalias": T.bool(True)})
+        # with T.block("root"):
+        for ax0, ax1, ax2, ax3 in T.grid(T.int64(1), T.int64(1), T.int64(6), T.int64(64)):
+            with T.block("T_transpose"):
+                v_ax0, v_ax1, v_ax2, v_ax3 = T.axis.remap("SSSS", [ax0, ax1, ax2, ax3])
+                T.reads(lv167[v_ax0, v_ax2, v_ax1, v_ax3])
+                T.writes(T_transpose[v_ax0, v_ax1, v_ax2, v_ax3])
+                T_transpose[v_ax0, v_ax1, v_ax2, v_ax3] = lv167[v_ax0, v_ax2, v_ax1, v_ax3]
+
+    @R.function(private=True)
+    def fused_conv1d1_add1_gelu1(lv3: R.Tensor((1, 384, 3000), dtype="float32"), p_encoder_conv2_weight: R.Tensor((384, 384, 3), dtype="float32"), lv5: R.Tensor((1, 384, 1), dtype="float32")) -> R.Tensor((1, 384, 1500), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv4 = R.call_tir(cls.conv1d1, (lv3, p_encoder_conv2_weight), out_sinfo=R.Tensor((1, 384, 1500), dtype="float32"))
+            lv6 = R.call_tir(cls.add1, (lv4, lv5), out_sinfo=R.Tensor((1, 384, 1500), dtype="float32"))
+            gv = R.call_tir(cls.gelu1, (lv6,), out_sinfo=R.Tensor((1, 384, 1500), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_conv1d_add_gelu(input_features: R.Tensor((1, 80, 3000), dtype="float32"), p_encoder_conv1_weight: R.Tensor((384, 80, 3), dtype="float32"), lv1: R.Tensor((1, 384, 1), dtype="float32")) -> R.Tensor((1, 384, 3000), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv = R.call_tir(cls.conv1d, (input_features, p_encoder_conv1_weight), out_sinfo=R.Tensor((1, 384, 3000), dtype="float32"))
+            lv2 = R.call_tir(cls.add, (lv, lv1), out_sinfo=R.Tensor((1, 384, 3000), dtype="float32"))
+            gv = R.call_tir(cls.gelu, (lv2,), out_sinfo=R.Tensor((1, 384, 3000), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul1_add5_gelu2(lv36: R.Tensor((1, 1500, 384), dtype="float32"), lv37: R.Tensor((384, 1536), dtype="float32"), p_encoder_layers_0_fc1_bias: R.Tensor((1536,), dtype="float32")) -> R.Tensor((1, 1500, 1536), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv38 = R.call_tir(cls.matmul1, (lv36, lv37), out_sinfo=R.Tensor((1, 1500, 1536), dtype="float32"))
+            lv39 = R.call_tir(cls.add5, (lv38, p_encoder_layers_0_fc1_bias), out_sinfo=R.Tensor((1, 1500, 1536), dtype="float32"))
+            gv = R.call_tir(cls.gelu2, (lv39,), out_sinfo=R.Tensor((1, 1500, 1536), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul2_add3_add4(lv40: R.Tensor((1, 1500, 1536), dtype="float32"), lv41: R.Tensor((1536, 384), dtype="float32"), p_encoder_layers_0_fc2_bias: R.Tensor((384,), dtype="float32"), lv35: R.Tensor((1, 1500, 384), dtype="float32")) -> R.Tensor((1, 1500, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv42 = R.call_tir(cls.matmul2, (lv40, lv41), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv43 = R.call_tir(cls.add3, (lv42, p_encoder_layers_0_fc2_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            gv = R.call_tir(cls.add4, (lv35, lv43), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul3_add7(lv162: R.Tensor((1, 1, 384), dtype="float32"), lv163: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32")) -> R.Tensor((1, 1, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv164 = R.call_tir(cls.matmul3, (lv162, lv163), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            gv = R.call_tir(cls.add7, (lv164, p_decoder_layers_0_self_attn_q_proj_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul3_add7_add6(lv183: R.Tensor((1, 1, 384), dtype="float32"), lv184: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), lv161: R.Tensor((1, 1, 384), dtype="float32")) -> R.Tensor((1, 1, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv185 = R.call_tir(cls.matmul3, (lv183, lv184), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv186 = R.call_tir(cls.add7, (lv185, p_decoder_layers_0_self_attn_out_proj_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            gv = R.call_tir(cls.add6, (lv161, lv186), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul4_add8_gelu3(lv214: R.Tensor((1, 1, 384), dtype="float32"), lv215: R.Tensor((384, 1536), dtype="float32"), p_decoder_layers_0_fc1_bias: R.Tensor((1536,), dtype="float32")) -> R.Tensor((1, 1, 1536), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv216 = R.call_tir(cls.matmul4, (lv214, lv215), out_sinfo=R.Tensor((1, 1, 1536), dtype="float32"))
+            lv217 = R.call_tir(cls.add8, (lv216, p_decoder_layers_0_fc1_bias), out_sinfo=R.Tensor((1, 1, 1536), dtype="float32"))
+            gv = R.call_tir(cls.gelu3, (lv217,), out_sinfo=R.Tensor((1, 1, 1536), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul5_add7_add6(lv218: R.Tensor((1, 1, 1536), dtype="float32"), lv219: R.Tensor((1536, 384), dtype="float32"), p_decoder_layers_0_fc2_bias: R.Tensor((384,), dtype="float32"), lv213: R.Tensor((1, 1, 384), dtype="float32")) -> R.Tensor((1, 1, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv220 = R.call_tir(cls.matmul5, (lv218, lv219), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv221 = R.call_tir(cls.add7, (lv220, p_decoder_layers_0_fc2_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            gv = R.call_tir(cls.add6, (lv213, lv221), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul_add3(lv10: R.Tensor((1, 1500, 384), dtype="float32"), lv11: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32")) -> R.Tensor((1, 1500, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv12 = R.call_tir(cls.matmul, (lv10, lv11), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            gv = R.call_tir(cls.add3, (lv12, p_encoder_layers_0_self_attn_q_proj_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_matmul_add3_add4(lv31: R.Tensor((1, 1500, 384), dtype="float32"), lv32: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), lv9: R.Tensor((1, 1500, 384), dtype="float32")) -> R.Tensor((1, 1500, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv33 = R.call_tir(cls.matmul, (lv31, lv32), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv34 = R.call_tir(cls.add3, (lv33, p_encoder_layers_0_self_attn_out_proj_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            gv = R.call_tir(cls.add4, (lv9, lv34), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_reshape1_transpose2_transpose3(lv13: R.Tensor((1, 1500, 384), dtype="float32")) -> R.Tensor((1, 1500, 6, 64), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv14 = R.call_tir(cls.reshape1, (lv13,), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            lv15 = R.call_tir(cls.transpose2, (lv14,), out_sinfo=R.Tensor((1, 6, 1500, 64), dtype="float32"))
+            gv = R.call_tir(cls.transpose3, (lv15,), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_reshape5_cast1_add6(lv154: R.Tensor((1, 384), dtype="float32"), lv159: R.Tensor((1, 1, 384), dtype="float32")) -> R.Tensor((1, 1, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv155 = R.call_tir(cls.reshape5, (lv154,), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv160 = R.call_tir(cls.cast1, (lv159,), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            gv = R.call_tir(cls.add6, (lv155, lv160), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_reshape6_transpose6_transpose7(lv165: R.Tensor((1, 1, 384), dtype="float32")) -> R.Tensor((1, 1, 6, 64), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv166 = R.call_tir(cls.reshape6, (lv165,), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv167 = R.call_tir(cls.transpose6, (lv166,), out_sinfo=R.Tensor((1, 6, 1, 64), dtype="float32"))
+            gv = R.call_tir(cls.transpose7, (lv167,), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_transpose2_transpose3_reshape2(lv28: R.Tensor((1, 1500, 6, 64), dtype="float32")) -> R.Tensor((1, 1500, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv29 = R.call_tir(cls.transpose2, (lv28,), out_sinfo=R.Tensor((1, 6, 1500, 64), dtype="float32"))
+            lv30 = R.call_tir(cls.transpose3, (lv29,), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            gv = R.call_tir(cls.reshape2, (lv30,), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_transpose6_transpose7_reshape7(lv180: R.Tensor((1, 1, 6, 64), dtype="float32")) -> R.Tensor((1, 1, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv181 = R.call_tir(cls.transpose6, (lv180,), out_sinfo=R.Tensor((1, 6, 1, 64), dtype="float32"))
+            lv182 = R.call_tir(cls.transpose7, (lv181,), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            gv = R.call_tir(cls.reshape7, (lv182,), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function(private=True)
+    def fused_transpose_add2(lv7: R.Tensor((1, 384, 1500), dtype="float32"), p_encoder_embed_positions_weight: R.Tensor((1500, 384), dtype="float32")) -> R.Tensor((1, 1500, 384), dtype="float32"):
+        R.func_attr({"Primitive": 1})
+        cls = Module
+        with R.dataflow():
+            lv8 = R.call_tir(cls.transpose, (lv7,), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            gv = R.call_tir(cls.add2, (lv8, p_encoder_embed_positions_weight), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            R.output(gv)
+        return gv
+
+    @R.function
+    def main(input_features: R.Tensor((1, 80, 3000), dtype="float32"), p_encoder_embed_positions_weight: R.Tensor((1500, 384), dtype="float32"), p_decoder_embed_positions_weight: R.Tensor((448, 384), dtype="float32"), p_encoder_conv1_weight: R.Tensor((384, 80, 3), dtype="float32"), p_encoder_conv1_bias: R.Tensor((384,), dtype="float32"), p_encoder_conv2_weight: R.Tensor((384, 384, 3), dtype="float32"), p_encoder_conv2_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_0_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_0_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_encoder_layers_0_fc1_bias: R.Tensor((1536,), dtype="float32"), p_encoder_layers_0_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_encoder_layers_0_fc2_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_1_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_1_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_1_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_1_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_1_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_encoder_layers_1_fc1_bias: R.Tensor((1536,), dtype="float32"), p_encoder_layers_1_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_encoder_layers_1_fc2_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_2_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_2_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_2_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_2_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_2_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_encoder_layers_2_fc1_bias: R.Tensor((1536,), dtype="float32"), p_encoder_layers_2_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_encoder_layers_2_fc2_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_3_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_3_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_3_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_encoder_layers_3_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_encoder_layers_3_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_encoder_layers_3_fc1_bias: R.Tensor((1536,), dtype="float32"), p_encoder_layers_3_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_encoder_layers_3_fc2_bias: R.Tensor((384,), dtype="float32"), p_encoder_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_encoder_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_embed_tokens_weight: R.Tensor((51865, 384), dtype="float32"), p_decoder_layers_0_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_encoder_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_encoder_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_encoder_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_encoder_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_encoder_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_encoder_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_encoder_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_encoder_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_0_encoder_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_0_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_decoder_layers_0_fc1_bias: R.Tensor((1536,), dtype="float32"), p_decoder_layers_0_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_decoder_layers_0_fc2_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_encoder_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_encoder_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_encoder_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_encoder_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_encoder_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_encoder_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_encoder_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_encoder_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_1_encoder_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_1_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_decoder_layers_1_fc1_bias: R.Tensor((1536,), dtype="float32"), p_decoder_layers_1_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_decoder_layers_1_fc2_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_encoder_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_encoder_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_encoder_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_encoder_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_encoder_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_encoder_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_encoder_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_encoder_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_2_encoder_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_2_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_decoder_layers_2_fc1_bias: R.Tensor((1536,), dtype="float32"), p_decoder_layers_2_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_decoder_layers_2_fc2_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_self_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_self_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_self_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_self_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_self_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_self_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_self_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_self_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_self_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_encoder_attn_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_encoder_attn_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_encoder_attn_q_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_encoder_attn_q_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_encoder_attn_k_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_encoder_attn_v_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_encoder_attn_v_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_encoder_attn_out_proj_weight: R.Tensor((384, 384), dtype="float32"), p_decoder_layers_3_encoder_attn_out_proj_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_final_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_final_layer_norm_bias: R.Tensor((384,), dtype="float32"), p_decoder_layers_3_fc1_weight: R.Tensor((1536, 384), dtype="float32"), p_decoder_layers_3_fc1_bias: R.Tensor((1536,), dtype="float32"), p_decoder_layers_3_fc2_weight: R.Tensor((384, 1536), dtype="float32"), p_decoder_layers_3_fc2_bias: R.Tensor((384,), dtype="float32"), p_decoder_layer_norm_weight: R.Tensor((384,), dtype="float32"), p_decoder_layer_norm_bias: R.Tensor((384,), dtype="float32")) -> R.Tuple(R.Tensor((1, 1, 384), dtype="float32")):
+        R.func_attr({"num_input": 1})
+        cls = Module
+        with R.dataflow():
+            lv1 = R.call_tir(cls.reshape, (p_encoder_conv1_bias,), out_sinfo=R.Tensor((1, 384, 1), dtype="float32"))
+            lv: R.Tensor((1, 384, 3000), dtype="float32") = cls.fused_conv1d_add_gelu(input_features, p_encoder_conv1_weight, lv1)
+            lv5 = R.call_tir(cls.reshape, (p_encoder_conv2_bias,), out_sinfo=R.Tensor((1, 384, 1), dtype="float32"))
+            lv1_1: R.Tensor((1, 384, 1500), dtype="float32") = cls.fused_conv1d1_add1_gelu1(lv, p_encoder_conv2_weight, lv5)
+            lv2: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_transpose_add2(lv1_1, p_encoder_embed_positions_weight)
+            lv10 = R.call_tir(cls.layer_norm, (lv2, p_encoder_layers_0_self_attn_layer_norm_weight, p_encoder_layers_0_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv11 = R.call_tir(cls.transpose1, (p_encoder_layers_0_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv3: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv10, lv11, p_encoder_layers_0_self_attn_q_proj_bias)
+            lv4: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv3)
+            lv16 = R.call_tir(cls.transpose1, (p_encoder_layers_0_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv17 = R.call_tir(cls.matmul, (lv10, lv16), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv5_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv17)
+            lv20 = R.call_tir(cls.transpose1, (p_encoder_layers_0_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv6: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv10, lv20, p_encoder_layers_0_self_attn_v_proj_bias)
+            lv7: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv6)
+            lv28 = R.call_tir(cls.attention, (lv4, lv5_1, lv7), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            lv8: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_transpose2_transpose3_reshape2(lv28)
+            lv32 = R.call_tir(cls.transpose1, (p_encoder_layers_0_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv9: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3_add4(lv8, lv32, p_encoder_layers_0_self_attn_out_proj_bias, lv2)
+            lv36 = R.call_tir(cls.layer_norm, (lv9, p_encoder_layers_0_final_layer_norm_weight, p_encoder_layers_0_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv37 = R.call_tir(cls.transpose4, (p_encoder_layers_0_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv10_1: R.Tensor((1, 1500, 1536), dtype="float32") = cls.fused_matmul1_add5_gelu2(lv36, lv37, p_encoder_layers_0_fc1_bias)
+            lv41 = R.call_tir(cls.transpose5, (p_encoder_layers_0_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv11_1: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul2_add3_add4(lv10_1, lv41, p_encoder_layers_0_fc2_bias, lv9)
+            lv45 = R.call_tir(cls.layer_norm, (lv11_1, p_encoder_layers_1_self_attn_layer_norm_weight, p_encoder_layers_1_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv46 = R.call_tir(cls.transpose1, (p_encoder_layers_1_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv12: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv45, lv46, p_encoder_layers_1_self_attn_q_proj_bias)
+            lv13: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv12)
+            lv51 = R.call_tir(cls.transpose1, (p_encoder_layers_1_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv52 = R.call_tir(cls.matmul, (lv45, lv51), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv14: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv52)
+            lv55 = R.call_tir(cls.transpose1, (p_encoder_layers_1_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv15: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv45, lv55, p_encoder_layers_1_self_attn_v_proj_bias)
+            lv16_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv15)
+            lv63 = R.call_tir(cls.attention, (lv13, lv14, lv16_1), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            lv17_1: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_transpose2_transpose3_reshape2(lv63)
+            lv67 = R.call_tir(cls.transpose1, (p_encoder_layers_1_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv18: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3_add4(lv17_1, lv67, p_encoder_layers_1_self_attn_out_proj_bias, lv11_1)
+            lv71 = R.call_tir(cls.layer_norm, (lv18, p_encoder_layers_1_final_layer_norm_weight, p_encoder_layers_1_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv72 = R.call_tir(cls.transpose4, (p_encoder_layers_1_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv19: R.Tensor((1, 1500, 1536), dtype="float32") = cls.fused_matmul1_add5_gelu2(lv71, lv72, p_encoder_layers_1_fc1_bias)
+            lv76 = R.call_tir(cls.transpose5, (p_encoder_layers_1_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv20_1: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul2_add3_add4(lv19, lv76, p_encoder_layers_1_fc2_bias, lv18)
+            lv80 = R.call_tir(cls.layer_norm, (lv20_1, p_encoder_layers_2_self_attn_layer_norm_weight, p_encoder_layers_2_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv81 = R.call_tir(cls.transpose1, (p_encoder_layers_2_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv21: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv80, lv81, p_encoder_layers_2_self_attn_q_proj_bias)
+            lv22: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv21)
+            lv86 = R.call_tir(cls.transpose1, (p_encoder_layers_2_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv87 = R.call_tir(cls.matmul, (lv80, lv86), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv23: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv87)
+            lv90 = R.call_tir(cls.transpose1, (p_encoder_layers_2_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv24: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv80, lv90, p_encoder_layers_2_self_attn_v_proj_bias)
+            lv25: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv24)
+            lv98 = R.call_tir(cls.attention, (lv22, lv23, lv25), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            lv26: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_transpose2_transpose3_reshape2(lv98)
+            lv102 = R.call_tir(cls.transpose1, (p_encoder_layers_2_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv27: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3_add4(lv26, lv102, p_encoder_layers_2_self_attn_out_proj_bias, lv20_1)
+            lv106 = R.call_tir(cls.layer_norm, (lv27, p_encoder_layers_2_final_layer_norm_weight, p_encoder_layers_2_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv107 = R.call_tir(cls.transpose4, (p_encoder_layers_2_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv28_1: R.Tensor((1, 1500, 1536), dtype="float32") = cls.fused_matmul1_add5_gelu2(lv106, lv107, p_encoder_layers_2_fc1_bias)
+            lv111 = R.call_tir(cls.transpose5, (p_encoder_layers_2_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv29: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul2_add3_add4(lv28_1, lv111, p_encoder_layers_2_fc2_bias, lv27)
+            lv115 = R.call_tir(cls.layer_norm, (lv29, p_encoder_layers_3_self_attn_layer_norm_weight, p_encoder_layers_3_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv116 = R.call_tir(cls.transpose1, (p_encoder_layers_3_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv30: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv115, lv116, p_encoder_layers_3_self_attn_q_proj_bias)
+            lv31: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv30)
+            lv121 = R.call_tir(cls.transpose1, (p_encoder_layers_3_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv122 = R.call_tir(cls.matmul, (lv115, lv121), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv32_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv122)
+            lv125 = R.call_tir(cls.transpose1, (p_encoder_layers_3_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv33: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv115, lv125, p_encoder_layers_3_self_attn_v_proj_bias)
+            lv34: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv33)
+            lv133 = R.call_tir(cls.attention, (lv31, lv32_1, lv34), out_sinfo=R.Tensor((1, 1500, 6, 64), dtype="float32"))
+            lv35: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_transpose2_transpose3_reshape2(lv133)
+            lv137 = R.call_tir(cls.transpose1, (p_encoder_layers_3_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv36_1: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3_add4(lv35, lv137, p_encoder_layers_3_self_attn_out_proj_bias, lv29)
+            lv141 = R.call_tir(cls.layer_norm, (lv36_1, p_encoder_layers_3_final_layer_norm_weight, p_encoder_layers_3_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv142 = R.call_tir(cls.transpose4, (p_encoder_layers_3_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv37_1: R.Tensor((1, 1500, 1536), dtype="float32") = cls.fused_matmul1_add5_gelu2(lv141, lv142, p_encoder_layers_3_fc1_bias)
+            lv146 = R.call_tir(cls.transpose5, (p_encoder_layers_3_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv38: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul2_add3_add4(lv37_1, lv146, p_encoder_layers_3_fc2_bias, lv36_1)
+            lv150 = R.call_tir(cls.layer_norm, (lv38, p_encoder_layer_norm_weight, p_encoder_layer_norm_bias), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv154 = R.call_tir(cls.take, (p_decoder_embed_tokens_weight, metadata["relax.expr.Constant"][0]), out_sinfo=R.Tensor((1, 384), dtype="float32"))
+            lv159 = R.call_tir(cls.index_tensor, (p_decoder_embed_positions_weight, metadata["relax.expr.Constant"][1]), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv39: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_reshape5_cast1_add6(lv154, lv159)
+            lv162 = R.call_tir(cls.layer_norm1, (lv39, p_decoder_layers_0_self_attn_layer_norm_weight, p_decoder_layers_0_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv163 = R.call_tir(cls.transpose1, (p_decoder_layers_0_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv40: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv162, lv163, p_decoder_layers_0_self_attn_q_proj_bias)
+            lv41_1: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv40)
+            lv168 = R.call_tir(cls.transpose1, (p_decoder_layers_0_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv169 = R.call_tir(cls.matmul3, (lv162, lv168), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv42: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv169)
+            lv172 = R.call_tir(cls.transpose1, (p_decoder_layers_0_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv43: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv162, lv172, p_decoder_layers_0_self_attn_v_proj_bias)
+            lv44: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv43)
+            lv180 = R.call_tir(cls.attention1, (lv41_1, lv42, lv44), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv45_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv180)
+            lv184 = R.call_tir(cls.transpose1, (p_decoder_layers_0_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv46_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv45_1, lv184, p_decoder_layers_0_self_attn_out_proj_bias, lv39)
+            lv188 = R.call_tir(cls.layer_norm1, (lv46_1, p_decoder_layers_0_encoder_attn_layer_norm_weight, p_decoder_layers_0_encoder_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv189 = R.call_tir(cls.transpose1, (p_decoder_layers_0_encoder_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv47: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv188, lv189, p_decoder_layers_0_encoder_attn_q_proj_bias)
+            lv48: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv47)
+            lv194 = R.call_tir(cls.transpose1, (p_decoder_layers_0_encoder_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv195 = R.call_tir(cls.matmul, (lv150, lv194), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv49: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv195)
+            lv198 = R.call_tir(cls.transpose1, (p_decoder_layers_0_encoder_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv50: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv150, lv198, p_decoder_layers_0_encoder_attn_v_proj_bias)
+            lv51_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv50)
+            lv206 = R.call_tir(cls.attention2, (lv48, lv49, lv51_1), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv52_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv206)
+            lv210 = R.call_tir(cls.transpose1, (p_decoder_layers_0_encoder_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv53: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv52_1, lv210, p_decoder_layers_0_encoder_attn_out_proj_bias, lv46_1)
+            lv214 = R.call_tir(cls.layer_norm1, (lv53, p_decoder_layers_0_final_layer_norm_weight, p_decoder_layers_0_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv215 = R.call_tir(cls.transpose4, (p_decoder_layers_0_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv54: R.Tensor((1, 1, 1536), dtype="float32") = cls.fused_matmul4_add8_gelu3(lv214, lv215, p_decoder_layers_0_fc1_bias)
+            lv219 = R.call_tir(cls.transpose5, (p_decoder_layers_0_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv55_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul5_add7_add6(lv54, lv219, p_decoder_layers_0_fc2_bias, lv53)
+            lv223 = R.call_tir(cls.layer_norm1, (lv55_1, p_decoder_layers_1_self_attn_layer_norm_weight, p_decoder_layers_1_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv224 = R.call_tir(cls.transpose1, (p_decoder_layers_1_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv56: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv223, lv224, p_decoder_layers_1_self_attn_q_proj_bias)
+            lv57: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv56)
+            lv229 = R.call_tir(cls.transpose1, (p_decoder_layers_1_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv230 = R.call_tir(cls.matmul3, (lv223, lv229), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv58: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv230)
+            lv233 = R.call_tir(cls.transpose1, (p_decoder_layers_1_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv59: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv223, lv233, p_decoder_layers_1_self_attn_v_proj_bias)
+            lv60: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv59)
+            lv241 = R.call_tir(cls.attention1, (lv57, lv58, lv60), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv61: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv241)
+            lv245 = R.call_tir(cls.transpose1, (p_decoder_layers_1_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv62: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv61, lv245, p_decoder_layers_1_self_attn_out_proj_bias, lv55_1)
+            lv249 = R.call_tir(cls.layer_norm1, (lv62, p_decoder_layers_1_encoder_attn_layer_norm_weight, p_decoder_layers_1_encoder_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv250 = R.call_tir(cls.transpose1, (p_decoder_layers_1_encoder_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv63_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv249, lv250, p_decoder_layers_1_encoder_attn_q_proj_bias)
+            lv64: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv63_1)
+            lv255 = R.call_tir(cls.transpose1, (p_decoder_layers_1_encoder_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv256 = R.call_tir(cls.matmul, (lv150, lv255), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv65: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv256)
+            lv259 = R.call_tir(cls.transpose1, (p_decoder_layers_1_encoder_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv66: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv150, lv259, p_decoder_layers_1_encoder_attn_v_proj_bias)
+            lv67_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv66)
+            lv267 = R.call_tir(cls.attention2, (lv64, lv65, lv67_1), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv68: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv267)
+            lv271 = R.call_tir(cls.transpose1, (p_decoder_layers_1_encoder_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv69: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv68, lv271, p_decoder_layers_1_encoder_attn_out_proj_bias, lv62)
+            lv275 = R.call_tir(cls.layer_norm1, (lv69, p_decoder_layers_1_final_layer_norm_weight, p_decoder_layers_1_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv276 = R.call_tir(cls.transpose4, (p_decoder_layers_1_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv70: R.Tensor((1, 1, 1536), dtype="float32") = cls.fused_matmul4_add8_gelu3(lv275, lv276, p_decoder_layers_1_fc1_bias)
+            lv280 = R.call_tir(cls.transpose5, (p_decoder_layers_1_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv71_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul5_add7_add6(lv70, lv280, p_decoder_layers_1_fc2_bias, lv69)
+            lv284 = R.call_tir(cls.layer_norm1, (lv71_1, p_decoder_layers_2_self_attn_layer_norm_weight, p_decoder_layers_2_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv285 = R.call_tir(cls.transpose1, (p_decoder_layers_2_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv72_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv284, lv285, p_decoder_layers_2_self_attn_q_proj_bias)
+            lv73: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv72_1)
+            lv290 = R.call_tir(cls.transpose1, (p_decoder_layers_2_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv291 = R.call_tir(cls.matmul3, (lv284, lv290), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv74: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv291)
+            lv294 = R.call_tir(cls.transpose1, (p_decoder_layers_2_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv75: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv284, lv294, p_decoder_layers_2_self_attn_v_proj_bias)
+            lv76_1: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv75)
+            lv302 = R.call_tir(cls.attention1, (lv73, lv74, lv76_1), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv77: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv302)
+            lv306 = R.call_tir(cls.transpose1, (p_decoder_layers_2_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv78: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv77, lv306, p_decoder_layers_2_self_attn_out_proj_bias, lv71_1)
+            lv310 = R.call_tir(cls.layer_norm1, (lv78, p_decoder_layers_2_encoder_attn_layer_norm_weight, p_decoder_layers_2_encoder_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv311 = R.call_tir(cls.transpose1, (p_decoder_layers_2_encoder_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv79: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv310, lv311, p_decoder_layers_2_encoder_attn_q_proj_bias)
+            lv80_1: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv79)
+            lv316 = R.call_tir(cls.transpose1, (p_decoder_layers_2_encoder_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv317 = R.call_tir(cls.matmul, (lv150, lv316), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv81_1: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv317)
+            lv320 = R.call_tir(cls.transpose1, (p_decoder_layers_2_encoder_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv82: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv150, lv320, p_decoder_layers_2_encoder_attn_v_proj_bias)
+            lv83: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv82)
+            lv328 = R.call_tir(cls.attention2, (lv80_1, lv81_1, lv83), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv84: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv328)
+            lv332 = R.call_tir(cls.transpose1, (p_decoder_layers_2_encoder_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv85: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv84, lv332, p_decoder_layers_2_encoder_attn_out_proj_bias, lv78)
+            lv336 = R.call_tir(cls.layer_norm1, (lv85, p_decoder_layers_2_final_layer_norm_weight, p_decoder_layers_2_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv337 = R.call_tir(cls.transpose4, (p_decoder_layers_2_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv86_1: R.Tensor((1, 1, 1536), dtype="float32") = cls.fused_matmul4_add8_gelu3(lv336, lv337, p_decoder_layers_2_fc1_bias)
+            lv341 = R.call_tir(cls.transpose5, (p_decoder_layers_2_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv87_1: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul5_add7_add6(lv86_1, lv341, p_decoder_layers_2_fc2_bias, lv85)
+            lv345 = R.call_tir(cls.layer_norm1, (lv87_1, p_decoder_layers_3_self_attn_layer_norm_weight, p_decoder_layers_3_self_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv346 = R.call_tir(cls.transpose1, (p_decoder_layers_3_self_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv88: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv345, lv346, p_decoder_layers_3_self_attn_q_proj_bias)
+            lv89: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv88)
+            lv351 = R.call_tir(cls.transpose1, (p_decoder_layers_3_self_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv352 = R.call_tir(cls.matmul3, (lv345, lv351), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv90_1: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv352)
+            lv355 = R.call_tir(cls.transpose1, (p_decoder_layers_3_self_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv91: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv345, lv355, p_decoder_layers_3_self_attn_v_proj_bias)
+            lv92: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv91)
+            lv363 = R.call_tir(cls.attention1, (lv89, lv90_1, lv92), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv93: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv363)
+            lv367 = R.call_tir(cls.transpose1, (p_decoder_layers_3_self_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv94: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv93, lv367, p_decoder_layers_3_self_attn_out_proj_bias, lv87_1)
+            lv371 = R.call_tir(cls.layer_norm1, (lv94, p_decoder_layers_3_encoder_attn_layer_norm_weight, p_decoder_layers_3_encoder_attn_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv372 = R.call_tir(cls.transpose1, (p_decoder_layers_3_encoder_attn_q_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv95: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7(lv371, lv372, p_decoder_layers_3_encoder_attn_q_proj_bias)
+            lv96: R.Tensor((1, 1, 6, 64), dtype="float32") = cls.fused_reshape6_transpose6_transpose7(lv95)
+            lv377 = R.call_tir(cls.transpose1, (p_decoder_layers_3_encoder_attn_k_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv378 = R.call_tir(cls.matmul, (lv150, lv377), out_sinfo=R.Tensor((1, 1500, 384), dtype="float32"))
+            lv97: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv378)
+            lv381 = R.call_tir(cls.transpose1, (p_decoder_layers_3_encoder_attn_v_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv98_1: R.Tensor((1, 1500, 384), dtype="float32") = cls.fused_matmul_add3(lv150, lv381, p_decoder_layers_3_encoder_attn_v_proj_bias)
+            lv99: R.Tensor((1, 1500, 6, 64), dtype="float32") = cls.fused_reshape1_transpose2_transpose3(lv98_1)
+            lv389 = R.call_tir(cls.attention2, (lv96, lv97, lv99), out_sinfo=R.Tensor((1, 1, 6, 64), dtype="float32"))
+            lv100: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_transpose6_transpose7_reshape7(lv389)
+            lv393 = R.call_tir(cls.transpose1, (p_decoder_layers_3_encoder_attn_out_proj_weight,), out_sinfo=R.Tensor((384, 384), dtype="float32"))
+            lv101: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul3_add7_add6(lv100, lv393, p_decoder_layers_3_encoder_attn_out_proj_bias, lv94)
+            lv397 = R.call_tir(cls.layer_norm1, (lv101, p_decoder_layers_3_final_layer_norm_weight, p_decoder_layers_3_final_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            lv398 = R.call_tir(cls.transpose4, (p_decoder_layers_3_fc1_weight,), out_sinfo=R.Tensor((384, 1536), dtype="float32"))
+            lv102_1: R.Tensor((1, 1, 1536), dtype="float32") = cls.fused_matmul4_add8_gelu3(lv397, lv398, p_decoder_layers_3_fc1_bias)
+            lv402 = R.call_tir(cls.transpose5, (p_decoder_layers_3_fc2_weight,), out_sinfo=R.Tensor((1536, 384), dtype="float32"))
+            lv103: R.Tensor((1, 1, 384), dtype="float32") = cls.fused_matmul5_add7_add6(lv102_1, lv402, p_decoder_layers_3_fc2_bias, lv101)
+            lv406 = R.call_tir(cls.layer_norm1, (lv103, p_decoder_layer_norm_weight, p_decoder_layer_norm_bias), out_sinfo=R.Tensor((1, 1, 384), dtype="float32"))
+            gv: R.Tuple(R.Tensor((1, 1, 384), dtype="float32")) = (lv406,)
+            R.output(gv)
+        return gv
+
+# Metadata omitted. Use show_meta=True in script() method to show it.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function view.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 4
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function contiguous.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function scaled_dot_product_attention.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function transpose.int !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+found function reshape.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, list) of length 3
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function gelu.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function linear.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 3
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function dropout.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+found function add.Tensor !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 2
+isinstance(node, fx.Node)
+isinstance(node, fx.Node)
+found function layer_norm.default !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+isinstance(node, tuple) of length 1
+isinstance(node, tuple) of length 1
+isinstance(node, fx.Node)
+Traceback (most recent call last):
+  File "/ssd1/htalendr/whisper/whisper_inlined.py", line 2230, in <module>
+    test_export_and_cuda(raw_data, torch_model, show=False)
+  File "/ssd1/htalendr/hl_utils/hlutils/test_export_and_cuda.py", line 40, in test_export_and_cuda
+    ex = relax.build(tvm_mod, target=target, relax_pipeline=relax.get_default_pipeline(target))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/python/tvm/relax/vm_build.py", line 253, in build
+    mod = relax_pipeline(mod)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/python/tvm/ir/transform.py", line 238, in __call__
+    return _ffi_transform_api.RunPass(self, mod)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 339, in tvm._ffi._cy3.core.PackedFuncBase.__call__
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 270, in tvm._ffi._cy3.core.FuncCall
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 259, in tvm._ffi._cy3.core.FuncCall3
+  File "tvm/_ffi/_cython/./base.pxi", line 185, in tvm._ffi._cy3.core.CHECK_CALL
+  File "/ssd1/htalendr/tvm/python/tvm/_ffi/base.py", line 468, in raise_last_ffi_error
+    raise py_err
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 56, in tvm._ffi._cy3.core.tvm_callback
+  File "/ssd1/htalendr/tvm/python/tvm/relax/backend/cuda/pipeline.py", line 85, in _pipeline
+    mod = seq(mod)
+          ^^^^^^^^
+  File "/ssd1/htalendr/tvm/python/tvm/ir/transform.py", line 238, in __call__
+    return _ffi_transform_api.RunPass(self, mod)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 339, in tvm._ffi._cy3.core.PackedFuncBase.__call__
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 270, in tvm._ffi._cy3.core.FuncCall
+  File "tvm/_ffi/_cython/./packed_func.pxi", line 259, in tvm._ffi._cy3.core.FuncCall3
+  File "tvm/_ffi/_cython/./base.pxi", line 185, in tvm._ffi._cy3.core.CHECK_CALL
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 1250, in operator()
+    [=](IRModule m, PassContext pc) { LOG(INFO) << m;return relax::FuseTIR(m); };
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 1242, in tvm::relax::FuseTIR(tvm::IRModule)
+    mod = TIRFuseMutator::Transform(mod);
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 1096, in tvm::relax::TIRFuseMutator::Transform(tvm::IRModule)
+    const auto& [prim_func, indices] = FusedTIRConstructor::GetFusedTIR(mod, old_gvar);
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 497, in tvm::relax::FusedTIRConstructor::GetFusedTIR(tvm::IRModule const&, tvm::GlobalVar const&)
+    visitor(Downcast<relax::Function>(f));
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 555, in tvm::relax::FusedTIRConstructor::VisitExpr_(tvm::relax::FunctionNode const*)
+    ExprVisitor::VisitExpr_(func);
+                  ^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 612, in tvm::relax::FusedTIRConstructor::VisitBinding_(tvm::relax::VarBindingNode const*)
+    this->VisitExpr(binding->value);
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 644, in tvm::relax::FusedTIRConstructor::VisitExpr_(tvm::relax::CallNode const*)
+    ICHECK(prim_func->body->IsInstance<tir::BlockRealizeNode>())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tvm.error.InternalError: Traceback (most recent call last):
+  6: operator()
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:1250
+  5: tvm::relax::FuseTIR(tvm::IRModule)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:1242
+  4: tvm::relax::TIRFuseMutator::Transform(tvm::IRModule)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:1096
+  3: tvm::relax::FusedTIRConstructor::GetFusedTIR(tvm::IRModule const&, tvm::GlobalVar const&)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:497
+  2: tvm::relax::FusedTIRConstructor::VisitExpr_(tvm::relax::FunctionNode const*)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:555
+  1: tvm::relax::FusedTIRConstructor::VisitBinding_(tvm::relax::VarBindingNode const*)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:612
+  0: tvm::relax::FusedTIRConstructor::VisitExpr_(tvm::relax::CallNode const*)
+        at /ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc:644
+  File "/ssd1/htalendr/tvm/src/relax/transform/fuse_tir.cc", line 644
+InternalError: Check failed: (prim_func->body->IsInstance<tir::BlockRealizeNode>()) is false: Only schedulable functions (whose body is the root block) can be fused
