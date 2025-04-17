@@ -2217,7 +2217,7 @@ class WhisperEncoderDecoder(torch.nn.Module):
             input_ids=self.input_ids, 
             encoder_hidden_states=encoder_outputs[0]
         )
-        return decoder_output[0]
+        return decoder_output.last_hidden_state
 
 input_ids = torch.zeros((input_features.shape[0], 1), dtype=torch.long)
 
