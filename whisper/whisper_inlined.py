@@ -1,51 +1,16 @@
-from transformers import WhisperForCausalLM, WhisperForConditionalGeneration, WhisperProcessor
-from transformers.models.whisper.modeling_whisper import  WhisperConfig
-# from transformers.models.whisper.modeling_whisper import WhisperEncoder, WhisperConfig, WhisperDecoder
 import torch
-from datasets import load_dataset
-
-processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
-# model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v2")
-# encoder = model.get_encoder()
-
-# assistant_model = WhisperForCausalLM.from_pretrained("distil-whisper/distil-large-v2")
-
-ds = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="validation")
-sample = ds[0]["audio"]
-input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features
-
-
-import sys
-sys.path.append('/ssd1/htalendr/tvm/python')
 import math
-from typing import Optional, Tuple, Union
-from tvm import relax
-import numpy as np
-import tvm
-from tvm import relax
-import torch
 from torch import nn
-from torch.export import export
-from tvm.relax.frontend.torch import from_exported_program
-
-from transformers import WhisperProcessor
-from transformers.cache_utils import Cache, DynamicCache, EncoderDecoderCache, StaticCache
-from transformers.activations import ACT2FN
-from transformers.modeling_outputs import (
-    BaseModelOutput,
-    BaseModelOutputWithPastAndCrossAttentions,
-    CausalLMOutputWithCrossAttentions,
-    Seq2SeqLMOutput,
-    Seq2SeqModelOutput,
-    SequenceClassifierOutput,
-)
-
-
-import torch
 from datasets import load_dataset
+from typing import Optional, Tuple, Union
+import numpy as np
+from datasets import load_dataset
+
 from transformers.models.whisper.modeling_whisper import WhisperEncoder, WhisperConfig
 from transformers.modeling_utils import PreTrainedModel
-
+from transformers import WhisperProcessor
+from transformers.models.whisper.modeling_whisper import  WhisperConfig
+# from transformers.models.whisper.modeling_whisper import WhisperEncoder, WhisperConfig, WhisperDecoder # inlined
 from transformers.activations import ACT2FN
 from transformers.cache_utils import Cache, DynamicCache, EncoderDecoderCache, StaticCache
 from transformers.generation import GenerationMixin
@@ -58,7 +23,6 @@ from transformers.modeling_outputs import (
     Seq2SeqModelOutput,
     SequenceClassifierOutput,
 )
-from transformers.modeling_utils import PreTrainedModel
 from transformers.utils import (
     add_start_docstrings,
     add_start_docstrings_to_model_forward,
@@ -68,6 +32,14 @@ from transformers.utils import (
     logging,
     replace_return_docstrings,
 )
+
+
+processor = WhisperProcessor.from_pretrained("openai/whisper-large-v2")
+
+ds = load_dataset("hf-internal-testing/librispeech_asr_dummy", "clean", split="validation")
+sample = ds[0]["audio"]
+input_features = processor(sample["array"], sampling_rate=sample["sampling_rate"], return_tensors="pt").input_features
+
 
 # if is_torch_flex_attn_available():
 #     from torch.nn.attention.flex_attention import BlockMask
@@ -1301,14 +1273,12 @@ class WhisperDecoder(WhisperPreTrainedModel):
                 inputs_embeds, past_key_values_length=past_key_values_length, position_ids=position_ids
             )
 
-        # return position_ids
-
         hidden_states = inputs_embeds + positions.to(inputs_embeds.device)
 
         hidden_states = nn.functional.dropout(hidden_states, p=self.dropout, training=self.training)
 
 
-        # causal_mask = self._update_causal_mask( # TODO could we need this for inference?
+        # causal_mask = self._update_causal_mask( # not needed for inference
         #     attention_mask,
         #     inputs_embeds,
         #     cache_position,
@@ -1357,7 +1327,7 @@ class WhisperDecoder(WhisperPreTrainedModel):
             else:
                 layer_outputs = decoder_layer(
                     hidden_states,
-                    attention_mask=None, # TODO make original work -> attention_mask=causal_mask 
+                    attention_mask=None, # original was attention_mask=causal_mask 
                     encoder_hidden_states=encoder_hidden_states,
                     layer_head_mask=(head_mask[idx] if head_mask is not None else None),
                     cross_attn_layer_head_mask=(
@@ -2203,7 +2173,6 @@ class WhisperForAudioClassification(WhisperPreTrainedModel):
         )
 
 
-
 class WhisperEncoderDecoder(torch.nn.Module):
     def __init__(self, input_ids):
         super().__init__()
@@ -2219,11 +2188,9 @@ class WhisperEncoderDecoder(torch.nn.Module):
         )
         return decoder_output.last_hidden_state
 
-input_ids = torch.zeros((input_features.shape[0], 1), dtype=torch.long)
-
-torch_model = WhisperEncoderDecoder(input_ids).eval()
-
-raw_data = input_features.cpu().numpy()
-
-from hlutils.test_export_and_cuda import test_export_and_cuda
-test_export_and_cuda(raw_data, torch_model, show=False)
+if __name__ == "__main__":
+    from hlutils.test_export_and_cuda import test_export_and_cuda
+    input_ids = torch.randint(0, 100, (input_features.shape[0], 1), dtype=torch.long)
+    torch_model = WhisperEncoderDecoder(input_ids).eval()
+    raw_data = input_features.cpu().numpy()
+    test_export_and_cuda(raw_data, torch_model, show=False)
