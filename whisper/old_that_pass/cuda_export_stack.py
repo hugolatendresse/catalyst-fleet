@@ -1,11 +1,11 @@
 """
-Model Type: index.Tensor
+Model Type: stack.default
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: ??
-Correctness Test: ??
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -18,19 +18,25 @@ from tvm.relax.frontend.torch import from_exported_program
 import torch.nn.functional as F
 import numpy as np
 
+
 # Create a dummy model
-class IndexModel(nn.Module):
+class StackModel(nn.Module):
     def __init__(self):
         super().__init__()
-        self.position_ids = torch.tensor([0])
+
 
     def forward(self, x):
-        return x[self.position_ids]
+        val1 = x[1,4]
+        val2 = x[3,2]
+        val3 = x[5,6]
+        z = torch.stack([val1, val2, val3])
+        return z
         
-torch_model = IndexModel().eval()
 
-raw_data = np.random.rand(3,3).astype("float32")
+torch_module = StackModel().eval()
+
+raw_data = np.random.rand(10,10,10).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 
-test_export_and_cuda(raw_data, torch_model)
+test_export_and_cuda(raw_data, torch_module)

@@ -1,11 +1,11 @@
 """
-Model Type: sum.default
+Model Type: 
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: FAIL
-Correctness Test: FAIL
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -18,21 +18,19 @@ from tvm.relax.frontend.torch import from_exported_program
 import torch.nn.functional as F
 import numpy as np
 
-
 # Create a dummy model
-class IndexModel(nn.Module):
+class IndexSelectModel(nn.Module):
     def __init__(self):
         super().__init__()
 
-
     def forward(self, x):
-        new_vec = x[1,4]
-        return new_vec.sum()
+        indices = torch.tensor([0, 2])
+        return torch.index_select(x, 0, indices)
         
+torch_model = IndexSelectModel().eval()
 
-torch_model = IndexModel().eval()
 
-raw_data = np.random.rand(10,10,10).astype("float32")
+raw_data = np.random.rand(3,4).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 

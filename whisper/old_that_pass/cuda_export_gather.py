@@ -1,5 +1,5 @@
 """
-Model Type: index.Tensor
+Model Type: 
 Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
@@ -18,37 +18,17 @@ from tvm.relax.frontend.torch import from_exported_program
 import torch.nn.functional as F
 import numpy as np
 
-"""
-Trying to achieve:
-self.weight[position_ids]
-
-With:
-self.weight.shape = torch.Size([448, 384])
-position_ids.shape  = torch.Size([1, 1])
-position_ids = tensor([[0]])
-
-In general, torch does this:
->>> import torch
->>> x = torch.Tensor([[10,11],[12,13]])
->>> x[torch.tensor([[0]])]
-tensor([[[10., 11.]]])
->>> x[[[0]]]
-tensor([[10., 11.]])
-
-"""
-
 # Create a dummy model
-class IndexModel(nn.Module):
+class IndexGather(nn.Module):
     def __init__(self):
         super().__init__()
-        self.position_ids = torch.tensor([[0]])
 
     def forward(self, x):
-        return x[self.position_ids]
+        return torch.gather(x, 1, torch.tensor([[0, 0], [1, 0]]))
         
-torch_model = IndexModel().eval()
+torch_model = IndexGather().eval()
 
-raw_data = np.random.rand(2,3).astype("float32")
+raw_data = np.random.rand(2,2).astype("float32")
 
 from hlutils.test_export_and_cuda import test_export_and_cuda
 

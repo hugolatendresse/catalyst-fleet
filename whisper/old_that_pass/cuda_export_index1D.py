@@ -1,10 +1,11 @@
 """
 Model Type: index.Tensor
 Model Definition: PyTorch
-Model Export: fx
+Model Export: torch.export
+Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: FAILS, TypeError: 'Node' object is not iterable in translator
-Correctness Test: ??
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -30,6 +31,6 @@ torch_model = IndexModel().eval()
 
 raw_data = np.random.rand(3,3).astype("float32")
 
-from hlutils import test_fx_and_cuda
-input_info = [((3,3), "float32")]
-test_fx_and_cuda(raw_data, torch_model, input_info=input_info)
+from hlutils.test_export_and_cuda import test_export_and_cuda
+
+test_export_and_cuda(raw_data, torch_model)
