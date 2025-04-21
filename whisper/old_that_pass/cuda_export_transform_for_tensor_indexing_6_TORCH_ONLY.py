@@ -1,11 +1,9 @@
 """
 Model Type: index.Tensor
 Model Definition: PyTorch
-Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
 Compile and Run Test: PASS
-Correctness Test: PASS
 """
 import numpy as np
 import torch

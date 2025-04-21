@@ -4,8 +4,8 @@ Model Definition: PyTorch
 Model Export: torch.export
 Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: ??
-Correctness Test: ??
+Compile and Run Test: PASS
+Correctness Test: PASS
 """
 from tvm import relax
 import numpy as np
@@ -24,14 +24,17 @@ class IndexTensorModel(nn.Module):
         super().__init__()
 
     def forward(self, x):
-        return x[[[0,1],[0,1]]] # both args[0] and indices are expr.Var
+        # TODO return x[[[[0,1],[2,3]],[[4,5],[6,7]],[[2,4],[1,5]],[[3,4],[6,8]]]]
+        return x[[[0,1,2,3], [1,2,3,4], [2,3,4,0]]] # both args[0] and indices are expr.Var
     
 torch_model = IndexTensorModel().eval()
 
+raw_data = np.random.rand(5,5,5,5).astype("float32")
+
 from hlutils.test_export_and_cuda import test_export_and_cuda
 
-raw_data = np.array([[0,1],[0,1]], dtype="int32")
-torch_data = torch.tensor(raw_data, dtype=torch.int32)
+
+torch_data = torch.from_numpy(raw_data)
 
 # Give an example argument to torch.export
 example_args = (torch_data,)

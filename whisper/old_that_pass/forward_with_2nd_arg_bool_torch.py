@@ -2,10 +2,8 @@
 Model Type: torch model with multiple arguments to forward 
 Model Definition: PyTorch
 Model Export: torch.export
-Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
-Compile and Run Test: ??
-Correctness Test: ??
+Compile and Run Test: PASS
 """
 import sys
 sys.path.append('/ssd1/htalendr/tvm/python')
@@ -26,17 +24,18 @@ class TorchModel(nn.Module):
     def __init__(self):
         super().__init__()
 
-    def forward(self, x: torch.Tensor, y: Optional[Union[torch.Tensor, None]] = None):
-        if y is None:
+    def forward(self, x: torch.Tensor, y: bool):
+        if y:
             return 2*x
-        return 3*x + 4*y
+        else:
+            return 3*x
 
 torch_model = TorchModel().eval()
 raw_data1 = np.ones((2,2)).astype("float32")
 raw_data2 = np.ones((2,2)).astype("float32")
 torch_data1 = torch.from_numpy(raw_data1)
 torch_data2 = torch.from_numpy(raw_data2)
-example_args = (torch_data1, torch_data2)
+example_args = (torch_data1, False)
 
 with torch.no_grad():
     exported_program = export(torch_model, example_args)

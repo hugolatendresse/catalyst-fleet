@@ -2,10 +2,8 @@
 Model Type: index.Tensor
 Model Definition: PyTorch
 Model Export: torch.export
-Model Ingestion: tvm.relax.frontend.torch.from_exported_program
 Target: CUDA
 Compile and Run Test: PASS
-Correctness Test: PASS
 """
 import numpy as np
 import torch
@@ -174,24 +172,3 @@ for some_list in inputs:
     print(f"your output: {new_result.shape}")
     assert torch.equal(torch_output, new_result), f"FAILED!\npytorch: \n{torch_output}, \nus: \n{new_result}"
     print("PASSED!")
-
-    
-
-# class TensorIndexingModel(nn.Module):
-#     def __init__(self):
-#         super().__init__()
-
-#     def forward(self, x):
-#         return transform_tensor_index(x, [[[0,2],[1,3]]])
-        
-# torch_model = TensorIndexingModel().eval()
-# raw_data = np.random.rand(5,5,5).astype("float32")
-# torch_data = torch.from_numpy(raw_data)
-# pytorch_out = torch_model(torch_data)
-# if isinstance(pytorch_out, tuple):
-#     for i in range(len(pytorch_out)):
-#         print(pytorch_out[i].detach().numpy())
-# else:
-#     print(pytorch_out.detach().numpy())
-
-# print("torch ran") 
